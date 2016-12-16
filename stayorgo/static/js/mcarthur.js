@@ -45,11 +45,11 @@ function check_input()
   }
   //calc_fdi();
   if (error.length > 65) {
-    $('#custom_error').html("<div class='alert alert-danger alert-dismissible' role='alert' id='alert_error'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>An Error Occured!</strong>" + error + "</div>");
+    $('#flash').html("<div class='alert alert-danger alert-dismissible' role='alert' id='alert_error'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>An Error Occured!</strong>" + error + "</div>");
     //$('.alert').show();
     //console.log(error);
     error = "";
-    return;
+    //return;
   } else {
     calc_fdi();
   }
