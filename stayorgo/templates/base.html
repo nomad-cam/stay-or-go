@@ -1,0 +1,9 @@
+{%- extends "bootstrap/base.html" %}
+
+{% block title %}Stay Or Go{% endblock %}
+
+{% block styles -%}
+    {{ super() }}
+    {# add my styles here #}
+    <link rel="shortcut icon" href="{{url_for('.static', filename='img/favicon.png')}}">
+{% endblock %}

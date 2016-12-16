@@ -1,0 +1,62 @@
+{%- extends "base.html" %}
+
+{% import "bootstrap/utils.html" as utils %}
+
+{% block content %}
+    <div class="container">
+        {%- with messages = get_flashed_messages(with_categories=True) %}
+        {%- if messages %}
+        <div class="row">
+            <div class="col-md-12">
+                {{ utils.flashed_messages(messages) }}
+            </div>
+        </div>
+        {%- endif %}
+        {%- endwith %}
+    </div>
+    <div class="container-fluid">
+        <div class='row'>
+            <div class='col-lg-2'>
+                <fieldset class='form-group'>
+                    <legend>Weather</legend>
+                    <label for='weather_station'>Nearest Station</label>
+                    <select class='form-control' id='weather_station'>
+                        <option value='0'>Select Available</option>
+                    </select>
+                </fieldset>
+                <button type='button' class='btn btn-primary btn-block'> Remember </button>
+            </div>
+            <div class='col-lg-2'>
+                <fieldset class='form-group'>
+                    <legend>McArthur Mk5</legend>
+                    <label for='mcarthur_temp'>Temperature</label>
+                    <input type='text' class='form-control' id='mcarthur_temp' placeholder='0 - 100&deg;C'>
+                    <label for='mcarthur_humid'>Humidity</label>
+                    <input type='text' class='form-control' id='mcarthur_humid' placeholder='0 - 100%'>
+                    <label for='mcarthur_wind'>Wind Speed</label>
+                    <input type='text' class='form-control' id='mcarthur_wind' placeholder='0 - 100km/hr'>
+                    <label for='mcarthur_fuel'>Fuel Load</label>
+                    <input type='text' class='form-control' id='mcarthur_fuel' placeholder='0 - 50t/ha'>
+                    <label for='mcarthur_drought'>Drought Factor</label>
+                    <input type='text' class='form-control' id='mcarthur_drought' placeholder='0 - 10'>
+                    <label for='mcarthur_slope'>Ground Slope</label>
+                    <input type='text' class='form-control' id='mcarthur_slope' placeholder='&deg;'>
+                </fieldset>
+                <button type='button' class='btn btn-outline-primary btn-block' id='mcarthur_load_weather'> Load Current Weather </button>
+                <button type='button' class='btn btn-outline-primary btn-block' id='mcarthur_reset'> Reset </button>
+                <button type='button' class='btn btn-primary btn-block' id='mcarthur_calculate'> Calculate </button>
+
+                <p><br><img id="mcarthur_fdr" src="{{ url_for('.static', filename='img/fdr_null_new.png') }}" alt='fire danger rating scale' style='width:100%'></p>
+                <p id="mcarthur_result" class="text-center"></p>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+    <script src="{{ url_for('.static', filename='js/mcarthur.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/weather.js') }}"></script>
+{% endblock %}
