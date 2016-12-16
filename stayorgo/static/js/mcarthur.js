@@ -7,6 +7,20 @@ $('#mcarthur_calculate').click(function(){
   check_input();
 });
 
+$('#mcarthur_reset').click(function(){
+  //
+  $('#mcarthur_humid').val("");
+  $('#mcarthur_temp').val("");
+  $('#mcarthur_wind').val("");
+  $('#mcarthur_fuel').val("");
+  $('#mcarthur_drought').val("");
+  $('#mcarthur_slope').val("");
+
+  var img = "/static/img/fdr_null_new.png";
+  $('#mcarthur_fdr').attr('src', img);
+  $('#mcarthur_result').html("");
+});
+
 function check_input()
 {
   //console.log('calculating...');
