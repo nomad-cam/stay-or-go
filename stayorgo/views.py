@@ -34,7 +34,7 @@ def api_wx_forecast(station_id):
     return jsonify(wx)
 
 
-@app.route('/api/wx/station/<station_id>')
+@app.route('/api/wx/station/<station_id>', methods=['POST','GET'])
 def api_wx_station(station_id):
     # fetch the current weather for a given weather station id.
     #

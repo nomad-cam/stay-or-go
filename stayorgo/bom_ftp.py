@@ -63,7 +63,7 @@ def wx_obs(filename, station_id):
     root = ET.fromstring(all_obs.getvalue())
 
     # find the required station by wmo-id
-    for child in root.findall('.//station[@wmo-id="%s"]' % (station_id)):
+    for child in root.findall('.//station[@bom-id="%s"]' % (station_id)):
         #
         station_name = child.get('description')
         time_local = child[0].get("time-local")
