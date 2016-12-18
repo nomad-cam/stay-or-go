@@ -9,7 +9,8 @@ def ftp_connect(filename):
     ftp = FTP('ftp.bom.gov.au')
     ftp.login()
     ftp.cwd('anon/gen/fwo')
-    # ftp.retrlines('RETR IDV18560.xml', r.write) # ffdi gfdi forecast
+    # ftp.retrlines('RETR IDV18560.xml', r.write) # ffdi gfdi detailed forecast
+    # ftp.retrlines('RETR IDV18550.xml', r.write) # ffdi gfdi tomorrow forecast
     # ftp.retrlines('RETR IDV60920.xml', r.write) # current observations
 
     r = StringIO()
@@ -31,13 +32,6 @@ def ftp_connect(filename):
 def cache_write(filename,IO):
     # Write the variable to the cache based on the filename
     # this will probably work due to the low file count, otherwise might need some other method.
-    # if filename == "IDV60920":
-    #     IDV60920 = IO
-    #     cache.set(IDV60920)
-    #
-    # if filename == "IDV18560":
-    #     IDV18560 = IO
-    #     cache.set(IDV18560)
 
     cache.set(filename, IO)
 
@@ -56,7 +50,13 @@ def cache_check(filename):
 
 def wx_obs(filename, station_id):
     # decode the xml file for the given weather station
-    #
+    # First set default values as some weather stations don't report all variables
+    station_name = "Unable to Verify for %s" % station_id
+    time_local = "NaN"
+    air_temperature = "NaN"
+    rel_humidity = "NaN"
+    wind_spd_kmh = "NaN"
+
     print("Finding the current observations for station id: %s" % station_id)
     all_obs = cache_check(filename)
 

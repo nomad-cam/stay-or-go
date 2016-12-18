@@ -4,7 +4,11 @@ function tonum(obj)
 }
 
 $('#mcarthur_calculate').click(function(){
-  check_input();
+  mcarthur_check_input();
+});
+
+$('#mcarthur_load_weather').click(function () {
+    mcarthur_load_current_weather();
 });
 
 $('#mcarthur_reset').click(function(){
@@ -21,7 +25,13 @@ $('#mcarthur_reset').click(function(){
   $('#mcarthur_result').html("");
 });
 
-function check_input()
+
+function generate_error(error){
+    $('#flash').html("<div class='alert alert-danger alert-dismissible' role='alert' id='alert_error'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>An Error Occured!</strong>" + error + "</div>");
+}
+
+
+function mcarthur_check_input()
 {
   //console.log('calculating...');
   var error = "    The following errors need to be fixed before continuing: ";
@@ -45,18 +55,19 @@ function check_input()
   }
   //calc_fdi();
   if (error.length > 65) {
-    $('#flash').html("<div class='alert alert-danger alert-dismissible' role='alert' id='alert_error'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>An Error Occured!</strong>" + error + "</div>");
+    generate_error(error);
+    //$('#flash').html("<div class='alert alert-danger alert-dismissible' role='alert' id='alert_error'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>An Error Occured!</strong>" + error + "</div>");
     //$('.alert').show();
     //console.log(error);
     error = "";
     //return;
   } else {
-    calc_fdi();
+    mcarthur_calc_fdi();
   }
 
 }
 
-function calc_fdi()
+function mcarthur_calc_fdi()
 {
   // Originally created by Pat Barling http://www.firebreak.com.au/forest-5.html
   //console.log("entering calc_fdi");
@@ -138,5 +149,28 @@ function calc_fdi()
   //form.outputbox6.value=y;//spotting distance - forests
   //form.outputbox7.value=u;//rate of forward spread on sloping ground  - forests
   }
+
+}
+
+function mcarthur_load_current_weather() {
+    var station_id = $('#weather_station option:selected').val();
+
+    if (station_id == 0){
+        generate_error("<li>No Weather Station has been selected</li>");
+        return;
+    }
+
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        url: '/api/wx/current/' + station_id,
+        success: function(data){
+            //
+            //console.log(data);
+            $('#mcarthur_temp').val(data['air_temperature']);
+            $('#mcarthur_humid').val(data['rel-humidity']);
+            $('#mcarthur_wind').val(data['wind_spd_kmh']);
+        }
+    });
 
 }

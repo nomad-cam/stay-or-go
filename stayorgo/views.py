@@ -11,11 +11,11 @@ def stayorgo():
     return render_template('index.html')
 
 
-@app.route('/api/wx/current/<station_id>')#, methods=['POST'])
+@app.route('/api/wx/current/<station_id>', methods=['POST'])
 def api_wx_current(station_id):
     # fetch the current weather for a given weather station id.
     # ftp://ftp.bom.gov.au/anon/gen/fwo/IDV60920.xml
-    #if request.method == "POST":
+    if request.method == "POST":
         #wx = {}
         #wx['station_id'] = station_id
 
