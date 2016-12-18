@@ -102,7 +102,7 @@ def station_list(station_id):
     lat = "NaN"
     lon = "NaN"
     forecast_district = "NaN"
-    res_all = {}
+    res_all = []
 
     if station_id == "ALL":
         for child in root.findall('.//station'):
@@ -115,7 +115,7 @@ def station_list(station_id):
             forecast_district = child.get('forecast-district-id')
             fire_district = "VIC_FW%s" % forecast_district[-3:]
 
-            res_all.update({"bom-id": bom_id,
+            res_all.append({"bom-id": bom_id,
                             "wmo-id": wmo_id,
                             "name": station_name,
                             "lat": lat,

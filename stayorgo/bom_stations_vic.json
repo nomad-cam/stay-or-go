@@ -1,0 +1,920 @@
+{
+  "source": {
+    "sender": "Australian Government Bureau of Meteorology",
+    "region": "Victoria",
+    "office": "VICRO",
+    "copyright": "http://www.bom.gov.au/other/copyright.shtml",
+    "disclaimer": "http://www.bom.gov.au/other/disclaimer.shtml"
+  },
+  "stations": [
+    {
+      "bom-id": "086338",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.8255",
+      "lon": "144.9816",
+      "name": "Melbourne (Olympic Park)",
+      "wmo-id": "95936"
+    },
+    {
+      "bom-id": "086282",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.6655",
+      "lon": "144.8321",
+      "name": "Melbourne Airport",
+      "wmo-id": "94866"
+    },
+    {
+      "bom-id": "087113",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.0287",
+      "lon": "144.4783",
+      "name": "Avalon",
+      "wmo-id": "94854"
+    },
+    {
+      "bom-id": "086351",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.7163",
+      "lon": "145.0453",
+      "name": "Bundoora",
+      "wmo-id": "95873"
+    },
+    {
+      "bom-id": "086361",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.3646",
+      "lon": "145.1785",
+      "name": "Cerberus",
+      "wmo-id": "94898"
+    },
+    {
+      "bom-id": "086383",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.7239",
+      "lon": "145.4092",
+      "name": "Coldstream",
+      "wmo-id": "94864"
+    },
+    {
+      "bom-id": "086375",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.1348",
+      "lon": "145.2637",
+      "name": "Cranbourne",
+      "wmo-id": "94879"
+    },
+    {
+      "bom-id": "086038",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.7276",
+      "lon": "144.9066",
+      "name": "Essendon Airport",
+      "wmo-id": "95866"
+    },
+    {
+      "bom-id": "086376",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_MW005",
+      "lat": "-37.9089",
+      "lon": "144.9281",
+      "name": "Fawkner Beacon",
+      "wmo-id": "95872"
+    },
+    {
+      "bom-id": "086266",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.8748",
+      "lon": "145.3496",
+      "name": "Ferny Creek",
+      "wmo-id": "94872"
+    },
+    {
+      "bom-id": "086371",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.1481",
+      "lon": "145.1156",
+      "name": "Frankston",
+      "wmo-id": "94871"
+    },
+    {
+      "bom-id": "087184",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.1737",
+      "lon": "144.3765",
+      "name": "Geelong Racecourse",
+      "wmo-id": "94857"
+    },
+    {
+      "bom-id": "087031",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.8565",
+      "lon": "144.7566",
+      "name": "Laverton",
+      "wmo-id": "94865"
+    },
+    {
+      "bom-id": "086077",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.9800",
+      "lon": "145.0962",
+      "name": "Moorabbin Airport",
+      "wmo-id": "94870"
+    },
+    {
+      "bom-id": "086354",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.5058",
+      "lon": "145.1503",
+      "name": "Phillip Island",
+      "wmo-id": "94883"
+    },
+    {
+      "bom-id": "087166",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_MW005",
+      "lat": "-38.0958",
+      "lon": "144.5361",
+      "name": "Point Wilson",
+      "wmo-id": "94847"
+    },
+    {
+      "bom-id": "086373",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.4612",
+      "lon": "145.3101",
+      "name": "Rhyll",
+      "wmo-id": "94892"
+    },
+    {
+      "bom-id": "086104",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.8710",
+      "lon": "145.2561",
+      "name": "Scoresby",
+      "wmo-id": "95867"
+    },
+    {
+      "bom-id": "087168",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.9075",
+      "lon": "144.1303",
+      "name": "Sheoaks",
+      "wmo-id": "94863"
+    },
+    {
+      "bom-id": "086344",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.3065",
+      "lon": "144.8016",
+      "name": "South Channel Island",
+      "wmo-id": "94853"
+    },
+    {
+      "bom-id": "086220",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_MW005",
+      "lat": "-37.8642",
+      "lon": "144.9639",
+      "name": "St Kilda Harbour RMYS",
+      "wmo-id": "95864"
+    },
+    {
+      "bom-id": "086068",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.7408",
+      "lon": "145.0972",
+      "name": "Viewbank",
+      "wmo-id": "95874"
+    },
+    {
+      "bom-id": "090184",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-38.4306",
+      "lon": "141.5437",
+      "name": "Cape Nelson",
+      "wmo-id": "94826"
+    },
+    {
+      "bom-id": "090015",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-38.8556",
+      "lon": "143.5128",
+      "name": "Cape Otway",
+      "wmo-id": "94842"
+    },
+    {
+      "bom-id": "090180",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.4583",
+      "lon": "144.0883",
+      "name": "Aireys Inlet",
+      "wmo-id": "94846"
+    },
+    {
+      "bom-id": "200838",
+      "fire-district": "VIC_FW006",
+      "forecast-district": "VIC_PW006",
+      "lat": "-39.2225",
+      "lon": "146.9841",
+      "name": "Hogan Island",
+      "wmo-id": "94949"
+    },
+    {
+      "bom-id": "084016",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_PW005",
+      "lat": "-37.5679",
+      "lon": "149.9158",
+      "name": "Gabo Island",
+      "wmo-id": "94933"
+    },
+    {
+      "bom-id": "400139",
+      "fire-district": "VIC_FW004",
+      "forecast-district": "VIC_MW004",
+      "lat": "-38.5997",
+      "lon": "148.1889",
+      "name": "Kingfish B",
+      "wmo-id": "55039"
+    },
+    {
+      "bom-id": "084150",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_PW005",
+      "lat": "-37.8717",
+      "lon": "148.0060",
+      "name": "Lakes Entrance",
+      "wmo-id": "95904"
+    },
+    {
+      "bom-id": "084070",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_PW005",
+      "lat": "-37.8017",
+      "lon": "149.2747",
+      "name": "Point Hicks",
+      "wmo-id": "94932"
+    },
+    {
+      "bom-id": "089085",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-37.2769",
+      "lon": "142.9786",
+      "name": "Ararat",
+      "wmo-id": "94834"
+    },
+    {
+      "bom-id": "079100",
+      "fire-district": "VIC_FW002",
+      "forecast-district": "VIC_PW002",
+      "lat": "-36.6697",
+      "lon": "142.1731",
+      "name": "Horsham",
+      "wmo-id": "95839"
+    },
+    {
+      "bom-id": "083085",
+      "fire-district": "VIC_FW004",
+      "forecast-district": "VIC_PW004",
+      "lat": "-36.9767",
+      "lon": "147.1342",
+      "name": "Mount Hotham",
+      "wmo-id": "94906"
+    },
+    {
+      "bom-id": "083090",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_PW005",
+      "lat": "-37.1017",
+      "lon": "147.6008",
+      "name": "Omeo",
+      "wmo-id": "94908"
+    },
+    {
+      "bom-id": "084145",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_PW005",
+      "lat": "-37.6922",
+      "lon": "148.4667",
+      "name": "Orbost",
+      "wmo-id": "95918"
+    },
+    {
+      "bom-id": "090175",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-38.3906",
+      "lon": "142.2347",
+      "name": "Port Fairy",
+      "wmo-id": "94830"
+    },
+    {
+      "bom-id": "081125",
+      "fire-district": "VIC_FW003",
+      "forecast-district": "VIC_PW003",
+      "lat": "-36.4289",
+      "lon": "145.3947",
+      "name": "Shepparton",
+      "wmo-id": "94875"
+    },
+    {
+      "bom-id": "076064",
+      "fire-district": "VIC_FW001",
+      "forecast-district": "VIC_PW001",
+      "lat": "-35.1201",
+      "lon": "142.0040",
+      "name": "Walpeup",
+      "wmo-id": "95831"
+    },
+    {
+      "bom-id": "086127",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.6078",
+      "lon": "145.5965",
+      "name": "Wonthaggi",
+      "wmo-id": "95881"
+    },
+    {
+      "bom-id": "080128",
+      "fire-district": "VIC_FW001",
+      "forecast-district": "VIC_PW001",
+      "lat": "-36.2847",
+      "lon": "143.3341",
+      "name": "Charlton",
+      "wmo-id": "94839"
+    },
+    {
+      "bom-id": "077010",
+      "fire-district": "VIC_FW001",
+      "forecast-district": "VIC_PW001",
+      "lat": "-35.7151",
+      "lon": "142.3569",
+      "name": "Hopetoun Airport",
+      "wmo-id": "94838"
+    },
+    {
+      "bom-id": "080023",
+      "fire-district": "VIC_FW001",
+      "forecast-district": "VIC_PW001",
+      "lat": "-35.7236",
+      "lon": "143.9197",
+      "name": "Kerang",
+      "wmo-id": "94844"
+    },
+    {
+      "bom-id": "076031",
+      "fire-district": "VIC_FW001",
+      "forecast-district": "VIC_PW001",
+      "lat": "-34.2358",
+      "lon": "142.0867",
+      "name": "Mildura",
+      "wmo-id": "94693"
+    },
+    {
+      "bom-id": "076047",
+      "fire-district": "VIC_FW001",
+      "forecast-district": "VIC_PW001",
+      "lat": "-35.0682",
+      "lon": "142.3125",
+      "name": "Ouyen",
+      "wmo-id": "94831"
+    },
+    {
+      "bom-id": "077094",
+      "fire-district": "VIC_FW001",
+      "forecast-district": "VIC_PW001",
+      "lat": "-35.3766",
+      "lon": "143.5416",
+      "name": "Swan Hill",
+      "wmo-id": "94843"
+    },
+    {
+      "bom-id": "079028",
+      "fire-district": "VIC_FW002",
+      "forecast-district": "VIC_PW002",
+      "lat": "-36.6722",
+      "lon": "142.2991",
+      "name": "Longerenong",
+      "wmo-id": "95835"
+    },
+    {
+      "bom-id": "078015",
+      "fire-district": "VIC_FW002",
+      "forecast-district": "VIC_PW002",
+      "lat": "-36.3092",
+      "lon": "141.6486",
+      "name": "Nhill Aerodrome",
+      "wmo-id": "94827"
+    },
+    {
+      "bom-id": "079105",
+      "fire-district": "VIC_FW002",
+      "forecast-district": "VIC_PW002",
+      "lat": "-37.0720",
+      "lon": "142.7402",
+      "name": "Stawell",
+      "wmo-id": "94836"
+    },
+    {
+      "bom-id": "078077",
+      "fire-district": "VIC_FW002",
+      "forecast-district": "VIC_PW002",
+      "lat": "-36.2614",
+      "lon": "142.4050",
+      "name": "Warracknabeal",
+      "wmo-id": "94841"
+    },
+    {
+      "bom-id": "078018",
+      "fire-district": "VIC_FW002",
+      "forecast-district": "VIC_PW002",
+      "lat": "-36.3204",
+      "lon": "142.4161",
+      "name": "Warracknabeal Airport",
+      "wmo-id": "94920"
+    },
+    {
+      "bom-id": "079099",
+      "fire-district": "VIC_FW002",
+      "forecast-district": "VIC_PW002",
+      "lat": "-37.0222",
+      "lon": "141.2657",
+      "name": "Edenhope",
+      "wmo-id": "95832"
+    },
+    {
+      "bom-id": "079097",
+      "fire-district": "VIC_FW002",
+      "forecast-district": "VIC_PW002",
+      "lat": "-37.1169",
+      "lon": "141.8031",
+      "name": "Kanagulk",
+      "wmo-id": "95827"
+    },
+    {
+      "bom-id": "081123",
+      "fire-district": "VIC_FW003",
+      "forecast-district": "VIC_PW003",
+      "lat": "-36.7395",
+      "lon": "144.3266",
+      "name": "Bendigo",
+      "wmo-id": "94855"
+    },
+    {
+      "bom-id": "080015",
+      "fire-district": "VIC_FW003",
+      "forecast-district": "VIC_PW003",
+      "lat": "-36.1647",
+      "lon": "144.7642",
+      "name": "Echuca",
+      "wmo-id": "94861"
+    },
+    {
+      "bom-id": "080091",
+      "fire-district": "VIC_FW003",
+      "forecast-district": "VIC_PW003",
+      "lat": "-36.3350",
+      "lon": "145.0638",
+      "name": "Kyabram",
+      "wmo-id": "95833"
+    },
+    {
+      "bom-id": "088109",
+      "fire-district": "VIC_FW003",
+      "forecast-district": "VIC_PW003",
+      "lat": "-36.8886",
+      "lon": "145.1859",
+      "name": "Mangalore",
+      "wmo-id": "94874"
+    },
+    {
+      "bom-id": "082042",
+      "fire-district": "VIC_FW003",
+      "forecast-district": "VIC_PW003",
+      "lat": "-36.8472",
+      "lon": "145.7308",
+      "name": "Strathbogie",
+      "wmo-id": "95843"
+    },
+    {
+      "bom-id": "081049",
+      "fire-district": "VIC_FW003",
+      "forecast-district": "VIC_PW003",
+      "lat": "-36.4378",
+      "lon": "145.2672",
+      "name": "Tatura",
+      "wmo-id": "95836"
+    },
+    {
+      "bom-id": "081124",
+      "fire-district": "VIC_FW003",
+      "forecast-district": "VIC_PW003",
+      "lat": "-36.0294",
+      "lon": "146.0306",
+      "name": "Yarrawonga",
+      "wmo-id": "94862"
+    },
+    {
+      "bom-id": "082170",
+      "fire-district": "VIC_FW004",
+      "forecast-district": "VIC_PW004",
+      "lat": "-36.5523",
+      "lon": "145.9977",
+      "name": "Benalla",
+      "wmo-id": "94884"
+    },
+    {
+      "bom-id": "083083",
+      "fire-district": "VIC_FW001",
+      "forecast-district": "VIC_FA001",
+      "lat": "-36.7396",
+      "lon": "146.4671",
+      "name": "Edi Upper",
+      "wmo-id": "95838"
+    },
+    {
+      "bom-id": "083084",
+      "fire-district": "VIC_FW004",
+      "forecast-district": "VIC_PW004",
+      "lat": "-36.8708",
+      "lon": "147.2755",
+      "name": "Falls Creek",
+      "wmo-id": "94903"
+    },
+    {
+      "bom-id": "082139",
+      "fire-district": "VIC_FW004",
+      "forecast-district": "VIC_PW004",
+      "lat": "-36.2136",
+      "lon": "147.5394",
+      "name": "Hunters Hill",
+      "wmo-id": "94878"
+    },
+    {
+      "bom-id": "082076",
+      "fire-district": "VIC_FW004",
+      "forecast-district": "VIC_PW004",
+      "lat": "-36.5353",
+      "lon": "147.4984",
+      "name": "Lake Dartmouth",
+      "wmo-id": "94888"
+    },
+    {
+      "bom-id": "083024",
+      "fire-district": "VIC_FW004",
+      "forecast-district": "VIC_PW004",
+      "lat": "-37.1450",
+      "lon": "146.4394",
+      "name": "Mount Buller",
+      "wmo-id": "94894"
+    },
+    {
+      "bom-id": "082039",
+      "fire-district": "VIC_FW004",
+      "forecast-district": "VIC_PW004",
+      "lat": "-36.1047",
+      "lon": "146.5094",
+      "name": "Rutherglen",
+      "wmo-id": "95837"
+    },
+    {
+      "bom-id": "082138",
+      "fire-district": "VIC_FW004",
+      "forecast-district": "VIC_PW004",
+      "lat": "-36.4206",
+      "lon": "146.3056",
+      "name": "Wangaratta",
+      "wmo-id": "94889"
+    },
+    {
+      "bom-id": "088023",
+      "fire-district": "VIC_FW008",
+      "forecast-district": "VIC_PW008",
+      "lat": "-37.2313",
+      "lon": "145.9124",
+      "name": "Lake Eildon",
+      "wmo-id": "94882"
+    },
+    {
+      "bom-id": "083055",
+      "fire-district": "VIC_FW004",
+      "forecast-district": "VIC_PW004",
+      "lat": "-37.0491",
+      "lon": "147.3347",
+      "name": "Mount Hotham Airport",
+      "wmo-id": "94905"
+    },
+    {
+      "bom-id": "085279",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_PW005",
+      "lat": "-37.8817",
+      "lon": "147.5669",
+      "name": "Bairnsdale",
+      "wmo-id": "94912"
+    },
+    {
+      "bom-id": "084143",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_PW005",
+      "lat": "-37.3417",
+      "lon": "149.0228",
+      "name": "Combienbar",
+      "wmo-id": "94914"
+    },
+    {
+      "bom-id": "084142",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_PW005",
+      "lat": "-37.2200",
+      "lon": "148.2625",
+      "name": "Gelantipy",
+      "wmo-id": "94913"
+    },
+    {
+      "bom-id": "084084",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_PW005",
+      "lat": "-37.5976",
+      "lon": "149.7289",
+      "name": "Mallacoota",
+      "wmo-id": "94935"
+    },
+    {
+      "bom-id": "084144",
+      "fire-district": "VIC_FW005",
+      "forecast-district": "VIC_PW005",
+      "lat": "-37.6924",
+      "lon": "148.0908",
+      "name": "Mount Nowa Nowa",
+      "wmo-id": "94930"
+    },
+    {
+      "bom-id": "085072",
+      "fire-district": "VIC_FW006",
+      "forecast-district": "VIC_PW006",
+      "lat": "-38.1156",
+      "lon": "147.1322",
+      "name": "East Sale",
+      "wmo-id": "94907"
+    },
+    {
+      "bom-id": "085280",
+      "fire-district": "VIC_FW006",
+      "forecast-district": "VIC_PW006",
+      "lat": "-38.2094",
+      "lon": "146.4747",
+      "name": "Latrobe Valley",
+      "wmo-id": "94891"
+    },
+    {
+      "bom-id": "085291",
+      "fire-district": "VIC_FW006",
+      "forecast-district": "VIC_PW006",
+      "lat": "-37.8383",
+      "lon": "146.2747",
+      "name": "Mount Baw Baw",
+      "wmo-id": "95901"
+    },
+    {
+      "bom-id": "085296",
+      "fire-district": "VIC_FW006",
+      "forecast-district": "VIC_PW006",
+      "lat": "-37.7481",
+      "lon": "147.1428",
+      "name": "Mount Moornapa",
+      "wmo-id": "95913"
+    },
+    {
+      "bom-id": "085313",
+      "fire-district": "VIC_FW006",
+      "forecast-district": "VIC_PW006",
+      "lat": "-38.1322",
+      "lon": "145.9867",
+      "name": "Warragul (Nilma North)",
+      "wmo-id": "99806"
+    },
+    {
+      "bom-id": "085096",
+      "fire-district": "VIC_FW006",
+      "forecast-district": "VIC_PW006",
+      "lat": "-39.1297",
+      "lon": "146.4244",
+      "name": "Wilsons Promontory",
+      "wmo-id": "94893"
+    },
+    {
+      "bom-id": "085301",
+      "fire-district": "VIC_FW006",
+      "forecast-district": "VIC_PW006",
+      "lat": "-38.8051",
+      "lon": "146.1939",
+      "name": "Yanakie",
+      "wmo-id": "94911"
+    },
+    {
+      "bom-id": "085151",
+      "fire-district": "VIC_FW006",
+      "forecast-district": "VIC_PW006",
+      "lat": "-38.5647",
+      "lon": "146.7479",
+      "name": "Yarram Airport",
+      "wmo-id": "95890"
+    },
+    {
+      "bom-id": "085283",
+      "fire-district": "VIC_FW006",
+      "forecast-district": "VIC_PW006",
+      "lat": "-38.0808",
+      "lon": "146.2139",
+      "name": "Willow Grove",
+      "wmo-id": "94900"
+    },
+    {
+      "bom-id": "089002",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-37.5127",
+      "lon": "143.7911",
+      "name": "Ballarat",
+      "wmo-id": "94852"
+    },
+    {
+      "bom-id": "085099",
+      "fire-district": "VIC_FW007",
+      "forecast-district": "VIC_PW007",
+      "lat": "-38.6297",
+      "lon": "145.8107",
+      "name": "Pound Creek",
+      "wmo-id": "94886"
+    },
+    {
+      "bom-id": "088051",
+      "fire-district": "VIC_FW003",
+      "forecast-district": "VIC_PW003",
+      "lat": "-37.0194",
+      "lon": "144.5203",
+      "name": "Redesdale",
+      "wmo-id": "94859"
+    },
+    {
+      "bom-id": "088110",
+      "fire-district": "VIC_FW008",
+      "forecast-district": "VIC_PW008",
+      "lat": "-37.0809",
+      "lon": "144.2392",
+      "name": "Castlemaine",
+      "wmo-id": "95853"
+    },
+    {
+      "bom-id": "088164",
+      "fire-district": "VIC_FW008",
+      "forecast-district": "VIC_PW008",
+      "lat": "-37.2091",
+      "lon": "145.8423",
+      "name": "Eildon Fire Tower",
+      "wmo-id": "94881"
+    },
+    {
+      "bom-id": "088162",
+      "fire-district": "VIC_FW008",
+      "forecast-district": "VIC_PW008",
+      "lat": "-37.3807",
+      "lon": "144.9654",
+      "name": "Kilmore Gap",
+      "wmo-id": "94860"
+    },
+    {
+      "bom-id": "088043",
+      "fire-district": "VIC_FW008",
+      "forecast-district": "VIC_PW008",
+      "lat": "-37.0560",
+      "lon": "143.7320",
+      "name": "Maryborough",
+      "wmo-id": "94849"
+    },
+    {
+      "bom-id": "079101",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-37.2281",
+      "lon": "143.2006",
+      "name": "Ben Nevis",
+      "wmo-id": "94835"
+    },
+    {
+      "bom-id": "090182",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-37.5830",
+      "lon": "141.3339",
+      "name": "Casterton",
+      "wmo-id": "95825"
+    },
+    {
+      "bom-id": "090194",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-37.9222",
+      "lon": "141.2614",
+      "name": "Dartmoor",
+      "wmo-id": "95822"
+    },
+    {
+      "bom-id": "090173",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-37.6486",
+      "lon": "142.0636",
+      "name": "Hamilton",
+      "wmo-id": "94829"
+    },
+    {
+      "bom-id": "090176",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-38.0737",
+      "lon": "142.7744",
+      "name": "Mortlake",
+      "wmo-id": "94840"
+    },
+    {
+      "bom-id": "090035",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-38.2333",
+      "lon": "143.7925",
+      "name": "Mount Gellibrand",
+      "wmo-id": "95845"
+    },
+    {
+      "bom-id": "079103",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-37.2950",
+      "lon": "142.6039",
+      "name": "Mount William",
+      "wmo-id": "94833"
+    },
+    {
+      "bom-id": "090171",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-38.3148",
+      "lon": "141.4705",
+      "name": "Portland Airport",
+      "wmo-id": "94828"
+    },
+    {
+      "bom-id": "090192",
+      "fire-district": "VIC_FW001",
+      "forecast-district": "VIC_MW001",
+      "lat": "-38.3439",
+      "lon": "141.6136",
+      "name": "Portland Harbour",
+      "wmo-id": "95826"
+    },
+    {
+      "bom-id": "090186",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-38.2867",
+      "lon": "142.4522",
+      "name": "Warrnambool",
+      "wmo-id": "94837"
+    },
+    {
+      "bom-id": "089112",
+      "fire-district": "VIC_FW009",
+      "forecast-district": "VIC_PW009",
+      "lat": "-37.7067",
+      "lon": "142.9378",
+      "name": "Westmere",
+      "wmo-id": "95840"
+    }
+  ]
+}
