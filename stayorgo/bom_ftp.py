@@ -89,3 +89,59 @@ def wx_obs(filename, station_id):
             'air_temperature': air_temperature,
             'rel-humidity': rel_humidity,
             'wind_spd_kmh': wind_spd_kmh}
+
+
+def station_list(station_id):
+    all_obs = cache_check("IDV60920")
+
+    root = ET.fromstring(all_obs.getvalue())
+
+    bom_id = "NaN"
+    wmo_id = "NaN"
+    station_name = "NaN"
+    lat = "NaN"
+    lon = "NaN"
+    forecast_district = "NaN"
+    res_all = {}
+
+    if station_id == "ALL":
+        for child in root.findall('.//station'):
+            #
+            bom_id = child.get('bom-id')
+            wmo_id = child.get('wmo-id')
+            station_name = child.get('description')
+            lat = child.get('lat')
+            lon = child.get('lon')
+            forecast_district = child.get('forecast-district-id')
+            fire_district = "VIC_FW%s" % forecast_district[-3:]
+
+            res_all.update({"bom-id": bom_id,
+                            "wmo-id": wmo_id,
+                            "name": station_name,
+                            "lat": lat,
+                            "lon": lon,
+                            "forecast-district": forecast_district,
+                            "fire-district": fire_district    })
+        return res_all
+
+    else:
+        for child in root.findall('.//station[@bom-id="%s"]' % (station_id)):
+            #
+            bom_id = child.get('bom-id')
+            wmo_id = child.get('wmo-id')
+            station_name = child.get('description')
+            lat = child.get('lat')
+            lon = child.get('lon')
+            forecast_district = child.get('forecast-district-id')
+            fire_district = "VIC_FW%s" % forecast_district[-3:]
+
+            res = {"bom-id": bom_id,
+            "wmo-id": wmo_id,
+            "name": station_name,
+            "lat": lat,
+            "lon": lon,
+            "forecast-district": forecast_district,
+            "fire-district": fire_district    }
+
+        return res
+

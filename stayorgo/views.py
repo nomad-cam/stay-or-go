@@ -1,7 +1,7 @@
 from flask import render_template, request, jsonify
 
 from stayorgo import app
-from bom_ftp import wx_obs
+from bom_ftp import wx_obs, station_list
 
 from datetime import datetime
 
@@ -30,6 +30,17 @@ def api_wx_forecast(station_id):
     #
     wx = {}
     wx['station_id'] = station_id
+
+    return jsonify(wx)
+
+
+@app.route('/api/wx/station/<station_id>')
+def api_wx_station(station_id):
+    # fetch the current weather for a given weather station id.
+    #
+    #wx = {}
+    #wx['station_id'] = station_id
+    wx = station_list(station_id)
 
     return jsonify(wx)
 
