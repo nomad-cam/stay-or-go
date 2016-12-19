@@ -44,6 +44,19 @@
                         <option value='99' style="background: red;">Extreme</option>
                         <option value='100' style="background: black; color: red">Code Red</option>
                     </select>
+                    <label for='fire_district'>Fire District</label>
+                    <select class='form-control' id='fire_district'>
+                        <option value='0' disabled selected>Select Available</option>
+                        <option value='VIC_FW007'>Central</option>
+                        <option value='VIC_FW001'>Mallee</option>
+                        <option value='VIC_FW002'>Wimmera</option>
+                        <option value='VIC_FW003'>Northern Country</option>
+                        <option value='VIC_FW004'>North East</option>
+                        <option value='VIC_FW005'>East Gippsland</option>
+                        <option value='VIC_FW006'>West and South Gippsland</option>
+                        <option value='VIC_FW008'>North Central</option>
+                        <option value='VIC_FW009'>South West</option>
+                    </select>
                     <label for='default_mcarthur_fuel'>Default Fuel Load</label>
                     <input type='text' class='form-control' id='default_mcarthur_fuel' placeholder='0 - 50t/ha'>
                     <label for='default_mcarthur_drought'>Default Drought Factor</label>
@@ -52,6 +65,7 @@
                     <input type='text' class='form-control' id='default_mcarthur_slope' placeholder='&deg;'>
                 </fieldset>
                 <button type='button' class='btn btn-primary btn-block'> Remember All </button>
+                <button type='button' class='btn btn-primary btn-block'> Clear Cache </button>
             </div>
             <div class='col-md-2'>
                 <fieldset class='form-group'>
