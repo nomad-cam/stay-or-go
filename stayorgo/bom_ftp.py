@@ -4,7 +4,7 @@ from . import cache
 import xml.etree.ElementTree as ET
 
 
-def ftp_connect(filename):
+def bom_ftp_connect(filename):
     print("connecting to bom ftp")
     ftp = FTP('ftp.bom.gov.au')
     ftp.login()
@@ -23,20 +23,20 @@ def ftp_connect(filename):
     ftp.quit()
 
     # write a copy to the cache
-    cache_write(filename,r)
+    bom_cache_write(filename,r)
 
     # return a copy to avoid hitting the cache already
     return r
 
 
-def cache_write(filename,IO):
+def bom_cache_write(filename,IO):
     # Write the variable to the cache based on the filename
     # this will probably work due to the low file count, otherwise might need some other method.
 
     cache.set(filename, IO)
 
 
-def cache_check(filename):
+def bom_cache_check(filename):
     # check to see if the required file has been downloaded in the last 5 minutes
     # if not connect to the ftp server and download, otherwise use cached version
 
@@ -44,7 +44,7 @@ def cache_check(filename):
     res = cache.get(filename)
     if not res:
         print("File %s not in cache" % filename)
-        res = ftp_connect(filename)
+        res = bom_ftp_connect(filename)
 
     return res
 
@@ -58,7 +58,7 @@ def wx_obs(filename, station_id):
     wind_spd_kmh = "NaN"
 
     print("Finding the current observations for station id: %s" % station_id)
-    all_obs = cache_check(filename)
+    all_obs = bom_cache_check(filename)
 
     root = ET.fromstring(all_obs.getvalue())
 
@@ -92,7 +92,7 @@ def wx_obs(filename, station_id):
 
 
 def station_list(station_id):
-    all_obs = cache_check("IDV60920")
+    all_obs = bom_cache_check("IDV60920")
 
     root = ET.fromstring(all_obs.getvalue())
 
