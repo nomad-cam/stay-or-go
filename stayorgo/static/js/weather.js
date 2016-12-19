@@ -1,3 +1,11 @@
+//$(document).ready();
+$(load_station_list());
+//
+
+$('#forecast_fdi').click(function () {
+    fetch_fdi_forecast();
+});
+
 function load_station_list(){
     $.ajax({
         dataType: 'json',
@@ -15,6 +23,12 @@ function load_station_list(){
     });
 }
 
-//$(document).ready();
-$(load_station_list());
-//
+
+function fetch_fdi_forecast(){
+    //
+    //var FEED_URL = "http://www.cfa.vic.gov.au/restrictions/tfbfdrforecast_rss.xml";
+    var FEED_URL = "/api/fx/forecast/fdr";
+    $.get(FEED_URL, function(data){
+        console.log(data);
+    });
+}

@@ -24,13 +24,34 @@
         <div class='row'>
             <div class='col-md-2'>
                 <fieldset class='form-group'>
-                    <legend>Weather</legend>
-                    <label for='weather_station'>Nearest Station</label>
+                    <legend>Weather Configuration</legend>
+                    <label for='weather_station'>Nearest Weather Station</label>
                     <select class='form-control' id='weather_station'>
                         <option value='0'>Select Available</option>
                     </select>
+                    <label for='weather_town'>Nearest Town/Suburb</label>
+                    <input type='text' class='form-control' id='weather_town' placeholder='Town/Suburb name'>
                 </fieldset>
-                <button type='button' class='btn btn-primary btn-block'> Remember </button>
+                <fieldset class='form-group'>
+                    <legend>Fire Configuration</legend>
+                    <label for='fdi_leave_trigger'>Leave Early Trigger</label>
+                    <select class='form-control' id='fdi_leave_trigger'>
+                        <option value='0' disabled selected>Select Available</option>
+                        <option value='11' style="background: forestgreen;">Low - Moderate</option>
+                        <option value='24' style="background: deepskyblue;">High</option>
+                        <option value='49' style="background: yellow;">Very High</option>
+                        <option value='74' style="background: darkorange;">Severe</option>
+                        <option value='99' style="background: red;">Extreme</option>
+                        <option value='100' style="background: black; color: red">Code Red</option>
+                    </select>
+                    <label for='default_mcarthur_fuel'>Default Fuel Load</label>
+                    <input type='text' class='form-control' id='default_mcarthur_fuel' placeholder='0 - 50t/ha'>
+                    <label for='default_mcarthur_drought'>Default Drought Factor</label>
+                    <input type='text' class='form-control' id='default_mcarthur_drought' placeholder='0 - 10'>
+                    <label for='default_mcarthur_slope'>Default Ground Slope</label>
+                    <input type='text' class='form-control' id='default_mcarthur_slope' placeholder='&deg;'>
+                </fieldset>
+                <button type='button' class='btn btn-primary btn-block'> Remember All </button>
             </div>
             <div class='col-md-2'>
                 <fieldset class='form-group'>
@@ -54,6 +75,18 @@
 
                 <p><br><img id="mcarthur_fdr" src="{{ url_for('.static', filename='img/fdr_null_new.png') }}" alt='fire danger rating scale' style='width:100%'></p>
                 <p id="mcarthur_result" class="text-center"></p>
+            </div>
+            <div class='col-md-2'>
+                <fieldset class='form-group'>
+                    <legend>Official Forecast 4Days</legend>
+                    <button type='button' class='btn btn-primary btn-block' id='forecast_fdi'> Refresh </button>
+                    <!-- fetch and display the 4 day forecast -->
+                    <div id="display_forecast_fdi_official"></div>
+                </fieldset>
+                <fieldset class='form-group'>
+                    <legend>FDI Forecast 24Hrs</legend>
+                    <button type='button' class='btn btn-primary btn-block' id='forecast_fdi_calculate'> Calculate </button>
+                </fieldset>
             </div>
         </div>
     </div>

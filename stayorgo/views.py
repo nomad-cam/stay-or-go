@@ -2,6 +2,7 @@ from flask import render_template, request, jsonify
 
 from stayorgo import app
 from bom_ftp import wx_obs, station_list
+from cfa_ftp import fetch_cfa_tfb_rss
 
 from datetime import datetime
 
@@ -42,8 +43,16 @@ def api_wx_station(station_id):
     #wx['station_id'] = station_id
     wx = station_list(station_id)
 
-    return jsonify(wx)
+    return wx#jsonify(wx)
 
+
+@app.route('/api/fx/forecast/fdr')
+def api_fdi_forecast():
+    # fetch the current fdi forecast for the state
+    #
+    fx = fetch_cfa_tfb_rss()
+
+    return jsonify(fx)
 
 @app.errorhandler(404)
 def page_not_found(e):
