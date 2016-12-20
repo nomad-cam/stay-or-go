@@ -4,6 +4,7 @@ import feedparser
 from stayorgo import app
 from bom_ftp import wx_obs, station_list
 from cfa_ftp import fetch_cfa_tfb_rss
+from wun_ftp import fetch_wun_forecast
 
 from datetime import datetime
 
@@ -32,6 +33,15 @@ def api_wx_forecast(station_id):
     #
     wx = {}
     wx['station_id'] = station_id
+
+    return jsonify(wx)
+
+
+@app.route('/api/wu/forecast/<station_id>', methods=['POST','GET'])
+def api_wu_forecast(station_id):
+    # fetch the current wu weather for a given weather station id.
+    #
+    wx = fetch_wun_forecast(station_id)
 
     return jsonify(wx)
 
