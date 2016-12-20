@@ -30,21 +30,10 @@
                         <option value='0'>Select Available</option>
                     </select>
                     <label for='weather_town'>Nearest Town/Suburb</label>
-                    <input type='text' class='form-control' id='weather_town' placeholder='Town/Suburb name'>
+                    <input type='text' class='form-control' id='weather_town' placeholder='Victorian Town/Suburb Name'>
                 </fieldset>
                 <fieldset class='form-group'>
                     <legend>Fire Configuration</legend>
-                    <label for='fdi_leave_trigger'>Leave Early Trigger</label>
-                    <select class='form-control' id='fdi_leave_trigger'>
-                        <option value='0' disabled selected>Select Available</option>
-                        <option value='11' style="background: #7AC142;">Low - Moderate</option>
-                        <option value='24' style="background: #00AEEF;">High</option>
-                        <option value='49' style="background: #FFF000;">Very High</option>
-                        <option value='74' style="background: #F89829;">Severe</option>
-                        <option value='99' style="background: #EE2E24;">Extreme</option>
-                        <option value='100' style="background: black; color: #EE2E24">Code Red</option>
-
-                    </select>
                     <label for='fire_district'>Fire District</label>
                     <select class='form-control' id='fire_district'>
                         <option value='0' disabled selected>Select Available</option>
@@ -57,6 +46,16 @@
                         <option value='VIC_FW006'>West and South Gippsland</option>
                         <option value='VIC_FW008'>North Central</option>
                         <option value='VIC_FW009'>South West</option>
+                    </select>
+                    <label for='fdi_leave_trigger'>Leave Early Trigger</label>
+                    <select class='form-control' id='fdi_leave_trigger'>
+                        <option value='0' disabled selected>Select Available</option>
+                        <option value='11' style="background: #7AC142;">Low - Moderate</option>
+                        <option value='24' style="background: #00AEEF;">High</option>
+                        <option value='49' style="background: #FFF000;">Very High</option>
+                        <option value='74' style="background: #F89829;">Severe</option>
+                        <option value='99' style="background: #EE2E24;">Extreme</option>
+                        <option value='100' style="background: black; color: #EE2E24">Code Red</option>
                     </select>
                     <label for='default_mcarthur_fuel'>Default Fuel Load</label>
                     <input type='text' class='form-control' id='default_mcarthur_fuel' placeholder='0 - 50t/ha'>
@@ -106,6 +105,9 @@
                 </fieldset>
                 <!-- calculate and display the 24hr day forecast -->
                 <div id="display_forecast_fdi_custom"></div>
+
+                Hourly Forecast data provided by:
+                <a href="https://www.wunderground.com/?apiref=b4a9a03c34fe2514"><img src="{{ url_for('.static', filename='img/wundergroundLogo_4c_horz.png') }}" width="285"></a>
             </div>
         </div>
     </div>
