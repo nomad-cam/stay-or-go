@@ -70,8 +70,9 @@
                     <label for='default_mcarthur_slope'>Default Ground Slope</label>
                     <input type='text' class='form-control' id='default_mcarthur_slope' placeholder='&deg;'>
                 </fieldset>
-                <button type='button' class='btn btn-primary btn-block'> Remember All </button>
-                <button type='button' class='btn btn-primary btn-block'> Clear Cache </button>
+                <button type='button' class='btn btn-primary btn-block' id="remember_settings"> Remember All </button>
+                <button type='button' class='btn btn-primary btn-block' id="clear_cache"> Clear Cache </button><br><br>
+                <p><a href="http://www.bom.gov.au/data-access/3rd-party-attribution.shtml" ><img src="{{ url_for('.static', filename='img/banner_size02_arrow_grey.png') }}"></a></p>
             </div>
             <div class='col-md-2'>
                 <fieldset class='form-group'>
@@ -123,7 +124,9 @@
 
 {% block scripts %}
 {{ super() }}
+    <script src="{{ url_for('.static', filename='js/cookies.js') }}"></script>
     <script src="{{ url_for('.static', filename='js/mcarthur.js') }}"></script>
     <script src="{{ url_for('.static', filename='js/weather.js') }}"></script>
     <script src="{{ url_for('.static', filename='js/fdi_forecast.js') }}"></script>
+
 {% endblock %}
