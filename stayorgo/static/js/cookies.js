@@ -42,13 +42,13 @@ function load_configuration(){
     //console.log(getCookie("default_mcarthur_drought"));
     //console.log(getCookie("default_mcarthur_slope"));
 
-    $('#weather_station').val(getCookie("weather_station"));
-    $('#weather_town').val(getCookie("weather_town"));
-    $('#fire_district').val(getCookie("fire_district"));
-    $('#fdi_leave_trigger').val(getCookie("fdi_leave_trigger"));
-    $('#default_mcarthur_fuel').val(getCookie("default_mcarthur_fuel"));
-    $('#default_mcarthur_drought').val(getCookie("default_mcarthur_drought"));
-    $('#default_mcarthur_slope').val(getCookie("default_mcarthur_slope"));
+    $('#weather_station').val(getCookie("weather_station")).trigger('change');
+    $('#weather_town').val(getCookie("weather_town")).trigger('change');
+    $('#fire_district').val(getCookie("fire_district")).trigger('change');
+    $('#fdi_leave_trigger').val(getCookie("fdi_leave_trigger")).trigger('change');
+    $('#default_mcarthur_fuel').val(getCookie("default_mcarthur_fuel")).trigger('change');
+    $('#default_mcarthur_drought').val(getCookie("default_mcarthur_drought")).trigger('change');
+    $('#default_mcarthur_slope').val(getCookie("default_mcarthur_slope")).trigger('change');
 
 }
 

@@ -6,6 +6,11 @@ $('#forecast_fdi').click(function () {
     fetch_fdi_forecast();
 });
 
+$('#fire_district').change(function(){
+    //console.log("change in district detected!");
+    fetch_fdi_forecast();
+});
+
 function load_station_list(){
     $.ajax({
         dataType: 'json',
