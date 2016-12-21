@@ -147,8 +147,13 @@ function calc_fdi_forecast(){
                     console.log(trigger_once);
                     console.log(fdi,"("+leave);
                     if (fdi.indexOf("(" + leave) > 0) {
-                        leave_date_time = data[i - 1]['FCTTIME']['mday_padded'] + " " + data[i - 1]['FCTTIME']['month_name'] + " - " +
-                            data[i - 1]['FCTTIME']['civil'];
+                        if((i-1) < 0){
+                            leave_date_time = data[i]['FCTTIME']['mday_padded'] + " " + data[i]['FCTTIME']['month_name'] + " - " +
+                                data[i]['FCTTIME']['civil'];
+                        }else {
+                            leave_date_time = data[i - 1]['FCTTIME']['mday_padded'] + " " + data[i - 1]['FCTTIME']['month_name'] + " - " +
+                                data[i - 1]['FCTTIME']['civil'];
+                        }
                         generate_warning("<br>Your leave early trigger has been met. Leave before <b><u>" + leave_date_time + "</u></b><br>" +
                                        "Continue to monitor your local weather conditions as forecast data may not accurately reflect current observed conditions.");
                         trigger_once = true;
