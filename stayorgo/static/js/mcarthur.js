@@ -4,6 +4,7 @@ function tonum(obj)
 }
 
 $('#mcarthur_calculate').click(function(){
+  console.log("calculating mcarthur mk5");
   mcarthur_check_input();
 });
 
@@ -83,7 +84,7 @@ function mcarthur_calc_fdi()
   var j=(0.0012*k*f);
   var l=(13*j)+(0.24*f)-2;//flame height - forest
   var z=(j*(4.17-(0.033*f)))-0.36;//Distance of spotting from flame front
-  var v=j*(Math.exp(0.069*a));
+  var v=j*(Math.exp(0.069*a));//Rate of spread
   //console.log(k,j,l,z,v);
     {
       var img = "/static/img/fdr_null_new.png";

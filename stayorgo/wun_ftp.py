@@ -11,7 +11,7 @@ def wun_connect(station_name):
 
     json_parsed = json.loads(json_string)
 
-    print(json_parsed)
+    # print(json_parsed['hourly_forecast'])
 
     f.close()
 
@@ -31,7 +31,7 @@ def wun_check_cache(station_name):
         print("File %s not in cache" % station_name)
         res = wun_connect(station_name)
 
-    return res
+    return res['hourly_forecast']
 
 def wun_cache_write(station_name,IO):
     # Write the variable to the cache based on the filename
