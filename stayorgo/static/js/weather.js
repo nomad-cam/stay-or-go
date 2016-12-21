@@ -14,13 +14,23 @@ function load_station_list(){
         success: function(data){
             //
             //console.log(data[0]["name"]);
+            var station_load = getCookie("weather_station");
+            console.log(station_load);
+
             var option = "";
             for (var j = 0; j < data.length; j++){
-                option += "<option value='" + data[j]["bom-id"] + "'>" + data[j]["name"] + "</option>";
+                if (data[j]["bom-id"] == station_load){
+                    option += "<option value='" + data[j]["bom-id"] + "' selected>" + data[j]["name"] + "</option>";
+                }else {
+                    option += "<option value='" + data[j]["bom-id"] + "'>" + data[j]["name"] + "</option>";
+                }
             }
             $('#weather_station').append(option);
         }
     });
+    // Load the default cookie based value if available
+    // console.log("loading default weather station");
+    // $('#weather_station').val(getCookie("weather_station"));
 }
 
 
