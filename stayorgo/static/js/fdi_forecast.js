@@ -99,6 +99,10 @@ function calc_fdi_forecast(){
     var fuel = tonum($('#default_mcarthur_fuel').val());
     var drought = tonum($('#default_mcarthur_drought').val());
     var slope = tonum($('#default_mcarthur_slope').val());
+    var leave = $('#fdi_leave_trigger option:selected').text().toUpperCase();
+    //console.log(leave);
+    var trigger_once = false;
+    console.log(trigger_once);
 
     $.ajax({
         dataType: 'json',
@@ -112,7 +116,7 @@ function calc_fdi_forecast(){
                 wind_spd_kmh = tonum(data[i]['wspd']['metric']);
                 //console.log(temp,humidity,wind_spd_kmh,fuel,drought,slope);
                 fdi = mcarthur_calc_fdi_forecast(slope,temp,humidity,wind_spd_kmh,fuel,drought);
-                final_dat_time = data[i]['FCTTIME']['mday_padded'] + " " + data[i]['FCTTIME']['month_name'] + " - " +
+                final_date_time = data[i]['FCTTIME']['mday_padded'] + " " + data[i]['FCTTIME']['month_name'] + " - " +
                              data[i]['FCTTIME']['civil'];
 
                 var input = "Temp: "+temp+"&deg;C; Wind:"+wind_spd_kmh+"km/h; Humidity"+humidity+"%";
@@ -137,10 +141,22 @@ function calc_fdi_forecast(){
                     panel_string = "<div class='panel-body panel-content-small codered-bg text-center' title='"+input+"'>"
                 }
 
-                // compare the date to the date contained in the tfb declaration to display the icon when required
-                date_str = "";
+                // compare the fdi text to the users leave trigger and display a message if required
 
-                var forecast = "<div class='panel panel-default panel-custom-margin'><div class='panel-heading panel-content-small'><b>"+final_dat_time+"</b></div>" +
+                if(trigger_once == false) {
+                    console.log(trigger_once);
+                    console.log(fdi,"("+leave);
+                    if (fdi.indexOf("(" + leave) > 0) {
+                        leave_date_time = data[i - 1]['FCTTIME']['mday_padded'] + " " + data[i - 1]['FCTTIME']['month_name'] + " - " +
+                            data[i - 1]['FCTTIME']['civil'];
+                        generate_warning("<br>Your leave early trigger has been met. Leave before <b><u>" + leave_date_time + "</u></b><br>" +
+                                       "Continue to monitor your local weather conditions as forecast data may not accurately reflect current observed conditions.");
+                        trigger_once = true;
+                    }
+
+                }
+
+                var forecast = "<div class='panel panel-default panel-custom-margin'><div class='panel-heading panel-content-small'><b>"+final_date_time+"</b></div>" +
                         panel_string + fdi +"</div></div>";
                 //console.log(forecast);
 
@@ -155,5 +171,9 @@ function calc_fdi_forecast(){
 
 function generate_error(error){
     $('#flash').html("<div class='alert alert-danger alert-dismissible' role='alert' id='alert_error'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>An Error Occured!</strong>" + error + "</div>");
+}
+
+function generate_warning(error){
+    $('#flash').html("<div class='alert alert-info alert-dismissible' role='alert' id='alert_info'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Important Information!</strong>" + error + "</div>");
 }
 
