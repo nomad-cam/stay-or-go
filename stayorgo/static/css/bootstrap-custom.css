@@ -33,3 +33,9 @@
     background: black;
     color: #EE2E24
 }
+
+#flash{
+    position: absolute;
+    z-index: 999;
+    margin-top: 20px;
+}
