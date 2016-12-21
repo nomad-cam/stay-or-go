@@ -58,11 +58,11 @@ function fetch_fdi_forecast(){
         $("#display_forecast_fdi_official").html("<p class='text-center'><small>Issued: " + data[data.length-1]['updated-local'] + "</small><br><h3 class='text-center'>"+district+" Forecast District</h3></p>");
         for(var h = 0; h < data.length - 1; h++){
             var tfb_index1 = data[h]['summary'].indexOf(">"+district);
-            var tfb_index2 = data[h]['summary'].indexOf("<br />",tfb_index1);
+            var tfb_index2 = data[h]['summary'].indexOf("<",tfb_index1);
             //console.log(tfb_index1,tfb_index2);
 
             var fdi_index1 = data[h]['summary'].indexOf(">"+district,tfb_index2);
-            var fdi_index2 = data[h]['summary'].indexOf("<br />",fdi_index1);
+            var fdi_index2 = data[h]['summary'].indexOf("<",fdi_index1);
             //console.log(fdi_index1,fdi_index2);
 
             var tfb_text = data[h]['summary'].substr(tfb_index1,(tfb_index2-tfb_index1));
@@ -81,6 +81,7 @@ function fetch_fdi_forecast(){
                 tfb_decl_str = "<p class='text-center'><img src='/static/img/tfb_icon.gif'> TFB DECLARED</p>";
             }
 
+            //console.log(fdi_decl[1]);
             // determine which image to display
             var img = "/static/img/fdr_null_new.png";
             var img_alt = "no fire danger rating";
