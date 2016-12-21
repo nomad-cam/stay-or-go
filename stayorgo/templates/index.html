@@ -2,6 +2,12 @@
 
 {% import "bootstrap/utils.html" as utils %}
 
+{% block styles %}
+{{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='css/bootstrap-custom.css') }}">
+{% endblock %}
+
+
 {% block content %}
     <div class="container">
         <div class="row">
@@ -50,12 +56,12 @@
                     <label for='fdi_leave_trigger'>Leave Early Trigger</label>
                     <select class='form-control' id='fdi_leave_trigger'>
                         <option value='0' disabled selected>Select Available</option>
-                        <option value='11' style="background: #7AC142;">Low - Moderate</option>
-                        <option value='24' style="background: #00AEEF;">High</option>
-                        <option value='49' style="background: #FFF000;">Very High</option>
-                        <option value='74' style="background: #F89829;">Severe</option>
-                        <option value='99' style="background: #EE2E24;">Extreme</option>
-                        <option value='100' style="background: black; color: #EE2E24">Code Red</option>
+                        <option value='11' class="low-bg">Low - Moderate</option>
+                        <option value='24' class="high-bg">High</option>
+                        <option value='49' class="veryhigh-bg">Very High</option>
+                        <option value='74' class="severe-bg">Severe</option>
+                        <option value='99' class="extreme-bg">Extreme</option>
+                        <option value='100' class="codered-text">Code Red</option>
                     </select>
                     <label for='default_mcarthur_fuel'>Default Fuel Load</label>
                     <input type='text' class='form-control' id='default_mcarthur_fuel' placeholder='0 - 50t/ha'>

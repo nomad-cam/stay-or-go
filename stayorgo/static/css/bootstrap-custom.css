@@ -1,0 +1,35 @@
+.low-bg{
+    background: #7AC142;
+}
+
+.high-bg{
+    background: #00AEEF;
+}
+
+.veryhigh-bg{
+    background: #FFF000;
+}
+
+.severe-bg{
+    background: #F89829;
+}
+
+.extreme-bg{
+    background: #EE2E24;
+}
+
+.codered-bg{
+    background: repeating-linear-gradient(
+        -45deg,
+        #EE2E24,
+        #EE2E24 10px,
+        black 10px,
+        black 11px
+    );
+    color: white;
+}
+
+.codered-text{
+    background: black;
+    color: #EE2E24
+}

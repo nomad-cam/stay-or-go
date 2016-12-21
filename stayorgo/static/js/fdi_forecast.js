@@ -61,27 +61,27 @@ function mcarthur_calc_fdi_forecast(a,b,c,d,f,h) {
             var s = (" NIL");
         }
         else if (k < 12) {
-            var s = (Math.round(k) + " LOW - MODERATE");
+            var s = (Math.round(k) + " (LOW - MODERATE)");
             var img = "/static/img/fdr_low_new.png";
         }
         else if (k < 24) {
-            var s = (Math.round(k) + " HIGH");
+            var s = (Math.round(k) + " (HIGH)");
             var img = "/static/img/fdr_high_new.png";
         }
         else if (k < 50) {
-            var s = (Math.round(k) + " VERY HIGH");
+            var s = (Math.round(k) + " (VERY HIGH)");
             var img = "/static/img/fdr_veryhigh_new.png";
         }
         else if (k < 75) {
-            var s = (Math.round(k) + " SEVERE");
+            var s = (Math.round(k) + " (SEVERE)");
             var img = "/static/img/fdr_severe_new.png";
         }
         else if (k < 100) {
-            var s = (Math.round(k) + " EXTREME");
+            var s = (Math.round(k) + " (EXTREME)");
             var img = "/static/img/fdr_extreme_new.png";
         }
         else if (k > 100) {
-            var s = (Math.round(k) + " CODE RED");
+            var s = (Math.round(k) + " (CODE RED)");
             var img = "/static/img/fdr_codered_new.png";
         }
     }
@@ -110,13 +110,35 @@ function calc_fdi_forecast(){
                 temp = tonum(data[i]['temp']['metric']);
                 humidity = tonum(data[i]['humidity']);
                 wind_spd_kmh = tonum(data[i]['wspd']['metric']);
-                console.log(temp,humidity,wind_spd_kmh,fuel,drought,slope);
+                //console.log(temp,humidity,wind_spd_kmh,fuel,drought,slope);
                 fdi = mcarthur_calc_fdi_forecast(slope,temp,humidity,wind_spd_kmh,fuel,drought);
                 final_date = data[i]['FCTTIME']['mday_padded'] + " " + data[i]['FCTTIME']['month_name'] + " - " +
                              data[i]['FCTTIME']['civil'];
 
+                var panel_string = "<div class='panel-body text-center'>";
+                if(fdi.indexOf("(LOW") > 0){
+                    panel_string = "<div class='panel-body low-bg text-center'>"
+                }
+                if(fdi.indexOf("(HIGH") > 0){
+                    panel_string = "<div class='panel-body high-bg text-center'>"
+                }
+                if(fdi.indexOf("(VERY HIGH") > 0){
+                    panel_string = "<div class='panel-body veryhigh-bg text-center'>"
+                }
+                if(fdi.indexOf("(SEVERE") > 0){
+                    panel_string = "<div class='panel-body severe-bg text-center'>"
+                }
+                if(fdi.indexOf("(EXTREME") > 0){
+                    panel_string = "<div class='panel-body extreme-bg text-center'>"
+                }
+                if(fdi.indexOf("(CODE RED") > 0){
+                    panel_string = "<div class='panel-body codered-bg text-center'>"
+                }
+
+
                 var forecast = "<div class='panel panel-default'><div class='panel-heading'><b>"+final_date+"</b></div>" +
-                        "<div class='panel-body'>"+ fdi +"</div></div>";
+                        panel_string + fdi +"</div></div>";
+                //console.log(forecast);
 
                 $('#display_forecast_fdi_custom').append(forecast);
             }
