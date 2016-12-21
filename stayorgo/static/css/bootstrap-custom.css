@@ -39,3 +39,11 @@
     z-index: 999;
     margin-top: 20px;
 }
+
+.panel-content-small{
+    padding: 5px;
+}
+
+.panel-custom-margin{
+    margin-bottom: 5px;
+}

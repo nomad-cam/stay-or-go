@@ -112,31 +112,35 @@ function calc_fdi_forecast(){
                 wind_spd_kmh = tonum(data[i]['wspd']['metric']);
                 //console.log(temp,humidity,wind_spd_kmh,fuel,drought,slope);
                 fdi = mcarthur_calc_fdi_forecast(slope,temp,humidity,wind_spd_kmh,fuel,drought);
-                final_date = data[i]['FCTTIME']['mday_padded'] + " " + data[i]['FCTTIME']['month_name'] + " - " +
+                final_dat_time = data[i]['FCTTIME']['mday_padded'] + " " + data[i]['FCTTIME']['month_name'] + " - " +
                              data[i]['FCTTIME']['civil'];
 
-                var panel_string = "<div class='panel-body text-center'>";
+                var input = "Temp: "+temp+"&deg;C; Wind:"+wind_spd_kmh+"km/h; Humidity"+humidity+"%";
+
+                var panel_string = "<div class='panel-body panel-content-small text-center' title='"+input+"'>";
                 if(fdi.indexOf("(LOW") > 0){
-                    panel_string = "<div class='panel-body low-bg text-center'>"
+                    panel_string = "<div class='panel-body panel-content-small low-bg text-center' title='"+input+"'>"
                 }
                 if(fdi.indexOf("(HIGH") > 0){
-                    panel_string = "<div class='panel-body high-bg text-center'>"
+                    panel_string = "<div class='panel-body panel-content-small high-bg text-center' title='"+input+"'>"
                 }
                 if(fdi.indexOf("(VERY HIGH") > 0){
-                    panel_string = "<div class='panel-body veryhigh-bg text-center'>"
+                    panel_string = "<div class='panel-body panel-content-small veryhigh-bg text-center' title='"+input+"'>"
                 }
                 if(fdi.indexOf("(SEVERE") > 0){
-                    panel_string = "<div class='panel-body severe-bg text-center'>"
+                    panel_string = "<div class='panel-body panel-content-small severe-bg text-center' title='"+input+"'>"
                 }
                 if(fdi.indexOf("(EXTREME") > 0){
-                    panel_string = "<div class='panel-body extreme-bg text-center'>"
+                    panel_string = "<div class='panel-body panel-content-small extreme-bg text-center' title='"+input+"'>"
                 }
                 if(fdi.indexOf("(CODE RED") > 0){
-                    panel_string = "<div class='panel-body codered-bg text-center'>"
+                    panel_string = "<div class='panel-body panel-content-small codered-bg text-center' title='"+input+"'>"
                 }
 
+                // compare the date to the date contained in the tfb declaration to display the icon when required
+                date_str = "";
 
-                var forecast = "<div class='panel panel-default'><div class='panel-heading'><b>"+final_date+"</b></div>" +
+                var forecast = "<div class='panel panel-default panel-custom-margin'><div class='panel-heading panel-content-small'><b>"+final_dat_time+"</b></div>" +
                         panel_string + fdi +"</div></div>";
                 //console.log(forecast);
 
