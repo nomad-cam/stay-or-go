@@ -4,7 +4,7 @@ function tonum(obj)
 }
 
 $('#mcarthur_calculate').click(function(){
-  console.log("calculating mcarthur mk5");
+  //console.log("calculating mcarthur mk5");
   mcarthur_check_input();
 });
 
