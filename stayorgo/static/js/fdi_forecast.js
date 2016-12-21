@@ -8,7 +8,7 @@ function tonum(obj)
 }
 
 $("#forecast_fdi_calculate").click(function(){
-    console.log("Clicked Calculate!")
+    //console.log("Clicked Calculate!")
     check_fdi_input();
 });
 
@@ -102,7 +102,7 @@ function calc_fdi_forecast(){
     var leave = $('#fdi_leave_trigger option:selected').text().toUpperCase();
     //console.log(leave);
     var trigger_once = false;
-    console.log(trigger_once);
+    //console.log(trigger_once);
 
     $.ajax({
         dataType: 'json',
@@ -144,8 +144,8 @@ function calc_fdi_forecast(){
                 // compare the fdi text to the users leave trigger and display a message if required
 
                 if(trigger_once == false) {
-                    console.log(trigger_once);
-                    console.log(fdi,"("+leave);
+                    //console.log(trigger_once);
+                    //console.log(fdi,"("+leave);
                     if (fdi.indexOf("(" + leave) > 0) {
                         if((i-1) < 0){
                             leave_date_time = data[i]['FCTTIME']['mday_padded'] + " " + data[i]['FCTTIME']['month_name'] + " - " +

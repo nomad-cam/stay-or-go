@@ -20,7 +20,7 @@ function load_station_list(){
             //
             //console.log(data[0]["name"]);
             var station_load = getCookie("weather_station");
-            console.log(station_load);
+            //console.log(station_load);
 
             var option = "";
             for (var j = 0; j < data.length; j++){

@@ -4,7 +4,7 @@
 $(load_configuration());
 
 $('#remember_settings').click(function(){
-    console.log("Saving Cookies...");
+    //console.log("Saving Cookies...");
     save_configuration();
 });
 
@@ -33,7 +33,7 @@ function getCookie(cname) {
 
 function load_configuration(){
     //
-    console.log("Loading Cookies...");
+    //console.log("Loading Cookies...");
     //console.log(getCookie("weather_station"));
     //console.log(getCookie("weather_town"));
     //console.log(getCookie("fire_district"));
@@ -54,7 +54,7 @@ function load_configuration(){
 
 function save_configuration(){
     // cookie time to 30 days...
-    console.log("Saving Cookies...");
+    //console.log("Saving Cookies...");
     setCookie("weather_station",$('#weather_station').val(),30);
     setCookie("weather_town",$('#weather_town').val(),30);
     setCookie("fire_district",$('#fire_district').val(),30);
