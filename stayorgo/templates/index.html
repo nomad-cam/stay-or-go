@@ -134,13 +134,34 @@
             <div class='col-md-2'>
                 <fieldset class='form-group'>
                     <legend>Maps & Links</legend>
-                    <div id="maps"></div>
+                    <div id="maps">
+                        <a href="http://cfaonline.cfa.vic.gov.au/mycfa/images/grassland/GrasslandCuringMap.png" class="thumbnail">
+                            <img src="http://cfaonline.cfa.vic.gov.au/mycfa/images/grassland/GrasslandCuringMap.png" alt="Grassland Curing Map thumbnail">
+                            <div class="caption text-center">Latest Grassland Curing Map</div>
+                        </a>
+                        <a href="http://www.bom.gov.au/fwo/IDV65406.png" class="thumbnail">
+                            <img src="http://www.bom.gov.au/fwo/IDV65406.png" alt="Maximum Forest Fire Danger Map thumbnail">
+                            <div class="caption text-center">Maximum Forest Fire Danger Index Map</div>
+                        </a>
+                        <a href="http://www.bom.gov.au/fwo/IDV65426.png" class="thumbnail">
+                            <img src="http://www.bom.gov.au/fwo/IDV65426.png" alt="Maximum Grass Fire Danger Map thumbnail">
+                            <div class="caption text-center">Maximum Grass Fire Danger Index Map</div>
+                        </a>
+                        <div class="text-center" id="map_notes">
+                            <a href="http://www.bom.gov.au/vic/forecasts/fire-map.shtml" class="thumbnail">Important Notes regarding Maximum FDI Maps</a>
+                        </div>
+                    </div>
                 </fieldset>
             </div>
             <div class='col-md-2'>
                 <fieldset class='form-group'>
-                    <legend>About</legend>
-                    <div id="about"></div>
+                    <legend>Links</legend>
+                    <div id="links">
+                        <a href="www.emergency.vic.gov.au" class="thumbnail text-center"><img src="{{ url_for('.static', filename='img/EMV_logo.jpg') }}">Official Vic Emergency<br>
+                        (Incidents & Warnings)</a>
+                        <a href="www.emergencyvic.info" class="thumbnail text-center"><img src="{{ url_for('.static', filename='img/EmergencyAUS_Logo48.png') }}">Emergency Information - Victoria<br>
+                        (Incidents & Warnings)</a>
+                    </div>
                 </fieldset>
                 <fieldset class='form-group'>
                     <legend>Help</legend>
