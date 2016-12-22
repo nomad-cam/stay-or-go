@@ -17,7 +17,7 @@
                     <div class='alert alert-danger alert-dismissible' role='alert' id='alert_error'>
                         <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                             <span aria-hidden='true'>&times;</span></button>
-                        <strong>Important Information! </strong> This site has been created in the hope that it may be useful.
+                        <strong>Important Information! </strong> <br>This site has been created in the hope that it may be useful.
                         While every effort has been made to test and confirm the calculations no guarantees can be made
                         that it is suitable or accurate for your needs.
                         <li>You should not rely on the information provided</li>
@@ -157,17 +157,23 @@
                 <fieldset class='form-group'>
                     <legend>Links</legend>
                     <div id="links">
-                        <a href="www.emergency.vic.gov.au" class="thumbnail text-center"><img src="{{ url_for('.static', filename='img/EMV_logo.jpg') }}">Official Vic Emergency<br>
+                        <a href="http://www.emergency.vic.gov.au" class="thumbnail text-center"><img src="{{ url_for('.static', filename='img/EMV_logo.jpg') }}">Official Vic Emergency<br>
                         (Incidents & Warnings)</a>
-                        <a href="www.emergencyvic.info" class="thumbnail text-center"><img src="{{ url_for('.static', filename='img/EmergencyAUS_Logo48.png') }}">Emergency Information - Victoria<br>
+                        <a href="http://www.emergencyvic.info" class="thumbnail text-center"><img src="{{ url_for('.static', filename='img/EmergencyAUS_Logo48.png') }}">Emergency Information - Victoria<br>
                         (Incidents & Warnings)</a>
+                        <a href="http://www.bom.gov.au" class="thumbnail text-center">Bureau of Meterology<br>
+                        (Current Weather & Forecasts)</a>
                     </div>
                 </fieldset>
                 <fieldset class='form-group'>
                     <legend>Help</legend>
                     <div id="help"><b>How to use this site...</b><br>
                     <ol>
-                        <li>Select you nearest weather station from the dropdown menu, this is  a list of all BoM weather stations</li>
+                        <li>Select your nearest weather station from the dropdown menu, this is  a list of all BoM weather stations</li>
+                        <li>Enter your nearest town, this is used for the 24Hr FDI forecast</li>
+                        <li>Select your fire district from the dropdown list. If your not sure you can find it on the <a href="http://www.cfa.vic.gov.au/warnings-restrictions/find-your-fire-district/">CFA website</a></li>
+                        <li>The leave early trigger will be used when checking the 24Hr FDI forecast, select a value appropriate to your fireplan</li>
+                        <li>The default values for Fuel, Drought and Slope should be entered when using the 24Hr FDI forecast</li>
                     </ol>
                     </div>
                 </fieldset>
