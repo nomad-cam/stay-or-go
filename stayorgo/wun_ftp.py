@@ -1,4 +1,5 @@
-import urllib2
+import urllib.request
+#import urllib2 #python2.7
 import json
 
 from . import cache
@@ -6,10 +7,11 @@ from . import cache
 def wun_connect(station_name):
     # connect to the wunderground forecast api
     #
-    f = urllib2.urlopen('http://api.wunderground.com/api/a0288eb1235df557/hourly/q/AU/%s.json' % station_name)
+    f = urllib.request.urlopen('http://api.wunderground.com/api/a0288eb1235df557/hourly/q/AU/%s.json' % station_name)
     json_string = f.read()
+    #print(json_string)
 
-    json_parsed = json.loads(json_string)
+    json_parsed = json.loads(json_string.decode('utf-8'))
 
     # print(json_parsed['hourly_forecast'])
 

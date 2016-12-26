@@ -1,5 +1,6 @@
 from ftplib import FTP
-from StringIO import StringIO
+from io import StringIO
+#from StringIO import StringIO # Python2.7
 from . import cache
 import xml.etree.ElementTree as ET
 

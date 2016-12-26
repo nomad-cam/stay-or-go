@@ -2,9 +2,9 @@ from flask import render_template, request, jsonify
 import feedparser
 
 from stayorgo import app
-from bom_ftp import wx_obs, station_list
-from cfa_ftp import fetch_cfa_tfb_rss
-from wun_ftp import fetch_wun_forecast
+from .bom_ftp import wx_obs, station_list
+from .cfa_ftp import fetch_cfa_tfb_rss
+from .wun_ftp import fetch_wun_forecast
 
 from datetime import datetime
 
