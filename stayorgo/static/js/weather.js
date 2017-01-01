@@ -54,7 +54,7 @@ function fetch_fdi_forecast(){
     //var FEED_URL = "http://www.cfa.vic.gov.au/restrictions/tfbfdrforecast_rss.xml";
     var FEED_URL = "/api/fx/forecast/fdr";
     $.get(FEED_URL, function(data){
-        //console.log(data);
+        console.log(data);
         $("#display_forecast_fdi_official").html("<p class='text-center'><small>Issued: " + data[data.length-1]['updated-local'] + "</small><br><h3 class='text-center'>"+district+" Forecast District</h3></p>");
         for(var h = 0; h < data.length - 1; h++){
             var tfb_index1 = data[h]['summary'].indexOf(">"+district);
