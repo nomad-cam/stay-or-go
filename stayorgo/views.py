@@ -3,7 +3,7 @@ import feedparser
 
 from stayorgo import app
 from .bom_ftp import wx_obs, station_list
-from .cfa_ftp import fetch_cfa_tfb_rss
+from .cfa_ftp import fetch_cfa_fdr_tfb
 from .wun_ftp import fetch_wun_forecast
 
 from datetime import datetime
@@ -61,7 +61,7 @@ def api_wx_station(station_id):
 def api_fdi_forecast():
     # fetch the current fdi forecast for the state
     #
-    fx = fetch_cfa_tfb_rss("tfbfdrforecast_rss")
+    fx = fetch_cfa_fdr_tfb("tfbfdrforecast_rss")
 
     #print(fx)
     return jsonify(fx)
