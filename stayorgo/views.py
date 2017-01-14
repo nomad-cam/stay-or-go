@@ -3,7 +3,7 @@ import feedparser
 
 from stayorgo import app
 from .bom_ftp import wx_obs, station_list
-from .cfa_ftp import fetch_cfa_fdr_tfb, fetch_emv_fdr_tfb
+from .cfa_ftp import fetch_cfa_fdr_tfb, fetch_emv_tfb, fetch_emv_fdr
 from .wun_ftp import fetch_wun_forecast
 
 from datetime import datetime
@@ -57,15 +57,29 @@ def api_wx_station(station_id):
     return jsonify(wx)
 
 
-@app.route('/api/fx/forecast/fdr')
-def api_fdi_forecast():
-    # fetch the current fdi forecast for the state
+@app.route('/api/fx/forecast/fdr/<district>')
+def api_fdi_forecast(district):
+    # fetch the current official fdi forecast for the state
     #
     #fx = fetch_cfa_fdr_tfb("tfbfdrforecast_rss")
-    fx = fetch_emv_fdr_tfb("FDRTFBJSON")
+    # fx = fetch_emv_fdr_tfb("FDRTFBJSON")
+    fx = fetch_emv_fdr("FDRTFBXML",district)
 
     #print(fx)
     return jsonify(fx)
+
+
+@app.route('/api/fx/forecast/tfb/<district>')
+def api_tfb_forecast(district):
+    # fetch the current official fdi forecast for the state
+    #
+    #fx = fetch_cfa_fdr_tfb("tfbfdrforecast_rss")
+    # fx = fetch_emv_fdr_tfb("FDRTFBJSON")
+    fx = fetch_emv_tfb("FDRTFBXML",district)
+
+    #print(fx)
+    return jsonify(fx)
+
 
 @app.errorhandler(404)
 def page_not_found(e):

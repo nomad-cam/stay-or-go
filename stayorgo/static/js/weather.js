@@ -49,36 +49,32 @@ function fetch_fdi_forecast(){
     }
 
     var district = $('#fire_district option:selected').text();
+    var fdr
+    var tfb
     //console.log(district);
 
     //var FEED_URL = "http://www.cfa.vic.gov.au/restrictions/tfbfdrforecast_rss.xml";
-    var FEED_URL = "/api/fx/forecast/fdr";
-    $.get(FEED_URL, function(data){
-        console.log(data);
-        $("#display_forecast_fdi_official").html("<p class='text-center'><small>Issued: " + data[data.length-1]['updated-local'] + "</small><br><h3 class='text-center'>"+district+" Forecast District</h3></p>");
-        for(var h = 0; h < data.length - 1; h++){
-            var tfb_index1 = data[h]['summary'].indexOf(">"+district);
-            var tfb_index2 = data[h]['summary'].indexOf("<",tfb_index1);
-            //console.log(tfb_index1,tfb_index2);
-
-            var fdi_index1 = data[h]['summary'].indexOf(">"+district,tfb_index2);
-            var fdi_index2 = data[h]['summary'].indexOf("<",fdi_index1);
-            //console.log(fdi_index1,fdi_index2);
-
-            var tfb_text = data[h]['summary'].substr(tfb_index1,(tfb_index2-tfb_index1));
-            var fdi_text = data[h]['summary'].substr(fdi_index1,(fdi_index2-fdi_index1));
-            //console.log(tfb_text);
-            //console.log(fdi_text);
-            var tfb_decl = tfb_text.split(":");
-            var fdi_decl = fdi_text.split(": ");
-            //console.log(tfb_decl[1]);
-            //console.log(fdi_decl[1]);
+    //specify district rather than fetching all the data
+    var FEED_FDR_URL = "/api/fx/forecast/fdr/"+district;
+    var FEED_TFB_URL = "/api/fx/forecast/tfb/"+district;
+    $.when(
+        $.get(FEED_FDR_URL, function(fdr_data){
+            fdr = fdr_data;
+        }),
+        $.get(FEED_TFB_URL, function(tfb_data){
+            tfb = tfb_data;
+        })
+    ).then(function(){
+        // console.log(fdr,tfb);
+        $("#display_forecast_fdi_official").html("<p class='text-center'><small>Issued: " + tfb['tfb'][0].fileDate + "</small><br><h3 class='text-center'>"+tfb['tfb'][0].district+" Forecast District</h3></p>");
+        for(var h = 0; h < tfb['tfb'].length; h++){
 
             //Check for a declared TFB otherwise default to No TFB
-            var tfb_decl_str = "<p class='text-center'>No TFB Declared<br>(Restrictions may still apply)</p>";
+            var tfb_decl_str = "<div class='text-center'>TFB? "+ tfb['tfb'][h].status +"</div>";
             //console.log(tfb_decl[1].indexOf("Yes"));
-            if (tfb_decl[1].indexOf("Yes") >= 0){
-                tfb_decl_str = "<p class='text-center'><img src='/static/img/tfb_icon.gif'> TFB DECLARED</p>";
+            if (tfb['tfb'][h].statusShort == 'Y'){
+                console.log('TFB Status Active')
+                tfb_decl_str = "<p class='text-center'><img src='/static/img/tfb_icon.gif'> TFB? "+ tfb['tfb'][h].status +"</p>";
             }
 
             //console.log(fdi_decl[1]);
@@ -86,41 +82,34 @@ function fetch_fdi_forecast(){
             var img = "/static/img/fdr_null_new.png";
             var img_alt = "no fire danger rating";
 
-            if(fdi_decl[1] == "LOW-MODERATE"){
+            if(fdr['fdr'][h].status == "LOW-MODERATE"){
                 var img = "/static/img/fdr_low_new.png";
                 var img_alt = "Low moderate fire danger rating";
             }
-            if(fdi_decl[1] == "HIGH"){
+            if(fdr['fdr'][h].status == "HIGH"){
                 var img = "/static/img/fdr_high_new.png";
                 var img_alt = "High fire danger rating";
             }
-            if(fdi_decl[1] == "VERY HIGH"){
+            if(fdr['fdr'][h].status == "VERY HIGH"){
                 var img = "/static/img/fdr_veryhigh_new.png";
                 var img_alt = "Very High fire danger rating";
             }
-            if(fdi_decl[1] == "SEVERE"){
+            if(fdr['fdr'][h].status == "SEVERE"){
                 var img = "/static/img/fdr_severe_new.png";
                 var img_alt = "Severe fire danger rating";
             }
-            if(fdi_decl[1] == "EXTREME"){
+            if(fdr['fdr'][h].status == "EXTREME"){
                 var img = "/static/img/fdr_extreme_new.png";
                 var img_alt = "Extreme fire danger rating";
             }
-            if(fdi_decl[1] == "CODE RED"){
+            if(fdr['fdr'][h].status == "CODE RED"){
                 var img = "/static/img/fdr_codered_new.png";
                 var img_alt = "Code Red fire danger rating";
             }
 
             //console.log(data[h]['summary']);
-            var date_index1 = data[h]['summary'].indexOf("<br />");
-            var date_index2 = data[h]['summary'].indexOf("</p>",date_index1);
-            var date_text = data[h]['summary'].substr(date_index1+6,(date_index2-date_index1));
-            var d = date_text.split(" ");
-            final_date = d[0]+" "+d[1]+" "+d[2]+" "+d[3]+" "+d[4];
-            if (d[4] == "is"){
-                final_date = d[0]+" "+d[1]+" "+d[2]+" "+d[3];
-            }
-
+            final_date = tfb['tfb'][h].dateLong
+            
             //console.log(date_text);
 
             // prepare and append the output text
