@@ -9,6 +9,28 @@
 
 
 {% block content %}
+    <div class='modal fade' id='fuel-load-modal' tabindex='-1' role='dialog' aria-labelledby='fuel-load-modal-label'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                    <h4 class='modal-title' id='fuel-load-modal-label'>Calculate Fuel Load</h4>
+                </div>
+                <div class='modal-body'>
+                    This is where the text will go...
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                    <button type='button' class='btn btn-primary'>Calculate</button>
+                    <button type='button' class='btn btn-primary'>Apply Results</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="container">
         <div class="row">
             <div class="col-md-3"></div>
@@ -79,7 +101,12 @@
                         <option value='100' class="codered-text">Code Red</option>
                     </select>
                     <label for='default_mcarthur_fuel'>Default Fuel Load</label>
-                    <input type='text' class='form-control' id='default_mcarthur_fuel' placeholder='0 - 50t/ha'>
+                    <div class='input-group'>
+                        <input type='text' class='form-control' id='default_mcarthur_fuel' placeholder='0 - 50t/ha'>
+                        <span class='input-group-btn'>
+                            <button class='btn btn-default' type='button' data-toggle='modal' data-target='#fuel-load-modal'>?</button>
+                        </span>
+                    </div>
                     <label for='default_mcarthur_drought'>Default Drought Factor</label>
                     <input type='text' class='form-control' id='default_mcarthur_drought' placeholder='0 - 10'>
                     <label for='default_mcarthur_slope'>Default Ground Slope</label>
@@ -99,7 +126,12 @@
                     <label for='mcarthur_wind'>Wind Speed</label>
                     <input type='text' class='form-control' id='mcarthur_wind' placeholder='0 - 100km/hr'>
                     <label for='mcarthur_fuel'>Fuel Load</label>
-                    <input type='text' class='form-control' id='mcarthur_fuel' placeholder='0 - 50t/ha'>
+                    <div class='input-group'>                        
+                        <input type='text' class='form-control' id='mcarthur_fuel' placeholder='0 - 50t/ha'>
+                        <span class='input-group-btn'>
+                            <button class='btn btn-default' type='button'>?</button>
+                        </span>
+                    </div>
                     <label for='mcarthur_drought'>Drought Factor</label>
                     <input type='text' class='form-control' id='mcarthur_drought' placeholder='0 - 10'>
                     <label for='mcarthur_slope'>Ground Slope</label>
@@ -122,7 +154,7 @@
             </div>
             <div class="col-md-2">
                 <fieldset class='form-group'>
-                    <legend>FDI Forecast 24Hrs</legend>
+                    <legend>FDR Forecast 24Hrs</legend>
                     <button type='button' class='btn btn-primary btn-block' id='forecast_fdi_calculate'> Calculate </button>
                 </fieldset>
                 <!-- calculate and display the 24hr day forecast -->
