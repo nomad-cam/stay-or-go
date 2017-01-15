@@ -3,7 +3,7 @@ import feedparser
 
 from stayorgo import app
 from .bom_ftp import wx_obs, station_list
-from .cfa_ftp import fetch_cfa_fdr_tfb, fetch_emv_tfb, fetch_emv_fdr
+from .cfa_ftp import fetch_emv_tfb, fetch_emv_fdr
 from .wun_ftp import fetch_wun_forecast
 
 from datetime import datetime

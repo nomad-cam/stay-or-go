@@ -8,20 +8,20 @@ from . import cache
 
 def cfa_connect(filename):
 
-    feed = feedparser.parse("http://www.cfa.vic.gov.au/restrictions/%s.xml" % filename)
-    # print(feed)
+    # feed = feedparser.parse("http://www.cfa.vic.gov.au/restrictions/%s.xml" % filename)
+    # # print(feed)
 
-    utc = datetime.strptime(feed['updated'], "%a, %d %b %Y %H:%M:%S %Z").replace(tzinfo=tz.tzutc())
-    aest = utc.astimezone(tz.tzlocal()).strftime("%a, %d %b %Y %H:%M:%S")
-    #print(aest)
+    # utc = datetime.strptime(feed['updated'], "%a, %d %b %Y %H:%M:%S %Z").replace(tzinfo=tz.tzutc())
+    # aest = utc.astimezone(tz.tzlocal()).strftime("%a, %d %b %Y %H:%M:%S")
+    # #print(aest)
 
-    clean_feed =  feed['entries']
-    clean_feed.append( {"updated": feed['updated'],
-                        "updated-local": aest} )
-    #print (clean_feed)
-    cache_write(filename,clean_feed)
+    # clean_feed =  feed['entries']
+    # clean_feed.append( {"updated": feed['updated'],
+    #                     "updated-local": aest} )
+    # #print (clean_feed)
+    # cache_write(filename,clean_feed)
 
-    return clean_feed
+    return filename
 
 
 def emv_connect(filename):
