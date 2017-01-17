@@ -26,6 +26,21 @@ $('#mcarthur_reset').click(function(){
   $('#mcarthur_result').html("");
 });
 
+$('#fuel_load_calculate').click(function(){
+  //console.log("calculating mcarthur mk5");
+  fuel_load_calculate();
+});
+
+function fuel_load_calculate()
+{
+  var surface = tonum($('#surface_fuel').val());
+  var elevated = tonum($('#elevated_fuel').val());
+  var bark = tonum($('#bark_fuel').val());
+  var near = tonum($('#near_surface_fuel').val());
+  console.log(surface,elevated,bark,near);
+  var result = surface + elevated + bark + near;
+  $('#fuel_load_result').html("<div><h4>Result: </h4>"+ result + " t/ha</div>");
+}
 
 function generate_error(error){
     $('#flash').html("<div class='alert alert-danger alert-dismissible' role='alert' id='alert_error'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>An Error Occured!</strong>" + error + "</div>");

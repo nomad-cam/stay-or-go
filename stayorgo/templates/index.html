@@ -9,6 +9,7 @@
 
 
 {% block content %}
+    {# modal popup for Fuel Load Calculator #}
     <div class='modal fade' id='fuel-load-modal' tabindex='-1' role='dialog' aria-labelledby='fuel-load-modal-label'>
         <div class='modal-dialog' role='document'>
             <div class='modal-content'>
@@ -19,11 +20,61 @@
                     <h4 class='modal-title' id='fuel-load-modal-label'>Calculate Fuel Load</h4>
                 </div>
                 <div class='modal-body'>
-                    This is where the text will go...
+                    <div class='fuel_load_notes'>
+                        <h4>Notes:</h4> To determine the <i>Surface Fine Fuel</i> level use the following guidlines. Measure the litter bed hieght with a ruler and record in mm. If the measured height is:
+                        <ul>
+                            <li>Less than 15mm = Low.</li>
+                            <li>15 - 25mm = Moderate.</li>
+                            <li>25 - 35mm = High.</li>
+                            <li>35 - 50mm = Very High.</li>
+                            <li>More than 50mm = Extreme.</li>
+                        </ul>
+                        In order to increase tha accuracy using this method, be sure to do a minimum of 3 assessments per representative site.
+                    </div>
+                    <label for='surface_fuel'>Surface Fine Fuel</label>
+                    <select class='form-control' id='surface_fuel'>
+                        <option value='-1' disabled selected>Select Available</option>
+                        <option value='2'>Low</option>
+                        <option value='6'>Moderate</option>
+                        <option value='10'>High</option>
+                        <option value='15'>Very High</option>
+                        <option value='20'>Extreme</option>
+                    </select>
+                    <label for='elevated_fuel'>Elevated Fine Fuel</label>
+                    <select class='form-control' id='elevated_fuel'>
+                        <option value='-1' disabled selected>Select Available</option>
+                        <option value='0'>Low</option>
+                        <option value='0'>Moderate</option>
+                        <option value='2'>High</option>
+                        <option value='6'>Very High</option>
+                        <option value='10'>Extreme</option>
+                    </select>
+                    <label for='bark_fuel'>Bark Fine Fuel</label>
+                    <select class='form-control' id='bark_fuel'>
+                        <option value='-1' disabled selected>Select Available</option>
+                        <option value='0'>Low</option>
+                        <option value='0.5'>Moderate</option>
+                        <option value='2'>High</option>
+                        <option value='5'>Very High</option>
+                        <option value='7'>Extreme</option>
+                    </select>
+                    <label for='near_surface_fuel'>Near Surface Fine Fuel</label>
+                    <select class='form-control' id='near_surface_fuel'>
+                        <option value='-1' disabled selected>Select Available</option>
+                        <option value='0'>No</option>
+                        <option value='4'>Yes</option>
+                    </select>
+                </div>
+                <div id='fuel_load_result'>
+                </div>
+                <div class='fuel_load_reference'>
+                    <ul>
+                        <li><i>McCarthy, G.J., Tolhurst, K.G. and Chatto, K. (1999). Overall Fuel Hazard Guide (3rd Edition). Dept. Natural Resources and Environment, Victoria. (28pp)</i></li>
+                    </ul>
                 </div>
                 <div class='modal-footer'>
                     <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
-                    <button type='button' class='btn btn-primary'>Calculate</button>
+                    <button type='button' class='btn btn-primary' id='fuel_load_calculate'>Calculate</button>
                     <button type='button' class='btn btn-primary'>Apply Results</button>
                 </div>
             </div>
