@@ -4,7 +4,7 @@
 
 {% block styles %}
 {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='css/bootstrap-custom.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='css/bootstrap-custom.css') }}" xmlns="http://www.w3.org/1999/html">
 {% endblock %}
 
 
@@ -21,7 +21,10 @@
                 </div>
                 <div class='modal-body'>
                     <div class='fuel_load_notes'>
-                        <h4>Notes:</h4> To determine the <i>Surface Fine Fuel</i> level use the following guidlines. Measure the litter bed hieght with a ruler and record in mm. If the measured height is:
+                        <h4>Notes:</h4>
+                        <p>This should be for the general representative area (town or locality scale), not just for a specific property.</p>
+                        <p>To determine the <i>Surface Fine Fuel</i> level use the following guidlines.
+                        Measure the litter bed hieght with a ruler and record in mm. If the measured height is:
                         <ul>
                             <li>Less than 15mm = Low.</li>
                             <li>15 - 25mm = Moderate.</li>
@@ -29,7 +32,7 @@
                             <li>35 - 50mm = Very High.</li>
                             <li>More than 50mm = Extreme.</li>
                         </ul>
-                        In order to increase tha accuracy using this method, be sure to do a minimum of 3 assessments per representative site.
+                        In order to increase tha accuracy using this method, be sure to do a minimum of 3 assessments per representative site.</p>
                     </div>
                     <label for='surface_fuel'>Surface Fine Fuel</label>
                     <select class='form-control' id='surface_fuel'>
@@ -75,7 +78,7 @@
                 <div class='modal-footer'>
                     <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
                     <button type='button' class='btn btn-primary' id='fuel_load_calculate'>Calculate</button>
-                    <button type='button' class='btn btn-primary'>Apply Results</button>
+                    <button type='button' class='btn btn-primary' disabled>Apply Results</button>
                 </div>
             </div>
         </div>
