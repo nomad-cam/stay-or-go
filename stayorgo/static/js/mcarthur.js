@@ -37,9 +37,9 @@ function fuel_load_calculate()
   var elevated = tonum($('#elevated_fuel').val());
   var bark = tonum($('#bark_fuel').val());
   var near = tonum($('#near_surface_fuel').val());
-  console.log(surface,elevated,bark,near);
+  // console.log(surface,elevated,bark,near);
   var result = surface + elevated + bark + near;
-  $('#fuel_load_result').html("<div><h4>Result: </h4>"+ result + " t/ha</div>");
+  $('#fuel_load_result').html("<div style='padding-left: 15px'><h4>  Result: "+ result + " t/ha</h4></div>");
 }
 
 function generate_error(error){
