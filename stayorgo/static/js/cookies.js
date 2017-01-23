@@ -1,18 +1,28 @@
 /**
- * Created by roddac on 21/12/2016.
+ * Created on 21/12/2016.
  */
 $(load_configuration());
 
 $('#remember_settings').click(function(){
     //console.log("Saving Cookies...");
-    save_configuration();
+    save_configuration(90); //save cookies for the season (3 months)
+});
+
+$('#clear_cache').click(function(){
+    //console.log("Deleting Cookies...");
+    save_configuration(0); //delete all cookies
+    load_configuration(); //then 'refresh' the display
 });
 
 function setCookie(cname, cvalue, exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    if (exdays == 0){
+        document.cookie = cname + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/";
+    }else {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
 }
 
 function getCookie(cname) {
@@ -33,15 +43,6 @@ function getCookie(cname) {
 
 function load_configuration(){
     //
-    //console.log("Loading Cookies...");
-    //console.log(getCookie("weather_station"));
-    //console.log(getCookie("weather_town"));
-    //console.log(getCookie("fire_district"));
-    //console.log(getCookie("fdi_leave_trigger"));
-    //console.log(getCookie("default_mcarthur_fuel"));
-    //console.log(getCookie("default_mcarthur_drought"));
-    //console.log(getCookie("default_mcarthur_slope"));
-
     $('#weather_station').val(getCookie("weather_station")).trigger('change');
     $('#weather_town').val(getCookie("weather_town")).trigger('change');
     $('#fire_district').val(getCookie("fire_district")).trigger('change');
@@ -52,15 +53,13 @@ function load_configuration(){
 
 }
 
-function save_configuration(){
-    // cookie time to 30 days...
+function save_configuration(days){
     //console.log("Saving Cookies...");
-    setCookie("weather_station",$('#weather_station').val(),30);
-    setCookie("weather_town",$('#weather_town').val(),30);
-    setCookie("fire_district",$('#fire_district').val(),30);
-    setCookie("fdi_leave_trigger",$('#fdi_leave_trigger').val(),30);
-    setCookie("default_mcarthur_fuel",$('#default_mcarthur_fuel').val(),30);
-    //console.log("Saving fuel load: "+$('#default_mcarthur_fuel').val());
-    setCookie("default_mcarthur_drought",$('#default_mcarthur_drought').val(),30);
-    setCookie("default_mcarthur_slope",$('#default_mcarthur_slope').val(),30);
+    setCookie("weather_station",$('#weather_station').val(),days);
+    setCookie("weather_town",$('#weather_town').val(),days);
+    setCookie("fire_district",$('#fire_district').val(),days);
+    setCookie("fdi_leave_trigger",$('#fdi_leave_trigger').val(),days);
+    setCookie("default_mcarthur_fuel",$('#default_mcarthur_fuel').val(),days);
+    setCookie("default_mcarthur_drought",$('#default_mcarthur_drought').val(),days);
+    setCookie("default_mcarthur_slope",$('#default_mcarthur_slope').val(),days);
 }
