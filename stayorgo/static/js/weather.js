@@ -43,20 +43,21 @@ function fetch_fdi_forecast(){
     //
     var district_check = $('#fire_district option:selected').val();
 
-    if (district_check == 0){
+    if (district_check == '0'){
         generate_error("<li>No Fire District has been selected</li>");
         return;
     }
 
     var district = $('#fire_district option:selected').text();
-    var fdr
-    var tfb
+    var fdr;
+    var tfb;
     //console.log(district);
 
     //var FEED_URL = "http://www.cfa.vic.gov.au/restrictions/tfbfdrforecast_rss.xml";
     //specify district rather than fetching all the data
     var FEED_FDR_URL = "/api/fx/forecast/fdr/"+district;
     var FEED_TFB_URL = "/api/fx/forecast/tfb/"+district;
+    //console.log(FEED_FDR_URL,FEED_TFB_URL);
     $.when(
         $.get(FEED_FDR_URL, function(fdr_data){
             fdr = fdr_data;
@@ -67,13 +68,13 @@ function fetch_fdi_forecast(){
     ).then(function(){
         // console.log(fdr,tfb);
         $("#display_forecast_fdi_official").html("<p class='text-center'><small>Issued: " + tfb['tfb'][0].fileDate + "</small><br><h3 class='text-center'>"+tfb['tfb'][0].district+" Forecast District</h3></p>");
-        for(var h = 0; h < tfb['tfb'].length; h++){
-
+        for(var h = 0; h < tfb['tfb'].length-1; h++){
+            console.log(h,tfb['tfb'].length);
             //Check for a declared TFB otherwise default to No TFB
             var tfb_decl_str = "<div class='text-center'>TFB? "+ tfb['tfb'][h].status +"</div>";
             //console.log(tfb_decl[1].indexOf("Yes"));
             if (tfb['tfb'][h].statusShort == 'Y'){
-                console.log('TFB Status Active')
+                console.log('TFB Status Active');
                 tfb_decl_str = "<p class='text-center'><img src='/static/img/tfb_icon.gif'> TFB? "+ tfb['tfb'][h].status +"</p>";
             }
 
