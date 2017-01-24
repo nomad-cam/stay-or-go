@@ -11,7 +11,7 @@ $('#remember_settings').click(function(){
 $('#clear_cache').click(function(){
     //console.log("Deleting Cookies...");
     save_configuration(0); //delete all cookies
-    load_configuration(); //then 'refresh' the display
+    //load_configuration(); //then 'refresh' the display
 });
 
 function setCookie(cname, cvalue, exdays) {
@@ -50,16 +50,48 @@ function load_configuration(){
     $('#default_mcarthur_fuel').val(getCookie("default_mcarthur_fuel")).trigger('change');
     $('#default_mcarthur_drought').val(getCookie("default_mcarthur_drought")).trigger('change');
     $('#default_mcarthur_slope').val(getCookie("default_mcarthur_slope")).trigger('change');
+    $('#weather_lat').val(getCookie("weather_lat")).trigger('change');
+    $('#weather_lon').val(getCookie("weather_lon")).trigger('change');
+
+
+    // Check boxes are a little different
+    //console.log(getCookie('check_town'), getCookie('check_latlon'));
+    if (getCookie('check_town') == 'true'){
+        $('#check_town').attr('checked',true);
+    }else{
+        $('#check_town').attr('checked',false);
+    }
+    if (getCookie('check_latlon') == 'true'){
+        $('#check_latlon').attr('checked',true);
+    }else{
+        $('#check_latlon').attr('checked',false);
+    }
+
 
 }
 
-function save_configuration(days){
+function save_configuration(days) {
     //console.log("Saving Cookies...");
-    setCookie("weather_station",$('#weather_station').val(),days);
-    setCookie("weather_town",$('#weather_town').val(),days);
-    setCookie("fire_district",$('#fire_district').val(),days);
-    setCookie("fdi_leave_trigger",$('#fdi_leave_trigger').val(),days);
-    setCookie("default_mcarthur_fuel",$('#default_mcarthur_fuel').val(),days);
-    setCookie("default_mcarthur_drought",$('#default_mcarthur_drought').val(),days);
-    setCookie("default_mcarthur_slope",$('#default_mcarthur_slope').val(),days);
+
+    setCookie("weather_station", $('#weather_station').val(), days);
+    setCookie("weather_town", $('#weather_town').val(), days);
+    setCookie("fire_district", $('#fire_district').val(), days);
+    setCookie("fdi_leave_trigger", $('#fdi_leave_trigger').val(), days);
+    setCookie("default_mcarthur_fuel", $('#default_mcarthur_fuel').val(), days);
+    setCookie("default_mcarthur_drought", $('#default_mcarthur_drought').val(), days);
+    setCookie("default_mcarthur_slope", $('#default_mcarthur_slope').val(), days);
+    setCookie("weather_lat", $('#weather_lat').val(), days);
+    setCookie("weather_lon", $('#weather_lon').val(), days);
+
+    // Check boxes are a little different
+    if ($('#check_town').is(':checked')) {
+        setCookie("check_town", 'true', days);
+    }else {
+        setCookie("check_town", 'false', days);
+    }
+    if ($('#check_latlon').is(':checked')) {
+       setCookie("check_latlon", 'true', days);
+    }else{
+        setCookie("check_latlon", 'false', days);
+    }
 }

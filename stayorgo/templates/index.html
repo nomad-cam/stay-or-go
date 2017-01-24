@@ -117,6 +117,8 @@
             <div class="col-md-3"></div>
         </div>
     </div>
+
+<!-- 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->
     <div class="container-fluid">
         <div class='row'>
             <div class='col-md-2'>
@@ -126,14 +128,27 @@
                     <select class='form-control' id='weather_station'>
                         <option value='0'>Select Available</option>
                     </select>
-                    <label for='weather_town'>Nearest Town/Suburb</label>
+                    <label for='weather_town'><input type="checkbox" id="check_town"> Nearest Town/Suburb</label>
                     <input type='text' class='form-control typeahead' id='weather_town' placeholder='Victorian Town/Suburb Name' autocomplete="off" spellcheck="false">
+
+                    <!-- <div class="form-group form-inline"> -->
+                        <label for='weather_lat'><input type="checkbox" id="check_latlon"> Town/Suburb Lat & Lon</label>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input type='text' class='form-control' id='weather_lat' placeholder='-37.8136'>
+                            </div>
+                            <div class="col-xs-6">
+                                <input type='text' class='form-control' id='weather_lon' placeholder='144.9631'>
+                            </div>
+                        </div>
+                    <!-- </div> -->
+
                 </fieldset>
                 <fieldset class='form-group'>
                     <legend>Fire Configuration</legend>
                     <label for='fire_district'>Fire District</label>
                     <select class='form-control' id='fire_district'>
-                        <option value='0' disabled selected>Select Available</option>
+                        <option value='0'>Select Available</option>
                         <option value='VIC_FW007'>Central</option>
                         <option value='VIC_FW001'>Mallee</option>
                         <option value='VIC_FW002'>Wimmera</option>
@@ -146,7 +161,7 @@
                     </select>
                     <label for='fdi_leave_trigger'>Leave Early Trigger</label>
                     <select class='form-control' id='fdi_leave_trigger'>
-                        <option value='0' disabled selected>Select Available</option>
+                        <option value='0'>Select Available</option>
                         <option value='11' class="low-bg">Low - Moderate</option>
                         <option value='24' class="high-bg">High</option>
                         <option value='49' class="veryhigh-bg">Very High</option>
