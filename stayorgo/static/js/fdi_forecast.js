@@ -1,5 +1,5 @@
 /**
- * Created by roddac on 21/12/2016.
+ * Created on 21/12/2016.
  */
 
 function tonum(obj)
@@ -38,23 +38,10 @@ function check_fdi_input(){
 }
 
 
-function mcarthur_calc_fdi_forecast(a,b,c,d,f,h) {
+function mcarthur_calc_fdi_forecast(b,c,d,h) {
     // Originally created by Pat Barling http://www.firebreak.com.au/forest-5.html
-    //console.log("entering calc_fdi");
-    //var a = tonum($('#mcarthur_slope').val());//slope
-    //var b = tonum($('#mcarthur_temp').val());//temperature
-    //var c = tonum($('#mcarthur_humid').val());//rel humidity
-    //var d = tonum($('#mcarthur_wind').val());//wind speed
-    //var f = tonum($('#mcarthur_fuel').val());//fuel load
-    //var h = tonum($('#mcarthur_drought').val());//drought factor
-    //console.log("imported values");
-    //console.log(a,b,c,d,f,h);
     var k = 2 * (Math.exp((.987 * Math.log(h + 0.001)) - .45 - (.0345 * c) + (.0338 * b) + (.0234 * d)));//forest mk5
-    //var j = (0.0012 * k * f);
-    //var l = (13 * j) + (0.24 * f) - 2;//flame height - forest
-    //var z = (j * (4.17 - (0.033 * f))) - 0.36;//Distance of spotting from flame front
-    //var v = j * (Math.exp(0.069 * a));//Rate of spread
-    //console.log(k,j,l,z,v);
+
     {
         var img = "/static/img/fdr_null_new.png";
         if (Math.round(k) == 0) {
@@ -95,10 +82,17 @@ function calc_fdi_forecast(){
     $('#display_forecast_fdi_custom').html("");
 
 
-    var town = $('#weather_town').val();
-    var fuel = tonum($('#default_mcarthur_fuel').val());
+    var check_town = $('#check_town').is(':checked');
+    var check_latlon = $('#check_latlon').is(':checked');
+    if (check_town) {
+        var town = $('#weather_town').val();
+    }
+    if(check_latlon){
+        var town = $('#weather_lat').val() + ',' + $('#weather_lon').val()
+    }
+    // var fuel = tonum($('#default_mcarthur_fuel').val());
     var drought = tonum($('#default_mcarthur_drought').val());
-    var slope = tonum($('#default_mcarthur_slope').val());
+    // var slope = tonum($('#default_mcarthur_slope').val());
     var leave = $('#fdi_leave_trigger option:selected').text().toUpperCase();
     //console.log(leave);
     var trigger_once = false;
@@ -115,7 +109,7 @@ function calc_fdi_forecast(){
                 humidity = tonum(data[i]['humidity']);
                 wind_spd_kmh = tonum(data[i]['wspd']['metric']);
                 //console.log(temp,humidity,wind_spd_kmh,fuel,drought,slope);
-                fdi = mcarthur_calc_fdi_forecast(slope,temp,humidity,wind_spd_kmh,fuel,drought);
+                fdi = mcarthur_calc_fdi_forecast(temp,humidity,wind_spd_kmh,drought);
                 final_date_time = data[i]['FCTTIME']['mday_padded'] + " " + data[i]['FCTTIME']['month_name'] + " - " +
                              data[i]['FCTTIME']['civil'];
 

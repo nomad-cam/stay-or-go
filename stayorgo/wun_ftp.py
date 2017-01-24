@@ -7,8 +7,27 @@ from . import cache
 def wun_connect(station_name):
     # connect to the wunderground forecast api
     #
-    # TODO: http://api.wunderground.com/api/a0288eb1235df557/hourly/q/-37.914,145.369.json
-    f = urllib.request.urlopen('http://api.wunderground.com/api/a0288eb1235df557/hourly/q/AU/%s.json' % station_name)
+    # Done: http://api.wunderground.com/api/a0288eb1235df557/hourly/q/-37.914,145.369.json
+
+    list_split = station_name.split(',')
+    latlon = False
+    if len(list_split) == 2:
+        try:
+            float(list_split[0])
+            latlon = True
+        except ValueError:
+            pass
+            latlon = False
+
+
+    # need to modify slightly if the lat lon notation is being used
+    if latlon:
+        f = urllib.request.urlopen('http://api.wunderground.com/api/a0288eb1235df557/hourly/q/%s.json' % station_name)
+    else:
+        f = urllib.request.urlopen('http://api.wunderground.com/api/a0288eb1235df557/hourly/q/AU/%s.json' % station_name)
+
+    # print(f,station_name,latlon)
+
     json_string = f.read()
     #print(json_string)
 
@@ -33,7 +52,7 @@ def wun_check_cache(station_name):
     if not res:
         print("File %s not in cache" % station_name)
         res = wun_connect(station_name)
-
+    print(res)
     return res['hourly_forecast']
 
 def wun_cache_write(station_name,IO):
