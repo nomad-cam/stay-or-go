@@ -127,7 +127,7 @@
                         <option value='0'>Select Available</option>
                     </select>
                     <label for='weather_town'>Nearest Town/Suburb</label>
-                    <input type='text' class='form-control' id='weather_town' placeholder='Victorian Town/Suburb Name'>
+                    <input type='text' class='form-control typeahead' id='weather_town' placeholder='Victorian Town/Suburb Name' autocomplete="off" spellcheck="false">
                 </fieldset>
                 <fieldset class='form-group'>
                     <legend>Fire Configuration</legend>
@@ -273,6 +273,8 @@
 
 {% block scripts %}
 {{ super() }}
+    <!-- <script src="{{ url_for('.static', filename='js/typeahead.bundle.js') }}"></script>
+    <script src="{{ url_for('.static', filename='js/wundercomplete.js') }}"></script> -->
     <script src="{{ url_for('.static', filename='js/cookies.js') }}"></script>
     <script src="{{ url_for('.static', filename='js/mcarthur.js') }}"></script>
     <script src="{{ url_for('.static', filename='js/weather.js') }}"></script>
