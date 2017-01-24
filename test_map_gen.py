@@ -72,7 +72,7 @@ for rec in record:
 
     text_center_x = (rec.bounds[2] + rec.bounds[0])/2
     text_center_y = (rec.bounds[1] + rec.bounds[3])/2
-    plt.text(text_center_x,text_center_y,ins_txt,
+    plt.text(text_center_x,text_center_y,ins_txt.title(),
              horizontalalignment='center',transform=ccrs.Geodetic(),
              fontsize = 10,
              bbox={'facecolor':'white','alpha':0.5,'pad':5})
