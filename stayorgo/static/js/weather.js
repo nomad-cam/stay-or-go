@@ -68,7 +68,7 @@ function fetch_fdi_forecast(){
     ).then(function(){
         // console.log(fdr,tfb);
         $("#display_forecast_fdi_official").html("<p class='text-center'><small>Issued: " + tfb['tfb'][0].fileDate + "</small><br><h3 class='text-center'>"+tfb['tfb'][0].district+" Forecast District</h3></p>");
-        for(var h = 0; h < tfb['tfb'].length-1; h++){
+        for(var h = 0; h < tfb['tfb'].length; h++){
             //console.log(h,tfb['tfb'].length);
             //Check for a declared TFB otherwise default to No TFB
             var tfb_decl_str = "<div class='text-center'>TFB? "+ tfb['tfb'][h].status +"</div>";
