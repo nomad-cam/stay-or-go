@@ -7,6 +7,7 @@ from . import cache
 def wun_connect(station_name):
     # connect to the wunderground forecast api
     #
+    # TODO: http://api.wunderground.com/api/a0288eb1235df557/hourly/q/-37.914,145.369.json
     f = urllib.request.urlopen('http://api.wunderground.com/api/a0288eb1235df557/hourly/q/AU/%s.json' % station_name)
     json_string = f.read()
     #print(json_string)
