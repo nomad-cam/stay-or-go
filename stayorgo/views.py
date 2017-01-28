@@ -5,6 +5,7 @@ from stayorgo import app
 from .bom_ftp import wx_obs, station_list
 from .cfa_ftp import fetch_emv_tfb, fetch_emv_fdr
 from .wun_ftp import fetch_wun_forecast
+from .gis_ftp import generate_localities
 
 from datetime import datetime
 
@@ -79,6 +80,20 @@ def api_tfb_forecast(district):
 
     #print(fx)
     return jsonify(fx)
+
+
+@app.route('/api/wx/loc/<locality>')
+def api_weather_location(locality):
+    # fetch the locality list
+    loc = False
+    return loc
+
+
+@app.route('/api/wx/locality/gen')
+def api_generate_localities():
+    # fetch the locality list
+    loc = generate_localities()
+    return loc
 
 
 @app.errorhandler(404)
