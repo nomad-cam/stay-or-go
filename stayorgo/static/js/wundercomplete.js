@@ -19,7 +19,7 @@
 //     });
 // });
 
-$(load_autocomplete());
+// $(load_autocomplete()); // -- Works
 
 function load_autocomplete(){
     //window.query_cache = {};
@@ -44,3 +44,17 @@ function load_autocomplete(){
     });
 
 }
+
+
+$(new_autocomplete());
+
+function new_autocomplete(){
+    $('#weather_town2').autocomplete({
+        source: '/api/wx/loc/ALL',
+        minLength: 2,
+        select: function( event,ui){
+            console.log('selected: '+ui.item.value+' aka: '+ui.item.id);
+        }
+    });
+};
+

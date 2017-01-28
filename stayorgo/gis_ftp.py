@@ -3,6 +3,25 @@ import os
 import json
 
 
+def fetch_localities_list(locality):
+    base_dir = os.getcwd()
+    fname = os.path.join(base_dir,'stayorgo','static','gis','locality_list.json')
+    
+    with open(fname,'r') as infile:
+        data = json.load(infile)
+
+    print(data)
+    l = []
+    if locality == 'ALL':       
+        print('ALL') 
+        for locality in data:
+            l.append(locality['locality'])
+        print(l)
+    else:
+        l.append('None')
+
+    return l
+
 def generate_localities():
     base_dir = os.getcwd()
     localities_poly = os.path.join(base_dir,'stayorgo','static','gis','locality_polygon.shp')
