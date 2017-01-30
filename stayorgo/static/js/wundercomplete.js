@@ -50,7 +50,17 @@ $(new_autocomplete());
 
 function new_autocomplete(){
     $('#weather_town2').autocomplete({
-        source: '/api/wx/loc/ALL',
+        //source: '/api/wx/loc/ALL',
+        source: function(request, response){
+            $.ajax({
+                url: '/api/wx/list/'+request.term,
+                dataType: 'json',
+                data:{},
+                success: function(data){
+                    response(data);
+                }
+            })
+        },
         minLength: 2,
         select: function( event,ui){
             console.log('selected: '+ui.item.value+' aka: '+ui.item.id);

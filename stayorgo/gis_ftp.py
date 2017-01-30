@@ -10,17 +10,38 @@ def fetch_localities_list(locality):
     with open(fname,'r') as infile:
         data = json.load(infile)
 
-    print(data)
+    # print(data)
     l = []
     if locality == 'ALL':       
         print('ALL') 
-        for locality in data:
-            l.append(locality['locality'])
+        for locality2 in data:
+            l.append(locality2['locality'])
         print(l)
     else:
-        l.append('None')
+        # l.append('None')
+        print(locality)
+        for locality3 in data:
+            print(locality3)
+            if locality in locality3['locality']:
+                l.append(locality3['locality'])
+        print(l)
 
     return l
+
+def town2location(locality):
+    base_dir = os.getcwd()
+    fname = os.path.join(base_dir,'stayorgo','static','gis','locality_list.json')
+
+    with open(fname,'r') as infile:
+        data = json.load(infile)
+
+    loc = []
+    for local in data:
+        print(local)
+        if local['locality'] == locality:
+            loc = [local['locality'], local['x_loc'], local['y_loc']]
+
+    return loc
 
 def generate_localities():
     base_dir = os.getcwd()
