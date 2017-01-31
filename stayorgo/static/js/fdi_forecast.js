@@ -81,15 +81,7 @@ function calc_fdi_forecast(){
     // Clear Previous Results
     $('#display_forecast_fdi_custom').html("");
 
-
-    var check_town = $('#check_town').is(':checked');
-    var check_latlon = $('#check_latlon').is(':checked');
-    if (check_town) {
-        var town = $('#weather_town').val();
-    }
-    if(check_latlon){
-        var town = $('#weather_lat').val() + ',' + $('#weather_lon').val()
-    }
+    var town = $('#weather_lat').val() + ',' + $('#weather_lon').val()
     // var fuel = tonum($('#default_mcarthur_fuel').val());
     var drought = tonum($('#default_mcarthur_drought').val());
     // var slope = tonum($('#default_mcarthur_slope').val());
