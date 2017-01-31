@@ -81,6 +81,7 @@ function calc_fdi_forecast(){
     // Clear Previous Results
     $('#display_forecast_fdi_custom').html("");
 
+    var burb = $('#weather_town').val()
     var town = $('#weather_lat').val() + ',' + $('#weather_lon').val()
     // var fuel = tonum($('#default_mcarthur_fuel').val());
     var drought = tonum($('#default_mcarthur_drought').val());
@@ -96,6 +97,16 @@ function calc_fdi_forecast(){
         url: '/api/wu/forecast/'+town,
         success: function(data){
             //
+            current_date = new Date()
+            atm = '<p class="text-center"><small>Calculated: '
+                         + ((current_date.getDate() < 10)?'0':'') + current_date.getDate() + '/'
+                         + ((current_date.getMonth() < 10)?'0':'') + (current_date.getMonth()+1) + '/'
+                         + current_date.getFullYear() + ' '
+                         + ((current_date.getHours() < 10)?'0':'') + current_date.getHours() + ':'
+                         + ((current_date.getMinutes() < 10)?'0':'') + current_date.getMinutes() + ':'
+                         + ((current_date.getSeconds() < 10)?'0':'') + current_date.getSeconds()
+                         + '</small><br><h3 class="text-center">Forecast for '+ burb +'</h3></p>';
+            $('#display_forecast_fdi_custom').html(atm);
             for(var i = 0; i< data.length; i++){
                 temp = tonum(data[i]['temp']['metric']);
                 humidity = tonum(data[i]['humidity']);

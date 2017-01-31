@@ -232,9 +232,10 @@
                 <fieldset class='form-group'>
                     <legend>FDR Forecast 24Hrs</legend>
                     <button type='button' class='btn btn-primary btn-block' id='forecast_fdi_calculate'> Calculate </button>
+                    <!-- calculate and display the 24hr day forecast -->
+                    <div id="display_forecast_fdi_custom"></div>
                 </fieldset>
-                <!-- calculate and display the 24hr day forecast -->
-                <div id="display_forecast_fdi_custom"></div>
+
 
                 Hourly Forecast data provided by:
                 <a href="https://www.wunderground.com/?apiref=b4a9a03c34fe2514"><img src="{{ url_for('.static', filename='img/wundergroundLogo_4c_horz.png') }}" width="285"></a>
