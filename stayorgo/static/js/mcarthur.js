@@ -24,6 +24,7 @@ $('#mcarthur_reset').click(function(){
   var img = "/static/img/fdr_null_new.png";
   $('#mcarthur_fdr').attr('src', img);
   $('#mcarthur_result').html("");
+  $('#weather_forecast_fdi_time').html('');
 });
 
 $('#fuel_load_calculate').click(function(){
