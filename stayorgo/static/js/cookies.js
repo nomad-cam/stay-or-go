@@ -56,16 +56,16 @@ function load_configuration(){
 
     // Check boxes are a little different
     //console.log(getCookie('check_town'), getCookie('check_latlon'));
-    if (getCookie('check_town') == 'true'){
-        $('#check_town').attr('checked',true);
-    }else{
-        $('#check_town').attr('checked',false);
-    }
-    if (getCookie('check_latlon') == 'true'){
-        $('#check_latlon').attr('checked',true);
-    }else{
-        $('#check_latlon').attr('checked',false);
-    }
+//    if (getCookie('check_town') == 'true'){
+//        $('#check_town').attr('checked',true);
+//    }else{
+//        $('#check_town').attr('checked',false);
+//    }
+//    if (getCookie('check_latlon') == 'true'){
+//        $('#check_latlon').attr('checked',true);
+//    }else{
+//        $('#check_latlon').attr('checked',false);
+//    }
 
 
 }
@@ -84,14 +84,14 @@ function save_configuration(days) {
     setCookie("weather_lon", $('#weather_lon').val(), days);
 
     // Check boxes are a little different
-    if ($('#check_town').is(':checked')) {
-        setCookie("check_town", 'true', days);
-    }else {
-        setCookie("check_town", 'false', days);
-    }
-    if ($('#check_latlon').is(':checked')) {
-       setCookie("check_latlon", 'true', days);
-    }else{
-        setCookie("check_latlon", 'false', days);
-    }
+//    if ($('#check_town').is(':checked')) {
+//        setCookie("check_town", 'true', days);
+//    }else {
+//        setCookie("check_town", 'false', days);
+//    }
+//    if ($('#check_latlon').is(':checked')) {
+//       setCookie("check_latlon", 'true', days);
+//    }else{
+//        setCookie("check_latlon", 'false', days);
+//    }
 }
