@@ -63,7 +63,7 @@ def town2TFBdistrict(locality):
         if sh.contains(point):
             # print(shape.attributes['TFB_DIST'])
             district = shape.attributes['TFB_DIST']
-    return district
+    return district.title()
 
 
 def generate_localities():
