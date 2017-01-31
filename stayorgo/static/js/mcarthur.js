@@ -170,6 +170,7 @@ function mcarthur_calc_fdi()
 
 function mcarthur_load_current_weather() {
     var station_id = $('#weather_station option:selected').val();
+    var station_name = $('#weather_station option:selected').text();
 
     if (station_id == 0){
         generate_error("<li>No Weather Station has been selected</li>");
@@ -186,6 +187,17 @@ function mcarthur_load_current_weather() {
             $('#mcarthur_temp').val(data['air_temperature']);
             $('#mcarthur_humid').val(data['rel-humidity']);
             $('#mcarthur_wind').val(data['wind_spd_kmh']);
+
+            var current_date = new Date(data['time-local']);
+//            console.log(station_name,current_date);
+            $('#weather_forecast_fdi_time').html('<p class="text-center"><small>Issued: '
+                         + ((current_date.getDate() < 10)?'0':'') + current_date.getDate() + '/'
+                         + ((current_date.getMonth() < 10)?'0':'') + (current_date.getMonth()+1) + '/'
+                         + current_date.getFullYear() + ' '
+                         + ((current_date.getHours() < 10)?'0':'') + current_date.getHours() + ':'
+                         + ((current_date.getMinutes() < 10)?'0':'') + current_date.getMinutes() + ':'
+                         + ((current_date.getSeconds() < 10)?'0':'') + current_date.getSeconds()
+                         + '</small><br><h3 class="text-center">'+ station_name +'</h3></p>');
         }
     });
 
