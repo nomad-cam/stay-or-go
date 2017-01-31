@@ -1,8 +1,8 @@
-basemap==1.0.8
+# basemap==1.0.8 # for future mapping
 Cartopy==0.14.0
 cffi==1.9.1
 click==6.6
-conda==4.3.6
+# conda==4.3.6 # what does this do?
 cryptography==1.7.1
 cycler==0.10.0
 dominate==2.3.1
