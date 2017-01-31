@@ -55,7 +55,6 @@ function new_autocomplete(){
             $.ajax({
                 url: '/api/wx/list/'+request.term,
                 dataType: 'json',
-                data:{},
                 success: function(data){
                     response(data);
                 }
@@ -64,6 +63,15 @@ function new_autocomplete(){
         minLength: 2,
         select: function( event,ui){
             console.log('selected: '+ui.item.value+' aka: '+ui.item.id);
+            $.ajax({
+                url: '/api/wx/loc/'+ui.item.value,
+                dataType: 'json',
+                success: function(data){
+                    console.log(data[1],data[2])
+                    $('#weather_lat').val(data[1]);
+                    $('#weather_lon').val(data[2]);
+                }
+            });
         }
     });
 };
