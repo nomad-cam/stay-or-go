@@ -3,9 +3,10 @@
 {% import "bootstrap/utils.html" as utils %}
 
 {% block styles %}
+    <link href="http://jquery-ui-bootstrap.github.io/jquery-ui-bootstrap/css/custom-theme/jquery-ui-1.10.3.custom.css" rel="stylesheet"/>
 {{ super() }}
-<link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='css/bootstrap-custom.css') }}" xmlns="http://www.w3.org/1999/html">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='css/bootstrap-custom.css') }}" xmlns="http://www.w3.org/1999/html">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 {% endblock %}
 
 
@@ -130,12 +131,12 @@
                         <option value='0'>Select Available</option>
                     </select>
                     <label for='weather_town'><input type="checkbox" id="check_town"> Nearest Town/Suburb</label>
-                    <input type='text' class='form-control typeahead' id='weather_town' placeholder='Victorian Town/Suburb Name' autocomplete="off" spellcheck="false">
+                    <input type='text' class='form-control autocomplete' id='weather_town' placeholder='Victorian Town/Suburb Name' autocomplete="off" spellcheck="false">
 
-                    <div class="ui-widget">
-                        <label for="weather_town2">Nearest Locality</label>
-                        <input id="weather_town2">
-                    </div>
+                    <!--<div class="ui-widget">-->
+                        <!--<label for="weather_town2">Nearest Locality</label>-->
+                        <!--<input id="weather_town2">-->
+                    <!--</div>-->
 
                     <!-- <div class="form-group form-inline"> -->
                         <label for='weather_lat'><input type="checkbox" id="check_latlon"> Town/Suburb Lat & Lon</label>

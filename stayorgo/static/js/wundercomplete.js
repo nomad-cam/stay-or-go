@@ -49,7 +49,7 @@ function load_autocomplete(){
 $(new_autocomplete());
 
 function new_autocomplete(){
-    $('#weather_town2').autocomplete({
+    $('.autocomplete').autocomplete({
         //source: '/api/wx/loc/ALL',
         source: function(request, response){
             $.ajax({
