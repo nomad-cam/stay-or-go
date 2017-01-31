@@ -14,15 +14,15 @@ def fetch_localities_list(locality):
     # print(data)
     l = []
     if locality == 'ALL':       
-        print('ALL') 
+        # print('ALL')
         for locality2 in data:
             l.append(locality2['locality'])
         # print(l)
     else:
         # l.append('None')
-        print(locality)
+        # print(locality)
         for locality3 in data:
-            print(locality3)
+            # print(locality3)
             if locality in locality3['locality']:
                 l.append(locality3['locality'])
         # print(l)
@@ -41,9 +41,9 @@ def town2location(locality):
         # print(local)
         if local['locality'] == locality:
             loc = [local['locality'], local['y_loc'], local['x_loc']]
+            str = "%s,%s" % (loc[1], loc[2])
+            loc.append(town2TFBdistrict(str))
 
-    # str = "%s,%s" % (loc[1], loc[2])
-    # town2TFBdistrict(str)
     return loc
 
 

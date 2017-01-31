@@ -62,14 +62,21 @@ function new_autocomplete(){
         },
         minLength: 2,
         select: function( event,ui){
-            console.log('selected: '+ui.item.value+' aka: '+ui.item.id);
+//            console.log('selected: '+ui.item.value+' aka: '+ui.item.id);
             $.ajax({
                 url: '/api/wx/loc/'+ui.item.value,
                 dataType: 'json',
                 success: function(data){
-                    console.log(data[1],data[2])
+//                    console.log(data[1],data[2],data[3])
                     $('#weather_lat').val(data[1]);
                     $('#weather_lon').val(data[2]);
+                    //$('#fire_district').val(data[3]).trigger('change');
+//                    $('#fire_district').find('option[text="' + data[3] + '"]').attr('selected',true);
+                    $('#fire_district option').filter(function(){
+//                        console.log(data[3]);
+                        return $(this).text() == data[3];
+                    }).prop('selected',true).trigger('change');
+//                    console.log($('#fire_district option:selected').text());
                 }
             });
         }
