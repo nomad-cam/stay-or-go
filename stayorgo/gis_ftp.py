@@ -39,7 +39,7 @@ def town2location(locality):
     for local in data:
         print(local)
         if local['locality'] == locality:
-            loc = [local['locality'], local['x_loc'], local['y_loc']]
+            loc = [local['locality'], local['y_loc'], local['x_loc']]
 
     return loc
 
