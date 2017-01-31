@@ -11,6 +11,45 @@
 
 
 {% block content %}
+    {# modal popup for Change Log #}
+    <div class='modal fade' id='change-log-modal' tabindex='-1' role='dialog' aria-labelledby='change-log-modal-label'>
+        <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                        <span aria-hidden='true'>&times;</span>
+                    </button>
+                    <h4 class='modal-title' id='change-log-modal-label'>Change Log</h4>
+                </div>
+                <div class='modal-body'>
+                    <div class='change_log_notes'>
+                        <ul>
+                            <li><b>2017/02/01 - Features / Bug Fixes</b></li>
+                            <ul>
+                                <li style="list-style-type:none"><u>New Features</u></li>
+                                <li>Added a fuel load calculator</li>
+                                <li>Added an autocomplete feature to the town name entry field</li>
+                                <li>Added a GIS backend to generate location data from <a href="http://www.data.vic.gov.au">data.vic.gov.au</a></li>
+                                <li>Added change of fire district when nearest town selected</li>
+                                <li style="list-style-type:none"><u>Bug Fixes</u></li>
+                                <li>Fixed - Nearest town wouldn't always find towns in victoria</li>
+                                <li>Fixed - Timestamps not displaying for downloaded and calculated data</li>
+                                <li>Fixed - Occasional error getting last day of official fire danger rating</li>
+                                <li>Fixed - Minor display issues</li>
+                                <li style="list-style-type:none"><u>Still Todo</u></li>
+                                <li>Add toggle to switch between Grassland and Forest Fire Calculator</li>
+                            </ul>
+                            <li><b>2017/01/24 - Initial Public Release</b></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {# modal popup for Fuel Load Calculator #}
     <div class='modal fade' id='fuel-load-modal' tabindex='-1' role='dialog' aria-labelledby='fuel-load-modal-label'>
         <div class='modal-dialog' role='document'>
@@ -242,7 +281,7 @@
             </div>
             <div class='col-md-2'>
                 <fieldset class='form-group'>
-                    <legend>Maps & Links</legend>
+                    <legend>Maps</legend>
                     <div id="maps">
                         <a href="http://cfaonline.cfa.vic.gov.au/mycfa/images/grassland/GrasslandCuringMap.png" class="thumbnail">
                             <img src="http://cfaonline.cfa.vic.gov.au/mycfa/images/grassland/GrasslandCuringMap.png" alt="Grassland Curing Map thumbnail">
@@ -273,6 +312,10 @@
                         <a href="http://www.bom.gov.au" class="thumbnail text-center">Bureau of Meterology<br>
                         (Current Weather & Forecasts)</a>
                     </div>
+                </fieldset>
+                <fieldset class='form-group'>
+                    <legend>About</legend>
+                    <button class='btn btn-default btn-block' type='button' data-toggle='modal' data-target='#change-log-modal'>Change Log</button>
                 </fieldset>
                 <fieldset class='form-group'>
                     <legend>Help</legend>
