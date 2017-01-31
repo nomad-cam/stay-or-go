@@ -1,4 +1,5 @@
 import cartopy.io.shapereader as shpreader
+import shapely
 import os
 import json
 
@@ -16,7 +17,7 @@ def fetch_localities_list(locality):
         print('ALL') 
         for locality2 in data:
             l.append(locality2['locality'])
-        print(l)
+        # print(l)
     else:
         # l.append('None')
         print(locality)
@@ -24,7 +25,7 @@ def fetch_localities_list(locality):
             print(locality3)
             if locality in locality3['locality']:
                 l.append(locality3['locality'])
-        print(l)
+        # print(l)
 
     return l
 
@@ -37,11 +38,33 @@ def town2location(locality):
 
     loc = []
     for local in data:
-        print(local)
+        # print(local)
         if local['locality'] == locality:
             loc = [local['locality'], local['y_loc'], local['x_loc']]
 
+    # str = "%s,%s" % (loc[1], loc[2])
+    # town2TFBdistrict(str)
     return loc
+
+
+def town2TFBdistrict(locality):
+    # print(locality)
+    y_loc = float(locality.split(',')[0])
+    x_loc = float(locality.split(',')[1])
+    # print(x_loc,y_loc)
+    base_dir = os.getcwd()
+    district_poly = os.path.join(base_dir, 'stayorgo', 'static', 'gis', 'cfa_tfb_district.shp')
+    reader = shpreader.Reader(district_poly)
+    point = shapely.geometry.Point(x_loc,y_loc)
+
+    district = ""
+    for shape in reader.records():
+        sh = shape.geometry
+        if sh.contains(point):
+            # print(shape.attributes['TFB_DIST'])
+            district = shape.attributes['TFB_DIST']
+    return district
+
 
 def generate_localities():
     base_dir = os.getcwd()
