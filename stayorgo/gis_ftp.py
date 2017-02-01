@@ -1,5 +1,5 @@
-import cartopy.io.shapereader as shpreader
-import shapely
+import fiona
+from shapely.geometry import shape, Point
 import os
 import json
 
@@ -54,33 +54,34 @@ def town2TFBdistrict(locality):
     # print(x_loc,y_loc)
     base_dir = os.getcwd()
     district_poly = os.path.join(base_dir, 'stayorgo', 'static', 'gis', 'cfa_tfb_district.shp')
-    reader = shpreader.Reader(district_poly)
-    point = shapely.geometry.Point(x_loc,y_loc)
+
+    point = Point(x_loc,y_loc)
 
     district = ""
-    for shape in reader.records():
-        sh = shape.geometry
-        if sh.contains(point):
-            # print(shape.attributes['TFB_DIST'])
-            district = shape.attributes['TFB_DIST']
+    with fiona.open(district_poly) as infile:
+        for locality in infile:
+            sh = shape(locality['geometry'])
+            if sh.contains(point):
+                # print(shape.attributes['TFB_DIST'])
+                district = locality['properties']['TFB_DIST']
     return district.title()
 
 
 def generate_localities():
     base_dir = os.getcwd()
     localities_poly = os.path.join(base_dir,'stayorgo','static','gis','locality_polygon.shp')
-    reader = shpreader.Reader(localities_poly)
-    record = reader.records()
 
     locality_list = []
-    #i=0
-    for locality in record:
-        loc_center_x = round((locality.bounds[2] + locality.bounds[0])/2,4)
-        loc_center_y = round((locality.bounds[1] + locality.bounds[3])/2,4)
 
-        locality_list.append('%s,%s,%s' % (locality.attributes['LOCALITY'].title(),loc_center_x,loc_center_y))
-        #print(locality.attributes['LOCALITY'].title(),loc_center_x,loc_center_y)
-        #i+=1
+    with fiona.open(localities_poly) as infile:
+        for locality in infile:
+            # geometry = locality['geometry']
+            bbox = shape( locality['geometry']).bounds
+            loc_center_x = round((bbox[2] + bbox[0]) / 2, 4)
+            loc_center_y = round((bbox[1] + bbox[3]) / 2, 4)
+
+            # print(locality)
+            locality_list.append('%s,%s,%s' % (locality['properties']['LOCALITY'].title(), loc_center_x, loc_center_y))
     
     locality_list.sort()
 
@@ -98,5 +99,5 @@ def generate_localities():
     with open(fname,'w') as outfile:
         json.dump(data,outfile)
 
-    print(locality_list)
+    # print(locality_list)
     return 'Done.'
