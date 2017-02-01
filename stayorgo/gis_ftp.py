@@ -5,8 +5,9 @@ import json
 
 
 def fetch_localities_list(locality):
-    base_dir = os.getcwd()
-    fname = os.path.join(base_dir,'stayorgo','static','gis','locality_list.json')
+    # base_dir = os.getcwd()
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    fname = os.path.join(base_dir,'static','gis','locality_list.json')
     
     with open(fname,'r') as infile:
         data = json.load(infile)
@@ -30,8 +31,9 @@ def fetch_localities_list(locality):
     return l
 
 def town2location(locality):
-    base_dir = os.getcwd()
-    fname = os.path.join(base_dir,'stayorgo','static','gis','locality_list.json')
+    # base_dir = os.getcwd()
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    fname = os.path.join(base_dir,'static','gis','locality_list.json')
 
     with open(fname,'r') as infile:
         data = json.load(infile)
@@ -52,8 +54,9 @@ def town2TFBdistrict(locality):
     y_loc = float(locality.split(',')[0])
     x_loc = float(locality.split(',')[1])
     # print(x_loc,y_loc)
-    base_dir = os.getcwd()
-    district_poly = os.path.join(base_dir, 'stayorgo', 'static', 'gis', 'cfa_tfb_district.shp')
+    # base_dir = os.getcwd()
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    district_poly = os.path.join(base_dir, 'static', 'gis', 'cfa_tfb_district.shp')
 
     point = Point(x_loc,y_loc)
 
@@ -68,8 +71,10 @@ def town2TFBdistrict(locality):
 
 
 def generate_localities():
-    base_dir = os.getcwd()
-    localities_poly = os.path.join(base_dir,'stayorgo','static','gis','locality_polygon.shp')
+    # base_dir = os.getcwd()
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    print(base_dir)
+    localities_poly = os.path.join(base_dir,'static','gis','locality_polygon.shp')
 
     locality_list = []
 
@@ -95,7 +100,7 @@ def generate_localities():
         d['y_loc'] = tmp_list[2]
         data.append(d)
 
-    fname = os.path.join(base_dir,'stayorgo','static','gis','locality_list.json')
+    fname = os.path.join(base_dir,'static','gis','locality_list.json')
     with open(fname,'w') as outfile:
         json.dump(data,outfile)
 
