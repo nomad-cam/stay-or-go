@@ -80,6 +80,9 @@ def fetch_emv_fdr(filename,district):
     emv_fdr = {}
     emv_fdr['fdr'] = []
 
+    # catch a slight change in case that misses the match below
+    district = district.replace('And', 'and')
+
     root = ET.fromstring(fdrtfb)
     # print(root.find('tfbfdr-forecast').get('file-generated-at'))
     # for chile in root.findall('.//tfbfdr-forecast'):
@@ -122,6 +125,9 @@ def fetch_emv_tfb(filename,district):
     
     emv_tfb = {}
     emv_tfb['tfb'] = []
+
+    # catch a slight change in case that misses the match below
+    district = district.replace('And','and')
 
     root = ET.fromstring(fdrtfb)
     # print(root.get('file-generated-at'))
