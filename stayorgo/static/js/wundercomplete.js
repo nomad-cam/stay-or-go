@@ -79,6 +79,9 @@ function new_autocomplete(){
 //                    console.log($('#fire_district option:selected').text());
                 }
             });
+            setTimeout(function(){
+                $('#weather_town').change();
+            },1000);
         }
     });
 };

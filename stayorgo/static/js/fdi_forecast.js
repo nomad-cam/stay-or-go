@@ -15,6 +15,8 @@ $('#weather_town').change(function(){
 });
 
 $('#load_forecast10').click(function(){
+    $('#forecast10_display').html("");
+    $('#forecast10_title').html("Undefined");
     calc_fdi_forecast10();
 });
 
@@ -190,6 +192,12 @@ function calc_fdi_forecast10(){
 
     var town = $('#weather_lat').val() + ',' + $('#weather_lon').val();
     var burb = $('#weather_town').val();
+    if (burb == ""){
+        $('#forecast10_title').html("Undefined");
+        return;
+    }
+
+
     var drought = tonum($('#default_mcarthur_drought').val());
 
     $.ajax({

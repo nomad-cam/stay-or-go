@@ -24,6 +24,12 @@
                 <div class='modal-body'>
                     <div class='change_log_notes'>
                         <ul>
+                            <li><b>2017/02/04 - Features</b></li>
+                            <ul>
+                                <li>Added a 10 day fire danger forecast (beyond a few days millage may vary)</li>
+                                <li>Modified <a href="https://www.wunderground.com/?apiref=b4a9a03c34fe2514">Wunderground</a> access</li>
+                                <li>Changed how images are scaled, hopefully for the better</li>
+                            </ul>
                             <li><b>2017/02/02 - Bug Fixes</b></li>
                             <ul>
                                 <li>Fixed - autocomplete not reading/creating township list</li>
@@ -235,7 +241,7 @@
                 </fieldset>
                 <button type='button' class='btn btn-primary btn-block' id="remember_settings"> Remember All </button>
                 <button type='button' class='btn btn-primary btn-block' id="clear_cache"> Clear Cache </button><br><br>
-                <p><a href="http://www.bom.gov.au/data-access/3rd-party-attribution.shtml" ><img src="{{ url_for('.static', filename='img/banner_size02_arrow_grey.png') }}"></a></p>
+                <p><a href="http://www.bom.gov.au/data-access/3rd-party-attribution.shtml" ><img src="{{ url_for('.static', filename='img/banner_size02_arrow_grey.png') }}" style='width:100%'></a></p>
             </div>
             <div class='col-md-2'>
                 <fieldset class='form-group'>
@@ -283,7 +289,7 @@
 
 
                 Hourly Forecast data provided by:
-                <a href="https://www.wunderground.com/?apiref=b4a9a03c34fe2514"><img src="{{ url_for('.static', filename='img/wundergroundLogo_4c_horz.png') }}" width="285"></a>
+                <a href="https://www.wunderground.com/?apiref=b4a9a03c34fe2514"><img src="{{ url_for('.static', filename='img/wundergroundLogo_4c_horz.png') }}" width="100%"></a>
             </div>
             <div class='col-md-2'>
                 <fieldset class='form-group'>
