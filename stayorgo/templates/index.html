@@ -341,11 +341,15 @@
     </div>
 
     <br><br><br><br><br>
-    <footer class="navbar-fixed-bottom" style="background-color: white">
+    <footer class="navbar-fixed-bottom" id="collapse_footer">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2">
-                    <div class="text-center"> <small>Max FDR Forecast</small><br><h4 id="forecast10_title">Selby</h4></div>
+                    <div class="text-center">
+                        <small>Max FDR Forecast</small><br><h4 id="forecast10_title">Undefined</h4>
+                        <a class="btn btn-primary" data-toggle="collapse" href="#forecast10_display" aria-expanded="false" aria-controls="forecast10_display">Toggle</a>
+                        <button type="button" class="btn btn-primary" id="load_forecast10">Refresh</button>
+                    </div>
                 </div>
                 <div id="forecast10_display"></div>
             </div>

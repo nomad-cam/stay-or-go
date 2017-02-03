@@ -7,6 +7,17 @@ function tonum(obj)
   return parseFloat(obj);
 }
 
+// $(document).ready() run when the page has loaded
+$(calc_fdi_forecast10())
+
+$('#weather_town').change(function(){
+    calc_fdi_forecast10();
+});
+
+$('#load_forecast10').click(function(){
+    calc_fdi_forecast10();
+});
+
 $("#forecast_fdi_calculate").click(function(){
     //console.log("Clicked Calculate!")
     check_fdi_input();
@@ -81,8 +92,8 @@ function calc_fdi_forecast(){
     // Clear Previous Results
     $('#display_forecast_fdi_custom').html("");
 
-    var burb = $('#weather_town').val()
-    var town = $('#weather_lat').val() + ',' + $('#weather_lon').val()
+    var burb = $('#weather_town').val();
+    var town = $('#weather_lat').val() + ',' + $('#weather_lon').val();
     // var fuel = tonum($('#default_mcarthur_fuel').val());
     var drought = tonum($('#default_mcarthur_drought').val());
     // var slope = tonum($('#default_mcarthur_slope').val());
@@ -116,7 +127,7 @@ function calc_fdi_forecast(){
                 final_date_time = data[i]['FCTTIME']['mday_padded'] + " " + data[i]['FCTTIME']['month_name'] + " - " +
                              data[i]['FCTTIME']['civil'];
 
-                var input = "Temp: "+temp+"&deg;C; Wind:"+wind_spd_kmh+"km/h; Humidity"+humidity+"%";
+                var input = "Temp: "+temp+"&deg;C; Wind:"+wind_spd_kmh+"km/h; Humidity:"+humidity+"%";
 
                 var panel_string = "<div class='panel-body panel-content-small text-center' title='"+input+"'>";
                 if(fdi.indexOf("(LOW") > 0){
@@ -168,6 +179,70 @@ function calc_fdi_forecast(){
         }
     });
 
+}
+
+
+function calc_fdi_forecast10(){
+//    console.log('Calculating 10 Day forecast');
+    // Clear Previous Results
+    $('#forecast10_display').html("");
+    $('#forecast10_title').html("Undefined");
+
+    var town = $('#weather_lat').val() + ',' + $('#weather_lon').val();
+    var burb = $('#weather_town').val();
+    var drought = tonum($('#default_mcarthur_drought').val());
+
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        url: '/api/wu/forecast10/'+town,
+        success: function(data){
+//            console.log(data);
+            for(var i = 0; i< data.length; i++){
+//                console.log(data[i]);
+                temp = tonum(data[i]['high']['celsius']);
+                humidity = tonum(data[i]['minhumidity']);
+                wind_spd_kmh = tonum(data[i]['avewind']['kph']);
+                //console.log(temp,humidity,wind_spd_kmh,fuel,drought,slope);
+                fdi = mcarthur_calc_fdi_forecast(temp,humidity,wind_spd_kmh,drought);
+//                console.log(fdi);
+//                $('#forecast10_display').append("<div class='col-sm-1'>")
+
+                $('#forecast10_title').html(burb);
+
+                final_date_time = data[i]['date']['weekday_short'] + ", " + data[i]['date']['day'] + " " +
+                             data[i]['date']['monthname_short'];
+
+                var input = "Temp: "+temp+"&deg;C; Wind:"+wind_spd_kmh+"km/h; Humidity:"+humidity+"%";
+
+                var panel_string = "<div class='panel-body panel-content-small panel-fixed-height text-center' title='"+input+"'>";
+                if(fdi.indexOf("(LOW") > 0){
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height low-bg text-center' title='"+input+"'>"
+                }
+                if(fdi.indexOf("(HIGH") > 0){
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height high-bg text-center' title='"+input+"'>"
+                }
+                if(fdi.indexOf("(VERY HIGH") > 0){
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height veryhigh-bg text-center' title='"+input+"'>"
+                }
+                if(fdi.indexOf("(SEVERE") > 0){
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height severe-bg text-center' title='"+input+"'>"
+                }
+                if(fdi.indexOf("(EXTREME") > 0){
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height extreme-bg text-center' title='"+input+"'>"
+                }
+                if(fdi.indexOf("(CODE RED") > 0){
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height codered-bg text-center' title='"+input+"'>"
+                }
+
+                var forecast10 = "<div class='col-md-1'><div class='panel panel-default panel-custom-margin'><div class='panel-heading panel-content-small'>" +
+                               "<b><div class='text-center'>" + final_date_time+"</div></b>" +
+                               "</div>" + panel_string + fdi +"</div></div></div>";
+
+                $('#forecast10_display').append(forecast10);
+            }
+        }
+    });
 }
 
 

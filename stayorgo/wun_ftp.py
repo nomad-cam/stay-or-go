@@ -41,7 +41,7 @@ def wun_connect(station_name,flag):
     f.close()
 
     # seperate the single file into seperate cache files
-    wun_cache_write('%s_%s'%('forecast10day',station_name), json_parsed['forecast']['simpleforecast'], 90)
+    wun_cache_write('%s_%s'%('forecast10day',station_name), json_parsed['forecast']['simpleforecast']['forecastday'], 90)
     wun_cache_write('%s_%s' % ('hourly', station_name), json_parsed['hourly_forecast'], 30)
 
     # print(json_parsed['forecast']['simpleforecast'])

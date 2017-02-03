@@ -45,5 +45,27 @@
 }
 
 .panel-custom-margin{
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+
+.panel-fixed-height{
+    height: 50px;
+}
+
+@media (max-width: 992px){
+    .panel-fixed-height{
+    height: 30px;
+}
+}
+
+.navbar-fixed-bottom{
+    background-color: #FFFFED;
+    padding-top: 5px;
+}
+
+.panel-body.panel-fixed-height{
+    position: relative;
+    top: 50%
+    transform: translateY(-50%);
 }
