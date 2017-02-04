@@ -40,16 +40,16 @@
     margin-top: 20px;
 }
 
-.panel-content-small{
+.panel-content-small {
     padding: 5px;
 }
 
-.panel-custom-margin{
+.panel-custom-margin {
     margin-bottom: 5px;
 }
 
 
-.panel-fixed-height{
+.panel-fixed-height {
     height: 50px;
 }
 
@@ -59,14 +59,26 @@
 }
 }
 
-.navbar-fixed-bottom{
+.navbar-fixed-bottom {
     background-color: #FFFFED;
     padding-top: 10px;
     border-style: solid;
 }
 
-.panel-body.panel-fixed-height{
+.panel-body .panel-fixed-height {
     position: relative;
     top: 50%
     transform: translateY(-50%);
+}
+
+.btn-sq-xs {
+    width: 25px !important;
+    height: 25px !important;
+    padding:2px;
+}
+
+
+.footer-center-col {
+    float: none;
+    margin: 0 auto;
 }
