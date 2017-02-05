@@ -186,7 +186,7 @@ function calc_fdi_forecast(){
 
 
 function calc_fdi_forecast10(){
-//    console.log('Calculating 10 Day forecast');
+    // console.log($('#forecast10_display_small').html());
     // Clear Previous Results
     $('#forecast10_display').html("");
     $('#forecast10_display_small').html("");
@@ -277,7 +277,7 @@ function calc_fdi_forecast10(){
                                "</div>" + panel_string + fdi +"</div></div></div>";
 
                 $('#forecast10_display').append(forecast10);
-                $('#forecast_display10_small').append(panel_string_small);
+                $('#forecast10_display_small').append(panel_string_small);
             }
         }
     });
