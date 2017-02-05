@@ -218,7 +218,12 @@ function calc_fdi_forecast10(){
                 // console.log(fdi);
 //                $('#forecast10_display').append("<div class='col-sm-1'>")
 
-                $('#forecast10_title').html(burb);
+                // check for errors in input data, mainly if data == 0;
+                var img_str = '';
+                if((temp == 0)||(humidity == 0)||(wind_spd_kmh == 0)){
+                    img_str = "<image src='/static/img/error_character.png' style='width: 25px; height: 25px'>";
+                }
+                $('#forecast10_title').html(img_str + " " + burb + " " + img_str);
 
                 final_date = data[i]['date']['weekday_short'] + ", " + data[i]['date']['day'] + " " +
                              data[i]['date']['monthname_short'];
