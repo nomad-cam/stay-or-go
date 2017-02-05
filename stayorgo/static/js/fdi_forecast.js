@@ -8,7 +8,7 @@ function tonum(obj)
 }
 
 // $(document).ready() run when the page has loaded
-$(calc_fdi_forecast10())
+$(calc_fdi_forecast10());
 
 $('#weather_town').change(function(){
     calc_fdi_forecast10();
@@ -16,6 +16,7 @@ $('#weather_town').change(function(){
 
 $('#load_forecast10').click(function(){
     $('#forecast10_display').html("");
+    $('#forecast10_display_small').html("");
     $('#forecast10_title').html("Undefined");
     calc_fdi_forecast10();
 });
@@ -188,6 +189,7 @@ function calc_fdi_forecast10(){
 //    console.log('Calculating 10 Day forecast');
     // Clear Previous Results
     $('#forecast10_display').html("");
+    $('#forecast10_display_small').html("");
     $('#forecast10_title').html("Undefined");
 
     var town = $('#weather_lat').val() + ',' + $('#weather_lon').val();
@@ -213,41 +215,69 @@ function calc_fdi_forecast10(){
                 wind_spd_kmh = tonum(data[i]['avewind']['kph']);
                 //console.log(temp,humidity,wind_spd_kmh,fuel,drought,slope);
                 fdi = mcarthur_calc_fdi_forecast(temp,humidity,wind_spd_kmh,drought);
-//                console.log(fdi);
+                // console.log(fdi);
 //                $('#forecast10_display').append("<div class='col-sm-1'>")
 
                 $('#forecast10_title').html(burb);
 
-                final_date_time = data[i]['date']['weekday_short'] + ", " + data[i]['date']['day'] + " " +
+                final_date = data[i]['date']['weekday_short'] + ", " + data[i]['date']['day'] + " " +
                              data[i]['date']['monthname_short'];
+                final_date_small = data[i]['date']['day'] + " " + data[i]['date']['monthname_short'] + " " + data[i]['date']['year'];
 
                 var input = "Temp: "+temp+"&deg;C; Wind:"+wind_spd_kmh+"km/h; Humidity:"+humidity+"%";
+                var input_small = "Temp:  "+temp+"&deg;C<br>Wind:  "+wind_spd_kmh+"km/h<br>Humidity:  "+humidity+"%";
 
                 var panel_string = "<div class='panel-body panel-content-small panel-fixed-height text-center' title='"+input+"'>";
+                var panel_string_small = "<button class='btn btn-sq-xs' data-toggle='popover' data-placement='top' " +
+                                         "title='Date: "+final_date_small+"' data-content='<b>FDI: </b>NaN<br><b>FDR: </b>NaN<br>" +
+                                         input_small + "'></button>";
+
+                fdi_split = fdi.split('(')[0].split(' ')[0];
+                // console.log(fdi_split);
+
                 if(fdi.indexOf("(LOW") > 0){
-                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height low-bg text-center' title='"+input+"'>"
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height low-bg text-center' title='"+input+"'>";
+                    panel_string_small = "<button class='btn btn-sq-xs low-bg' data-toggle='popover' data-placement='top' " +
+                                         "title='"+final_date_small+"' data-content='<b>FDI: </b>"+fdi_split+"<br><b>FDR: </b>LOW-MODERATE<br>" +
+                                         input_small + "'></button>";
                 }
                 if(fdi.indexOf("(HIGH") > 0){
-                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height high-bg text-center' title='"+input+"'>"
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height high-bg text-center' title='"+input+"'>";
+                    panel_string_small = "<button class='btn btn-sq-xs high-bg' data-toggle='popover' data-placement='top' " +
+                                         "title='"+final_date_small+"' data-content='<b>FDI: </b>"+fdi_split+"<br><b>FDR: </b>HIGH<br>" +
+                                         input_small + "'></button>";
                 }
                 if(fdi.indexOf("(VERY HIGH") > 0){
-                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height veryhigh-bg text-center' title='"+input+"'>"
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height veryhigh-bg text-center' title='"+input+"'>";
+                    panel_string_small = "<button class='btn btn-sq-xs veryhigh-bg' data-toggle='popover' data-placement='top' " +
+                                         "title='"+final_date_small+"' data-content='<b>FDI: </b>"+fdi_split+"<br><b>FDR: </b>VERY HIGH<br>" +
+                                         input_small + "'></button>";
                 }
                 if(fdi.indexOf("(SEVERE") > 0){
-                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height severe-bg text-center' title='"+input+"'>"
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height severe-bg text-center' title='"+input+"'>";
+                    panel_string_small = "<button class='btn btn-sq-xs severe-bg' data-toggle='popover' data-placement='top' " +
+                                         "title='"+final_date_small+"' data-content='<b>FDI: </b>"+fdi_split+"<br><b>FDR: </b>SEVERE<br>" +
+                                         input_small + "'></button>";
                 }
                 if(fdi.indexOf("(EXTREME") > 0){
-                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height extreme-bg text-center' title='"+input+"'>"
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height extreme-bg text-center' title='"+input+"'>";
+                    panel_string_small = "<button class='btn btn-sq-xs extreme-bg' data-toggle='popover' data-placement='top' " +
+                                         "title='"+final_date_small+"' data-content='<b>FDI: </b>"+fdi_split+"<br><b>FDR: </b>EXTREME<br>" +
+                                         input_small + "'></button>";
                 }
                 if(fdi.indexOf("(CODE RED") > 0){
-                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height codered-bg text-center' title='"+input+"'>"
+                    panel_string = "<div class='panel-body panel-content-small panel-fixed-height codered-bg text-center' title='"+input+"'>";
+                    panel_string_small = "<button class='btn btn-sq-xs codered-bg' data-toggle='popover' data-placement='top' " +
+                                         "title='"+final_date_small+"' data-content='<b>FDI: </b>"+fdi_split+"<br><b>FDR: </b>CODE-RED<br>" +
+                                         input_small + "'></button>";
                 }
 
                 var forecast10 = "<div class='col-md-1'><div class='panel panel-default panel-custom-margin'><div class='panel-heading panel-content-small'>" +
-                               "<b><div class='text-center'>" + final_date_time+"</div></b>" +
+                               "<b><div class='text-center'>" + final_date+"</div></b>" +
                                "</div>" + panel_string + fdi +"</div></div></div>";
 
                 $('#forecast10_display').append(forecast10);
+                $('#forecast_display10_small').append(panel_string_small);
             }
         }
     });

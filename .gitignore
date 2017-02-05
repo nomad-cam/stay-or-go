@@ -88,3 +88,6 @@ venv35/
 
 # Rope project settings
 .ropeproject
+
+#general files
+/stayorgo/static/gis/locality_list.json
