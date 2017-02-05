@@ -186,7 +186,6 @@ function calc_fdi_forecast(){
 
 
 function calc_fdi_forecast10(){
-    // console.log($('#forecast10_display_small').html());
     // Clear Previous Results
     $('#forecast10_display').html("");
     $('#forecast10_display_small').html("");
@@ -207,16 +206,12 @@ function calc_fdi_forecast10(){
         type: 'POST',
         url: '/api/wu/forecast10/'+town,
         success: function(data){
-//            console.log(data);
             for(var i = 0; i< data.length; i++){
-//                console.log(data[i]);
                 temp = tonum(data[i]['high']['celsius']);
                 humidity = tonum(data[i]['minhumidity']);
                 wind_spd_kmh = tonum(data[i]['avewind']['kph']);
                 //console.log(temp,humidity,wind_spd_kmh,fuel,drought,slope);
                 fdi = mcarthur_calc_fdi_forecast(temp,humidity,wind_spd_kmh,drought);
-                // console.log(fdi);
-//                $('#forecast10_display').append("<div class='col-sm-1'>")
 
                 // check for errors in input data, mainly if data == 0;
                 var img_str = '';
@@ -238,7 +233,6 @@ function calc_fdi_forecast10(){
                                          input_small + "'></button>";
 
                 fdi_split = fdi.split('(')[0].split(' ')[0];
-                // console.log(fdi_split);
 
                 if(fdi.indexOf("(LOW") > 0){
                     panel_string = "<div class='panel-body panel-content-small panel-fixed-height low-bg text-center' title='"+input+"'>";
@@ -285,6 +279,10 @@ function calc_fdi_forecast10(){
                 $('#forecast10_display_small').append(panel_string_small);
             }
         }
+    });
+    // seemed to not load the popovers after loading dynamic content, so repeated at end seems to sort it out...
+    $('[data-toggle="popover"]').popover({
+        html: true
     });
 }
 
