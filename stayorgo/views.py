@@ -1,5 +1,4 @@
 from flask import render_template, request, jsonify
-import feedparser
 
 from stayorgo import app
 from .bom_ftp import wx_obs, station_list
