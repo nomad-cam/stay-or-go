@@ -1,4 +1,5 @@
-import fiona
+# import fiona
+import cartopy.io.shapereader as shpreader
 from shapely.geometry import shape, Point
 import os
 import json
@@ -58,15 +59,20 @@ def town2TFBdistrict(locality):
     base_dir = os.path.abspath(os.path.dirname(__file__))
     district_poly = os.path.join(base_dir, 'static', 'gis', 'cfa_tfb_district.shp')
 
+    reader = shpreader.Reader(district_poly)
     point = Point(x_loc,y_loc)
 
     district = ""
-    with fiona.open(district_poly) as infile:
-        for locality in infile:
-            sh = shape(locality['geometry'])
-            if sh.contains(point):
-                # print(shape.attributes['TFB_DIST'])
-                district = locality['properties']['TFB_DIST']
+    for shape in reader.records():
+        sh = shape.geometry
+        if sh.contains(point):
+            district = shape.attributes['TFB_DIST']
+    # with fiona.open(district_poly) as infile:
+    #     for locality in infile:
+    #         sh = shape(locality['geometry'])
+    #         if sh.contains(point):
+    #             # print(shape.attributes['TFB_DIST'])
+    #             district = locality['properties']['TFB_DIST']
     return district.title()
 
 
@@ -76,17 +82,26 @@ def generate_localities():
     print(base_dir)
     localities_poly = os.path.join(base_dir,'static','gis','locality_polygon.shp')
 
+    reader = shpreader.Reader(localities_poly)
+    record = reader.records()
+
     locality_list = []
 
-    with fiona.open(localities_poly) as infile:
-        for locality in infile:
-            # geometry = locality['geometry']
-            bbox = shape( locality['geometry']).bounds
-            loc_center_x = round((bbox[2] + bbox[0]) / 2, 4)
-            loc_center_y = round((bbox[1] + bbox[3]) / 2, 4)
+    for locality in record:
+        loc_center_x = round((locality.bounds[2] + locality.bounds[0]) / 2, 4)
+        loc_center_y = round((locality.bounds[1] + locality.bounds[3]) / 2, 4)
 
-            # print(locality)
-            locality_list.append('%s,%s,%s' % (locality['properties']['LOCALITY'].title(), loc_center_x, loc_center_y))
+        locality_list.append('%s,%s,%s' % (locality.attributes['locality'].title(), loc_center_x, loc_center_y))
+
+    # with fiona.open(localities_poly) as infile:
+    #     for locality in infile:
+    #         # geometry = locality['geometry']
+    #         bbox = shape( locality['geometry']).bounds
+    #         loc_center_x = round((bbox[2] + bbox[0]) / 2, 4)
+    #         loc_center_y = round((bbox[1] + bbox[3]) / 2, 4)
+    #
+    #         # print(locality)
+    #         locality_list.append('%s,%s,%s' % (locality['properties']['LOCALITY'].title(), loc_center_x, loc_center_y))
     
     locality_list.sort()
 
