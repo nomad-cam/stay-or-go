@@ -8,6 +8,8 @@ from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 
+from datetime import datetime
+
 global_scale = '10m'
 #proj = ccrs.PlateCarree()
 #proj = ccrs.Miller()
@@ -29,9 +31,9 @@ ax.set_extent((140.5,150.5,-33.5,-39.5),crs=ccrs.PlateCarree())
 # plt.title('Param: FDR',fontweight='light')
 plt.suptitle('Victoria',fontweight='bold',fontsize=15)
 param = 'FDR'
-datetime = '2017/01/23 17:57:35'
+dt = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
 plt.figtext(0.13,0.9,'Param: %s' % (param))
-plt.figtext(0.9,0.9,'Date: %s' % (datetime),horizontalalignment='right')
+plt.figtext(0.9,0.9,'Date: %s' % (dt),horizontalalignment='right')
 
 shapename = 'admin_1_states_provinces'
 state_boundary = cfeature.NaturalEarthFeature(
@@ -81,5 +83,5 @@ for rec in record:
 #ax.add_feature(dist)
 
 
-#plt.savefig('result.png')
-plt.show()
+plt.savefig('result.png')
+# plt.show()
