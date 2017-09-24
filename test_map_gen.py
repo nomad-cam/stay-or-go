@@ -2,6 +2,8 @@ import cartopy.crs as ccrs
 import cartopy.io.shapereader as shpreader
 import cartopy.feature as cfeature
 from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
+# cartopy/mpl/gridliner.py
+# +degree_locator = mticker.MaxNLocator(nbins=9, steps=[1, 1.5, 1.8, 2, 3, 6, 10])
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
@@ -15,7 +17,7 @@ proj = ccrs.Mercator()
 
 ax = plt.axes(projection=proj)
 ax.coastlines(resolution=global_scale)
-gl = ax.gridlines(crs=ccrs.PlateCarree(),draw_labels=True)
+gl = ax.gridlines(crs=ccrs.PlateCarree(),draw_labels=True,linestyle='dotted')
 gl.xlabels_top = False
 gl.ylabels_left = False
 gl.xlocator = mticker.FixedLocator(list(range(140,152)))
@@ -49,7 +51,7 @@ ax.add_feature(state_boundary)
 # ax.add_feature(ocean)
 #ax.add_feature(cfeature.OCEAN) #poor resolution
 
-tfb_shape_name = 'cfa_tfb_district'
+tfb_shape_name = './stayorgo/static/gis/cfa_tfb_district'
 reader = shpreader.Reader(tfb_shape_name)
 districts = reader.geometries()
 
