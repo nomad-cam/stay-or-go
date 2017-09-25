@@ -7,8 +7,10 @@ from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
+from matplotlib.image import imread
 
 from datetime import datetime
+import os
 
 global_scale = '10m'
 #proj = ccrs.PlateCarree()
@@ -16,6 +18,7 @@ global_scale = '10m'
 proj = ccrs.Mercator()
 
 # fig = plt.figure()
+base_dir = os.path.abspath(os.path.dirname(__file__))
 
 ax = plt.axes(projection=proj)
 ax.coastlines(resolution=global_scale)
@@ -53,7 +56,7 @@ ax.add_feature(state_boundary)
 # ax.add_feature(ocean)
 #ax.add_feature(cfeature.OCEAN) #poor resolution
 
-tfb_shape_name = './stayorgo/static/gis/cfa_tfb_district'
+tfb_shape_name = os.path.join(base_dir,'stayorgo','static','gis','cfa_tfb_district.shp')
 reader = shpreader.Reader(tfb_shape_name)
 districts = reader.geometries()
 
@@ -82,6 +85,10 @@ for rec in record:
              bbox={'facecolor':'white','alpha':0.5,'pad':5})
 #ax.add_feature(dist)
 
+tfb_icon = os.path.join(base_dir,'stayorgo','static','img','tfb_icon.gif')
+img = imread(tfb_icon)
 
-plt.savefig('result.png')
-# plt.show()
+plt.imshow(img, origin='upper', transform=ccrs.PlateCarree(), extent=[143.5,144.0,-37.0,-36.5], zorder=1)
+
+# plt.savefig('result.png')
+plt.show()
