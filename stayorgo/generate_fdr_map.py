@@ -1,25 +1,14 @@
 import cartopy.crs as ccrs
 import cartopy.io.shapereader as shpreader
 import cartopy.feature as cfeature
-from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
-# cartopy/mpl/gridliner.py
-# +degree_locator = mticker.MaxNLocator(nbins=9, steps=[1, 1.5, 1.8, 2, 3, 6, 10])
 
 from shapely.geometry.polygon import LinearRing
 
 import matplotlib.pyplot as plt
-import matplotlib.ticker as mticker
-from matplotlib.path import Path
-from matplotlib.patches import PathPatch
-from matplotlib.image import imread
 
 from stayorgo.cfa_ftp import fetch_emv_fdr_by_date
 
-import numpy as np
-
-from datetime import datetime
 import os
-import re
 
 global_scale = '10m'
 proj = ccrs.Mercator()
