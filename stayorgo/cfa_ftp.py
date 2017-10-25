@@ -117,6 +117,40 @@ def fetch_emv_fdr(filename,district):
     return emv_fdr
 
 
+def fetch_emv_fdr_by_date(filename, req_date):
+    #
+    # filename    'FDRTFBXML'
+    # req_date    '29/10/2017'
+    fdrtfb = check_cache(filename, 'EMV')
+    # print(fdrtfb)
+
+    emv_fdr = {}
+    emv_fdr['fdr'] = []
+
+    root = ET.fromstring(fdrtfb)
+
+    for child in root.findall('.//fdr[@issue-for="%s"]' % (req_date)):
+        # print(child.tag,child.get('issue-for'))
+
+        issuedFor = child.get('issue-for')
+        issuedAt = child.get('issue-at')
+
+        for child2 in child.findall('.//district'):
+            # print(child2.tag,child2.get('name'),child2.text)
+
+            tmp = {}
+            tmp['issuedAt'] = issuedAt
+            tmp['issuedFor'] = issuedFor
+            tmp['district'] = child2.get('name')
+            tmp['status'] = child2.text
+            # print(tmp)
+
+            emv_fdr['fdr'].append(tmp)
+
+    # print(emv_fdr)
+    return emv_fdr
+
+
 def fetch_emv_tfb(filename,district):
     #
     #emv_connect('FDRTFBXML')

@@ -30,14 +30,13 @@ proj = ccrs.Mercator()
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
 ax = plt.axes(projection=proj)
-# ax.coastlines(resolution=global_scale)
 gl = ax.gridlines(crs=ccrs.PlateCarree(),draw_labels=True,linestyle='dotted')
-gl.xlabels_top = False
-gl.ylabels_left = False
-gl.xlocator = mticker.FixedLocator(list(range(140,152)))
-gl.ylocator = mticker.FixedLocator(list(range(-33,-41,-1)))
-gl.xformatter = LONGITUDE_FORMATTER
-gl.yformatter = LATITUDE_FORMATTER
+# gl.xlabels_top = False
+# gl.ylabels_left = False
+# gl.xlocator = mticker.FixedLocator(list(range(140,152)))
+# gl.ylocator = mticker.FixedLocator(list(range(-33,-41,-1)))
+# gl.xformatter = LONGITUDE_FORMATTER
+# gl.yformatter = LATITUDE_FORMATTER
 ax.set_extent((140.5,150.5,-33.5,-39.5),crs=ccrs.PlateCarree())
 #ax.set_xticks(list(range(140,151)),crs=ccrs.PlateCarree())
 # plt.title('Param: FDR',fontweight='light')
@@ -82,7 +81,7 @@ ax.add_geometries([rect], ccrs.Mercator(), facecolor=red, edgecolor='black', hat
 fdr = fetch_emv_fdr_by_date('FDRTFBXML','26/10/2017')
 # print(fdr)
 
-tfb_shape_name = os.path.join(base_dir,'stayorgo','static','gis','cfa_tfb_district.shp')
+tfb_shape_name = os.path.join(base_dir,'static','gis','cfa_tfb_district.shp')
 reader = shpreader.Reader(tfb_shape_name)
 districts = reader.geometries()
 
@@ -210,5 +209,6 @@ plt.figtext(0.9,0.02,'Issued At: %s' % (dt_at),horizontalalignment='right')
 # # ax.imshow(img, origin='upper', transform=ccrs.PlateCarree(), extent=[143.5,144.0,-37.0,-36.7], zorder=1)
 # ax.imshow(img, origin='upper', transform=ccrs.PlateCarree(), extent=[143.5,144.0,-37.0,-36.7], zorder=1)
 
-plt.savefig('today.png')
+tfb_today = os.path.join(base_dir,'static','img','today.png')
+plt.savefig(tfb_today)
 # plt.show()
