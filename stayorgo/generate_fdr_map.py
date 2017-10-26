@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 
 from stayorgo.cfa_ftp import fetch_emv_fdr_by_date
 
+from datetime import datetime
+
 import os
 
 global_scale = '10m'
@@ -53,8 +55,9 @@ lats = [148, 148, 148.5, 148.5]
 rect = LinearRing(list(zip(lons, lats)))
 ax.add_geometries([rect], ccrs.Mercator(), facecolor=red, edgecolor='black', hatch='/', zorder=100)
 
-fdr = fetch_emv_fdr_by_date('FDRTFBXML', '26/10/2017')
-# print(fdr)
+today = datetime.now().strftime('%d/%m/%Y')
+fdr = fetch_emv_fdr_by_date('FDRTFBXML', today)
+print(fdr)
 
 tfb_shape_name = os.path.join(base_dir, 'static', 'gis', 'cfa_tfb_district.shp')
 reader = shpreader.Reader(tfb_shape_name)
@@ -63,7 +66,8 @@ districts = reader.geometries()
 dist = cfeature.ShapelyFeature(districts, crs=ccrs.PlateCarree())
 
 record = reader.records()
-dt = ''
+dt_for = ''
+dt_at = ''
 
 for rec in record:
     ins_txt = rec.attributes['TFB_DIST']
