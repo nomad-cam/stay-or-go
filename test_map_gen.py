@@ -9,9 +9,10 @@ from shapely.geometry.polygon import LinearRing
 
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
+import matplotlib.patches as mpatches
 from matplotlib.path import Path
-from matplotlib.patches import PathPatch
-from matplotlib.image import imread
+# from matplotlib.patches import PathPatch
+# from matplotlib.image import imread
 
 from stayorgo.cfa_ftp import fetch_emv_fdr_by_date
 
@@ -72,14 +73,25 @@ orange = '#f89828'
 red = '#ee2d24'
 code_red = '#ee2d24'
 
-# rectangle = Path([[-1.1, -0.1], [1, -0.1], [1, 0.1], [-1.1, 0.1]])
-lons = [-34, -33.6, -33.6, -34]
-lats = [148, 148, 148.5, 148.5]
-# rect = LinearRing([[34,148],[33.6,148],[33.6,148.5],[33,148.5]])
-rect = LinearRing(list(zip(lons,lats)))
-ax.add_geometries([rect], ccrs.Mercator(), facecolor=red, edgecolor='black', hatch='/', zorder=100)
+rectangle = Path([[-1.1, -0.1], [1, -0.1], [1, 0.1], [-1.1, 0.1]])
+rect = Path([[-34,148],[-33.6,148],[-33.6,148.5],[-33,148.5]])
+xs = 148
+ys = -34.0
+plt.plot(xs, ys, transform=ccrs.PlateCarree(),
+             marker=rect, color='red', markersize=18,
+             linestyle='')
+# lons = [-34, -33.6, -33.6, -34]
+# lats = [148, 148, 148.5, 148.5]
+# # rect = LinearRing([[34,148],[33.6,148],[33.6,148.5],[33,148.5]])
+# rect = LinearRing(list(zip(lons,lats)))
+# ax.add_geometries([rect], ccrs.Mercator(), facecolor=red, edgecolor='black', hatch='/', zorder=100)
 
-fdr = fetch_emv_fdr_by_date('FDRTFBXML','26/10/2017')
+# ax.add_patch(mpatches.Rectangle(xy=[-37,147], width=20, height=20,
+#                                 facecolor='blue',
+#                                 transform=ccrs.PlateCarree()))
+
+today = datetime.now().strftime('%d/%m/%Y')
+fdr = fetch_emv_fdr_by_date('FDRTFBXML', today)
 # print(fdr)
 
 tfb_shape_name = os.path.join(base_dir,'stayorgo','static','gis','cfa_tfb_district.shp')
@@ -120,8 +132,8 @@ for rec in record:
             else:
                 face = 'grey'
 
-    # face = 'green'
-    # edge = 'black'
+            # face = 'green'
+            # edge = 'black'
 
             ax.add_geometries(rec.geometry, crs=ccrs.PlateCarree(), facecolor=face, edgecolor=edge, hatch=hatch)
 
@@ -210,5 +222,5 @@ plt.figtext(0.9,0.02,'Issued At: %s' % (dt_at),horizontalalignment='right')
 # # ax.imshow(img, origin='upper', transform=ccrs.PlateCarree(), extent=[143.5,144.0,-37.0,-36.7], zorder=1)
 # ax.imshow(img, origin='upper', transform=ccrs.PlateCarree(), extent=[143.5,144.0,-37.0,-36.7], zorder=1)
 
-plt.savefig('today.png')
-# plt.show()
+# plt.savefig('today.png')
+plt.show()
