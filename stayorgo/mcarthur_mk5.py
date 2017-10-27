@@ -61,6 +61,14 @@ def calc_fdr(fdi, scope='forest'):
     return fdr
 
 
+def fire_danger_rating(temp, humid, wind, drought=10, scope='forest'):
+    fdi = fdr = ''
+    if scope == 'forest':
+        fdi = calc_mcarthur_forest(temp, humid, wind, drought)
+        fdr = calc_fdr(fdi,scope)
+
+    return fdi, fdr
+
+
 if __name__ == '__main__':
-    ffdi = calc_mcarthur_forest(40.0, 10.0, 10.0)
-    print(ffdi, calc_fdr(ffdi))
+    print(fire_danger_rating(40, 10, 40))
