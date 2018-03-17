@@ -1,0 +1,3 @@
+#! /bin/bash
+wget -P /home/rohshamboyha/stay-or-go/stayorgo/static/img/auto http://www.bom.gov.au/fwo/IDV65406.png
+convert IDV65406.png -stroke black -draw "line 37,27 37,1" -draw "line 78,27, 78,1" -draw "line 158,27 158,1" -draw "line 236,27 236,1" -draw "line 313,27 313,1" -fuzz 13% -fill green -opaque #41aea4 -opaque #0d84f4 -fuzz 8.3% -fill blue -opaque #7abe47 -opaque #b5d529 -fuzz 10% -fill blue -opaque #6ac461 -fuzz 10.7% -fill yellow -opaque #f7df1e -fuzz 10% -fill orange -opaque #feaa1e -fuzz 7% -opaque #fe8921 -fuzz 12.5% -fill red -opaque #fe4e28 -fuzz 13% -fill grey40 -opaque #f02166 -opaque #940b93 -draw "text 250,100 '* Re-coloured from original image to reflect the fire danger ratings *'" IDV65406_mod.png
