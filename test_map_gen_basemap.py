@@ -10,9 +10,11 @@ from shapely.geometry import shape
 import fiona
 
 import matplotlib.pyplot as plt
+from matplotlib.offsetbox import TextArea,DrawingArea,AnnotationBbox
+from matplotlib.patches import Circle
 import matplotlib.ticker as mticker
 
-global_scale = '10m'
+#global_scale = '10m'
 # proj = ccrs.Mercator()
 
 map = Basemap(projection='merc',llcrnrlat=-39.5,urcrnrlat=-33.5,\
@@ -86,8 +88,18 @@ with fiona.open(district_poly+'.shp') as infile:
                           fontsize = 10,
                           bbox={'facecolor':'white','alpha':0.8,'pad':5})
 
+da = DrawingArea(2,20,0,0)
+p = Circle((10,10),10)
+da.add_artist(p)
 
+ab = AnnotationBbox(da, [0.9,0.9],
+                        xybox=(1.02, 0.78),
+                        xycoords='data',
+                        boxcoords=("axes fraction", "data"),
+                        box_alignment=(0., 0.5))
 
+# plot, get current figure, get current axes
+plt.gcf().gca().add_artist(da)
 # for info,shp in zip(map.districts_info, map.districts):
 #     # print(shape)
 #     # ax.
