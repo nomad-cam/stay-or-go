@@ -263,7 +263,7 @@
                     <label for='mcarthur_wind'>Wind Speed</label>
                     <input type='text' class='form-control' id='mcarthur_wind' placeholder='0 - 100km/hr'>
                     <label for='mcarthur_fuel'>Fuel Load</label>
-                    <div class='input-group'>                        
+                    <div class='input-group'>
                         <input type='text' class='form-control' id='mcarthur_fuel' placeholder='0 - 50t/ha'>
                         <span class='input-group-btn'>
                             <button class='btn btn-default' type='button' data-toggle='modal' data-target='#fuel-load-modal'>?</button>
@@ -312,6 +312,10 @@
                         <a href="http://www.bom.gov.au/fwo/IDV65406.png" class="thumbnail">
                             <img src="http://www.bom.gov.au/fwo/IDV65406.png" alt="Maximum Forest Fire Danger Map thumbnail">
                             <div class="caption text-center">Maximum Forest Fire Danger Index Map</div>
+                        </a>
+                        <a href="{{ url_for('.static', filename='img/auto/IDV65406_mod.png') }}" class="thumbnail">
+                            <img src="{{ url_for('.static', filename='img/auto/IDV65406_mod.png') }}" alt="Maximum Forest Fire Danger Map thumbnail">
+                            <div class="caption text-center">Maximum Forest Fire Danger Rating Map</div>
                         </a>
                         <a href="http://www.bom.gov.au/fwo/IDV65426.png" class="thumbnail">
                             <img src="http://www.bom.gov.au/fwo/IDV65426.png" alt="Maximum Grass Fire Danger Map thumbnail">
@@ -386,6 +390,6 @@
     <script src="{{ url_for('.static', filename='js/weather.js') }}"></script>
     <script src="{{ url_for('.static', filename='js/fdi_forecast.js') }}"></script>
     <script src="{{ url_for('.static', filename='js/common.js') }}"></script>
-    
+
 
 {% endblock %}
