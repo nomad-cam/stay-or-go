@@ -20,4 +20,6 @@ convert $IMG_PATH/IDV65406.png \
 	-fill '#7ac241' -opaque green \
 	$IMG_PATH/IDV65406_tmp.png
 
+sleep 5
+
 convert $IMG_PATH/IDV65406_tmp.png $IMG_PATH/state_legend_overlay.png -composite $IMG_PATH/IDV65406_mod.png
