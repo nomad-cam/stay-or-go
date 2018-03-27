@@ -25,6 +25,7 @@ def calc_mcarthur_grass():
 
 
 def calc_fdr(fdi, scope='forest'):
+    # source: https://en.wikipedia.org/wiki/McArthur_Forest_Fire_Danger_Index
     fdr = ''
     if scope == 'forest':
         if fdi < 12:

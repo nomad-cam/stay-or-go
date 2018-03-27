@@ -18,5 +18,7 @@ convert $IMG_PATH/IDV65406.png \
 	-fuzz 12.5% -fill '#ef2c21' -opaque '#fe4e28' \
 	-fuzz 13% -fill grey40 -opaque '#f02166' -opaque '#940b93' \
 	-fill '#7ac241' -opaque green \
-	-draw "text 250,100 '* Re-coloured from original image to reflect the fire danger ratings *'" \
-	$IMG_PATH/IDV65406_mod.png
+	$IMG_PATH/IDV65406_tmp.png
+
+convert $IMG_PATH/IDV65406_tmp.png $IMG_PATH/state_legend_overlay.png -composite $IMG_PATH/IDV65406_mod.png
+

@@ -48,22 +48,12 @@ orange = '#f89828'
 red = '#ee2d24'
 code_red = '#ee2d24'
 
-# rectangle = Path([[-1.1, -0.1], [1, -0.1], [1, 0.1], [-1.1, 0.1]])
-lons = [-34, -33.6, -33.6, -34]
-lats = [148, 148, 148.5, 148.5]
-# rect = LinearRing([[34,148],[33.6,148],[33.6,148.5],[33,148.5]])
-rect = LinearRing(list(zip(lons, lats)))
-ax.add_geometries([rect], ccrs.Mercator(), facecolor=red, edgecolor='black', hatch='/', zorder=100)
-
 today = datetime.now().strftime('%d/%m/%Y')
 fdr = fetch_emv_fdr_by_date('FDRTFBXML', today)
 print(fdr)
 
 tfb_shape_name = os.path.join(base_dir, 'static', 'gis', 'cfa_tfb_district.shp')
 reader = shpreader.Reader(tfb_shape_name)
-districts = reader.geometries()
-
-dist = cfeature.ShapelyFeature(districts, crs=ccrs.PlateCarree())
 
 record = reader.records()
 dt_for = ''
@@ -71,8 +61,6 @@ dt_at = ''
 
 for rec in record:
     ins_txt = rec.attributes['TFB_DIST']
-    # print(rec.bounds)
-    # print(ins_txt)
     dt_for = fdr['fdr'][0]['issuedFor']
     dt_at = fdr['fdr'][0]['issuedAt']
 
@@ -96,9 +84,6 @@ for rec in record:
                 hatch = '/'
             else:
                 face = 'grey'
-
-    # face = 'green'
-    # edge = 'black'
 
             ax.add_geometries(rec.geometry, crs=ccrs.PlateCarree(), facecolor=face, edgecolor=edge, hatch=hatch)
 
