@@ -10,12 +10,13 @@ convert $IMG_PATH/IDV65406.png \
 	-draw "line 236,27 236,1" \
 	-draw "line 313,27 313,1" \
 	-fuzz 13% -fill green -opaque '#41aea4' -opaque '#0d84f4' \
-	-fuzz 8.3% -fill blue -opaque '#7abe47' -opaque '#b5d529' \
-	-fuzz 10% -fill blue -opaque '#6ac461' \
-	-fuzz 10.7% -fill yellow -opaque '#f7df1e' \
-	-fuzz 10% -fill orange -opaque '#feaa1e' \
+	-fuzz 8.3% -fill '#00adee' -opaque '#7abe47' -opaque '#b5d529' \
+	-fuzz 10% -fill '#00adee' -opaque '#6ac461' \
+	-fuzz 10.7% -fill '#fef200' -opaque '#f7df1e' \
+	-fuzz 10% -fill '#fe9929' -opaque '#feaa1e' \
 	-fuzz 7% -opaque '#fe8921' \
-	-fuzz 12.5% -fill red -opaque '#fe4e28' \
+	-fuzz 12.5% -fill '#ef2c21' -opaque '#fe4e28' \
 	-fuzz 13% -fill grey40 -opaque '#f02166' -opaque '#940b93' \
+	-fill '#7ac241' -opaque green \
 	-draw "text 250,100 '* Re-coloured from original image to reflect the fire danger ratings *'" \
 	$IMG_PATH/IDV65406_mod.png
