@@ -91,3 +91,4 @@ venv35/
 
 #general files
 /stayorgo/static/gis/locality_list.json
+/stayorgo/wx_source.json

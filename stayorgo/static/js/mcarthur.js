@@ -181,7 +181,7 @@ function mcarthur_load_current_weather() {
     $.ajax({
         dataType: 'json',
         type: 'POST',
-        url: '/api/wx/current/' + station_id,
+        url: '/api/bom/current/' + station_id,
         success: function(data){
             //
             //console.log(data);

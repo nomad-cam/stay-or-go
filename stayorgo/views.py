@@ -3,10 +3,15 @@ from flask import render_template, request, jsonify
 from stayorgo import app
 from .bom_ftp import wx_obs, station_list
 from .cfa_ftp import fetch_emv_tfb, fetch_emv_fdr
-from .wun_ftp import fetch_wun_forecast
+# from .wun_ftp import fetch_wun_forecast
+from .wx_ftp import fetch_forecast
 from .gis_ftp import generate_localities,fetch_localities_list,town2location
 
 from datetime import datetime
+
+
+source = 'aeris'
+
 
 @app.route('/') #, methods=['GET','POST'])
 def stayorgo():
@@ -14,7 +19,7 @@ def stayorgo():
     return render_template('index.html')
 
 
-@app.route('/api/wx/current/<station_id>', methods=['POST','GET'])
+@app.route('/api/bom/current/<station_id>', methods=['POST', 'GET'])
 def api_wx_current(station_id):
     # fetch the current weather for a given weather station id.
     # ftp://ftp.bom.gov.au/anon/gen/fwo/IDV60920.xml
@@ -27,7 +32,7 @@ def api_wx_current(station_id):
         return jsonify(obs)
 
 
-@app.route('/api/wx/forecast/<station_id>')
+@app.route('/api/bom/forecast/<station_id>')
 def api_wx_forecast(station_id):
     # fetch the current weather for a given weather station id.
     #
@@ -37,24 +42,26 @@ def api_wx_forecast(station_id):
     return jsonify(wx)
 
 
-@app.route('/api/wu/forecast/<station_id>', methods=['POST','GET'])
+@app.route('/api/wx/forecast/<station_id>', methods=['POST', 'GET'])
 def api_wu_forecast(station_id):
     # fetch the current wu weather for a given weather station id.
     #
-    wx = fetch_wun_forecast(station_id,'hourly')
+    # wx = fetch_wun_forecast(station_id,'hourly')
+    wx = fetch_forecast(station_id, 'hourly', source)
 
     return jsonify(wx)
 
-@app.route('/api/wu/forecast10/<station_id>', methods=['POST','GET'])
+@app.route('/api/wx/forecast10/<station_id>', methods=['POST', 'GET'])
 def api_wu_forecast10(station_id):
     # fetch the current wu weather for a given weather station id.
     #
-    wx = fetch_wun_forecast(station_id,'forecast10day')
+    # wx = fetch_wun_forecast(station_id, 'forecast10day')
+    wx = fetch_forecast(station_id, 'forecast10day', source)
 
     return jsonify(wx)
 
 
-@app.route('/api/wx/station/<station_id>', methods=['POST','GET'])
+@app.route('/api/wx/station/<station_id>', methods=['POST', 'GET'])
 def api_wx_station(station_id):
     # fetch the current weather for a given weather station id.
     #
@@ -71,7 +78,7 @@ def api_fdi_forecast(district):
     #
     #fx = fetch_cfa_fdr_tfb("tfbfdrforecast_rss")
     # fx = fetch_emv_fdr_tfb("FDRTFBJSON")
-    fx = fetch_emv_fdr("FDRTFBXML",district)
+    fx = fetch_emv_fdr("FDRTFBXML", district)
 
     #print(fx)
     return jsonify(fx)
@@ -83,7 +90,7 @@ def api_tfb_forecast(district):
     #
     #fx = fetch_cfa_fdr_tfb("tfbfdrforecast_rss")
     # fx = fetch_emv_fdr_tfb("FDRTFBJSON")
-    fx = fetch_emv_tfb("FDRTFBXML",district)
+    fx = fetch_emv_tfb("FDRTFBXML", district)
 
     #print(fx)
     return jsonify(fx)
