@@ -10,6 +10,9 @@ $('#mcarthur_calculate').click(function(){
 
 $('#mcarthur_load_weather').click(function () {
     mcarthur_load_current_weather();
+    $('#mcarthur_fuel').val($('#default_mcarthur_fuel').val());
+    $('#mcarthur_drought').val($('#default_mcarthur_drought').val());
+    $('#mcarthur_slope').val($('#default_mcarthur_slope').val());
 });
 
 $('#mcarthur_reset').click(function(){

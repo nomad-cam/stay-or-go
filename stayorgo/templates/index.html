@@ -24,6 +24,12 @@
                 <div class='modal-body'>
                     <div class='change_log_notes'>
                         <ul>
+                            <li><b>2019/01/23 - Bug Fixes</b></li>
+                            <ul>
+                                <li>Added - Alternate forecast sources as WeatherUnderground shuts down its API services</li>
+                                <li>Updated - Updated links and logos to new weather sources</li>
+                                <li>Fixed - Load default values into McArthur calculator</li>
+                            </ul>
                             <li><b>2018/03/28 - Features</b></li>
                             <ul>
                                 <li>Added - Forest Fire Danger Rating map to make the image more readable</li>
@@ -302,8 +308,8 @@
                 </fieldset>
 
 
-                Hourly Forecast data provided by:
-                <a href="https://www.wunderground.com/?apiref=b4a9a03c34fe2514"><img src="{{ url_for('.static', filename='img/wundergroundLogo_4c_horz.png') }}" width="100%"></a>
+                Hourly Forecast powered by <span id="forecast-provider">AerisWeather</span>:
+                <span id="forecast-provider-logos"><a href="https://www.aerisweather.com/"><img src="{{ url_for('.static', filename='img/AerisWeather-logo-dark.png') }}" width="100%"></a></span>
             </div>
             <div class='col-md-2'>
                 <fieldset class='form-group'>
