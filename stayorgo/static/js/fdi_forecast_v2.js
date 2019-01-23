@@ -95,13 +95,14 @@ function calc_fdi_forecast(){
     // Clear Previous Results
     $('#display_forecast_fdi_custom').html("");
 
+    var source = $('#weather_server').val();
     var burb = $('#weather_town').val();
     var town = $('#weather_lat').val() + ',' + $('#weather_lon').val();
     // var fuel = tonum($('#default_mcarthur_fuel').val());
     var drought = tonum($('#default_mcarthur_drought').val());
     // var slope = tonum($('#default_mcarthur_slope').val());
     var leave = $('#fdi_leave_trigger option:selected').text().toUpperCase();
-    //console.log(leave);
+    // console.log(leave);
     var trigger_once = false;
     //console.log(trigger_once);
 
@@ -111,7 +112,7 @@ function calc_fdi_forecast(){
     $.ajax({
         dataType: 'json',
         type: 'POST',
-        url: '/api/wx/forecast/'+town,
+        url: '/api/wx/forecast/'+source+'/'+town,
         success: function(data){
             //
             current_date = new Date()
@@ -164,14 +165,17 @@ function calc_fdi_forecast(){
 
                 if(trigger_once == false) {
                     //console.log(trigger_once);
-                    //console.log(fdi,"("+leave);
+                    // console.log(fdi,"("+leave);
                     if (fdi.indexOf("(" + leave) > 0) {
                         if((i-1) < 0){
-                            leave_date_time = data[i]['FCTTIME']['mday_padded'] + " " + data[i]['FCTTIME']['month_name'] + " - " +
-                                data[i]['FCTTIME']['civil'];
+                            // if leave time is now; unable to leave earlier
+                            leave_date_time = ((date.getDate() < 10)?'0':'') + date.getDate() + " " + months[date.getMonth()] + " - " +
+                                                (date.getHours() % 12 || 12) + ":" + ('00' + date.getMinutes()).slice(-2) + " " + ((date.getHours() >= 12)?"PM":"AM");
                         }else {
-                            leave_date_time = data[i - 1]['FCTTIME']['mday_padded'] + " " + data[i - 1]['FCTTIME']['month_name'] + " - " +
-                                data[i - 1]['FCTTIME']['civil'];
+                            // else leave time an hour prior to severity condition
+                            previous_date = new Date(data[i-1]['datetime']);
+                            leave_date_time = ((previous_date.getDate() < 10)?'0':'') + previous_date.getDate() + " " + months[previous_date.getMonth()] + " - " +
+                                                (previous_date.getHours() % 12 || 12) + ":" + ('00' + previous_date.getMinutes()).slice(-2) + " " + ((previous_date.getHours() >= 12)?"PM":"AM");
                         }
                         generate_warning("<br>Your leave early trigger has been met. Leave before <b><u>" + leave_date_time + "</u></b><br>" +
                                        "Continue to monitor your local weather conditions as forecast data may not accurately reflect current observed conditions.");
@@ -199,6 +203,7 @@ function calc_fdi_forecast10(){
     $('#forecast10_display_small').html("");
     $('#forecast10_title').html("Undefined");
 
+    var source = $('#weather_server').val();
     var town = $('#weather_lat').val() + ',' + $('#weather_lon').val();
     var burb = $('#weather_town').val();
     if (burb == ""){
@@ -214,7 +219,7 @@ function calc_fdi_forecast10(){
     $.ajax({
         dataType: 'json',
         type: 'POST',
-        url: '/api/wx/forecast10/'+town,
+        url: '/api/wx/forecast10/'+source+'/'+town,
         success: function(data){
             for(var i = 0; i< data.length; i++){
                 date = new Date(data[i]['datetime']);

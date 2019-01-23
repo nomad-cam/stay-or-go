@@ -29,6 +29,7 @@
                                 <li>Added - Alternate forecast sources as WeatherUnderground shuts down its API services</li>
                                 <li>Updated - Updated links and logos to new weather sources</li>
                                 <li>Fixed - Load default values into McArthur calculator</li>
+                                <li>Fixed - Loading Cookie variables</li>
                             </ul>
                             <li><b>2018/03/28 - Features</b></li>
                             <ul>
@@ -210,15 +211,19 @@
                     <!--</div>-->
 
                     <!-- <div class="form-group form-inline"> -->
-                        <label for='weather_lat'><!-- <input type="checkbox" id="check_latlon"> --> Town/Suburb Lat & Lon</label>
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <input type='text' class='form-control' id='weather_lat' placeholder='Lat' disabled>
-                            </div>
-                            <div class="col-xs-6">
-                                <input type='text' class='form-control' id='weather_lon' placeholder='Lon' disabled>
-                            </div>
+                    <label for='weather_lat'><!-- <input type="checkbox" id="check_latlon"> --> Town/Suburb Lat & Lon</label>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <input type='text' class='form-control' id='weather_lat' placeholder='Lat' disabled>
                         </div>
+                        <div class="col-xs-6">
+                            <input type='text' class='form-control' id='weather_lon' placeholder='Lon' disabled>
+                        </div>
+                    </div>
+                    <label for='weather_server'>Select Forecast Service</label>
+                    <select class='form-control' id='weather_server'>
+                        <option value='aeris'>Aeris Weather</option>
+                    </select>
                     <!-- </div> -->
 
                 </fieldset>
@@ -308,7 +313,7 @@
                 </fieldset>
 
 
-                Hourly Forecast powered by <span id="forecast-provider">AerisWeather</span>:
+                Forecasts powered by <span id="forecast-provider">AerisWeather</span>:
                 <span id="forecast-provider-logos"><a href="https://www.aerisweather.com/"><img src="{{ url_for('.static', filename='img/AerisWeather-logo-dark.png') }}" width="100%"></a></span>
             </div>
             <div class='col-md-2'>

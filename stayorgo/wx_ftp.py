@@ -80,7 +80,7 @@ def wx_connect(station_name, flag, source):
         # print(url)
         result = wx_read_json(url)
 
-        print(result)
+        # print(result)
 
         if result['success']:
             for value in result['response'][0]['periods']:

@@ -42,8 +42,8 @@ def api_wx_forecast(station_id):
     return jsonify(wx)
 
 
-@app.route('/api/wx/forecast/<station_id>', methods=['POST', 'GET'])
-def api_wu_forecast(station_id):
+@app.route('/api/wx/forecast/<source>/<station_id>', methods=['POST', 'GET'])
+def api_wu_forecast(source, station_id):
     # fetch the current wu weather for a given weather station id.
     #
     # wx = fetch_wun_forecast(station_id,'hourly')
@@ -51,8 +51,8 @@ def api_wu_forecast(station_id):
 
     return jsonify(wx)
 
-@app.route('/api/wx/forecast10/<station_id>', methods=['POST', 'GET'])
-def api_wu_forecast10(station_id):
+@app.route('/api/wx/forecast10/<source>/<station_id>', methods=['POST', 'GET'])
+def api_wu_forecast10(source, station_id):
     # fetch the current wu weather for a given weather station id.
     #
     # wx = fetch_wun_forecast(station_id, 'forecast10day')

@@ -5,7 +5,7 @@ $(load_configuration());
 
 $('#remember_settings').click(function(){
     //console.log("Saving Cookies...");
-    save_configuration(90); //save cookies for the season (3 months)
+    save_configuration(180); //save cookies for the season (6 months)
 });
 
 $('#clear_cache').click(function(){
@@ -52,6 +52,7 @@ function load_configuration(){
     $('#default_mcarthur_slope').val(getCookie("default_mcarthur_slope")).trigger('change');
     $('#weather_lat').val(getCookie("weather_lat")).trigger('change');
     $('#weather_lon').val(getCookie("weather_lon")).trigger('change');
+    $('#weather_server').val(getCookie("weather_server")).trigger('change');
 
 
     // Check boxes are a little different
@@ -82,6 +83,7 @@ function save_configuration(days) {
     setCookie("default_mcarthur_slope", $('#default_mcarthur_slope').val(), days);
     setCookie("weather_lat", $('#weather_lat').val(), days);
     setCookie("weather_lon", $('#weather_lon').val(), days);
+    setCookie("weather_server", $('#weather_server').val(), days);
 
     // Check boxes are a little different
 //    if ($('#check_town').is(':checked')) {
