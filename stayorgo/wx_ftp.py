@@ -1,4 +1,6 @@
 import urllib.request
+from datetime import datetime
+from dateutil import tz
 import json
 import os
 
@@ -23,7 +25,7 @@ def wx_read_json(f_string):
 def wx_connect(station_name, flag, source):
     global wx_data
     # connect to the <source> forecast api
-    #
+    # Time format required = 2019-02-08T21:00:00+11:00
     # Done: http://api.wunderground.com/api/a0288eb1235df557/hourly/q/-37.914,145.369.json
 
     list_split = station_name.split(',')
@@ -93,10 +95,43 @@ def wx_connect(station_name, flag, source):
                 final.append(tmp)
         else:
             final.append({"error": result['error']['description']})
+    elif source == "darksky":
+        tail = ""
+        if flag == "hourly":
+            cache_time = cache_hour
+        if flag == 'forecast10day':
+            cache_time = cache_daily
+
+        url = "{}{}/{}?{}{}".format(wx_data[source]['base_url'], wx_data[source]['key'], station_name,
+                                 wx_data[source]['fields'], tail)
+        # print(url)
+        result = wx_read_json(url)
+
+        if result:
+            if flag == "hourly":
+                for value in result['hourly']['data']:
+                    tmp = dict()
+                    tmp['maxTemp'] = value['temperature']
+                    tmp['avgWindSpd'] = value['windSpeed']
+                    tmp['minRH'] = int(value['humidity'] * 100)
+                    tmp['datetime'] = datetime.utcfromtimestamp(value['time']).replace(tzinfo=tz.tzutc())\
+                        .astimezone(tz.tzlocal()).isoformat()
+                    final.append(tmp)
+            if flag == "forecast10day":
+                for value in result['daily']['data']:
+                    tmp = dict()
+                    tmp['maxTemp'] = value['temperatureMax']
+                    tmp['avgWindSpd'] = value['windSpeed']
+                    tmp['minRH'] = int(value['humidity'] * 100)
+                    tmp['datetime'] = datetime.utcfromtimestamp(value['time']).replace(tzinfo=tz.tzutc())\
+                        .astimezone(tz.tzlocal()).isoformat()
+                    final.append(tmp)
+        else:
+            final.append({"error": result})
 
     elif source == "wunder":
-        url = 'http://api.wunderground.com/api/a0288eb1235df557/%s/%s/q/%s.json' \
-                               % ('forecast10day', 'hourly', station_name)
+        url = 'http://api.wunderground.com/api/a0288eb1235df557/{}/{}/q/{}.json'.format('forecast10day',
+                                                                                        'hourly', station_name)
 
         result = wx_read_json(url)
         print(result)
