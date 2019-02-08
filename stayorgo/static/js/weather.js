@@ -11,6 +11,10 @@ $('#fire_district').change(function(){
     fetch_fdi_forecast();
 });
 
+$('#weather_server').change(function () {
+    update_weather_attribution();
+});
+
 function load_station_list(){
     $.ajax({
         dataType: 'json',
@@ -121,6 +125,23 @@ function fetch_fdi_forecast(){
         }
         $("#display_forecast_fdi_official").append("<p class='text-center'>For more information please visit the <br><a href='http://www.cfa.vic.gov.au/warnings-restrictions/total-fire-bans-and-ratings/'>CFA website</a></p>");
     });
+}
+
+function update_weather_attribution(){
+    var weather_source = $('#weather_server option:selected').val();
+
+    if (weather_source == 'aeris') {
+        // console.log('aeris');
+        $('#forecast-provider').html("AerisWeather");
+        $('#forecast-provider-logos').html("<a href='https://www.aerisweather.com/'><img src='static/img/AerisWeather-logo-dark.png' width='100%'></a>");
+    } else if (weather_source == 'darksky') {
+        // console.log('darksky');
+        $('#forecast-provider').html("<a href='https://darksky.net/poweredby/'>Dark Sky</a>");
+        $('#forecast-provider-logos').html("");
+    } else {
+        console.log('NoneType Selected');
+    }
+
 }
 
 function generate_error(error){

@@ -97,7 +97,7 @@ def wx_connect(station_name, flag, source):
             final.append({"error": result['error']['description']})
     elif source == "darksky":
         # https://api.darksky.net/forecast/xxxxxxx/-37.9176,145.3782?units=ca&exclude=[currently,minutely,alerts,flags]
-        # 
+        #
         tail = ""
         if flag == "hourly":
             cache_time = cache_hour
