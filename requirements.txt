@@ -6,7 +6,7 @@ chardet==3.0.4
 Click==7.0
 cycler==0.10.0
 Cython==0.29.3
-dask==1.1.0
+dask==2021.10.0
 dominate==2.3.5
 Flask==1.1.1
 Flask-Bootstrap==3.3.7.1
